@@ -1,0 +1,8 @@
+{
+  "appId": "ch.villagrasa.client",
+  "appName": "client",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
