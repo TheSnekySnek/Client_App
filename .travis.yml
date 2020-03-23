@@ -1,19 +1,8 @@
-dist: trusty
-sudo: false
-
 language: node_js
 node_js:
-  - '13.10.0'
-
-addons:
+  - 13.11.0
+ 
+ addons:
   chrome: stable
 
-cache:
-  directories:
-    - ./node_modules
-
-install:
-  - npm install
-
-script:
-  - npm run test
+script: npm test
