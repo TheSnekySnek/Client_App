@@ -1,14 +1,18 @@
+dist: trusty
+
 language: node_js
 node_js:
-  - 13.10.0
-  
-services:
-  - xvfb
-  
-before_install:
-  - export DISPLAY=:99.0
+  - '13.10.0'
 
-before_script:
+addons:
+  chrome: stable
+
+cache:
+  directories:
+    - ./node_modules
+
+install:
   - npm install
-  
-script: ./node_modules/.bin/karma start --browsers Firefox --single-run 
+
+script:
+  - npm run test
