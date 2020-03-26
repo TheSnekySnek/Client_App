@@ -20,7 +20,7 @@ export class IdentificationService {
    * Gets the identifier of the device
    */
   public getUUID() {
-    //We need to keep a reference to this
+    // We need to keep a reference to this
     var that = this;
     return new Promise(function (resolve, reject) {
       //Web platforms can't genereate the same id as mobile platforms
