@@ -25,7 +25,7 @@ export class IdentificationService {
     return new Promise(function (resolve, reject) {
       // Web platforms can't genereate the same id as mobile platforms
       if (that.platform.is("ios") || that.platform.is("android")) {
-        //Call the plugin to get the id
+        // Call the plugin to get the id
         that.uniqueDeviceID.get()
           .then((uuid: any) => {
             resolve(uuid)
