@@ -48,8 +48,8 @@ export class IdentificationService {
    */
   private getBrowserUUID() {
     var navigator_info = window.navigator;
-    var screen_info = window.screen;
-    var uuid = navigator_info.mimeTypes.length.toString();
+    var screen_info    = window.screen;
+    var uuid           = navigator_info.mimeTypes.length.toString();
     uuid += navigator_info.userAgent.replace(/\D+/g, '');
     uuid += navigator_info.plugins.length.toString();
     uuid += screen_info.height.toString() || '';
