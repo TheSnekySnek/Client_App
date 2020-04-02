@@ -28,7 +28,9 @@ describe('ConnectionService', () => {
   /*it('should be able to join a debate', async () => {
     const service: ConnectionService = TestBed.get(ConnectionService);
     expect(service).toBeTruthy();
-    var status = await service.join(TEST_DEBATE_CODE);
+    var status = await service.join(
+      testConfig.getTestConfig()['TEST_DEBATE_CODE']
+    );
     expect(status['connected']).toBeTruthy()
     expect(service.isConnected()).toBeTruthy()
     
@@ -38,7 +40,9 @@ describe('ConnectionService', () => {
     const service: ConnectionService = TestBed.get(ConnectionService);
     expect(service).toBeTruthy();
 
-    var status = await service.join(TEST_WRONG_DEBATE_CODE);
+    var status = await service.join(
+      testConfig.getTestConfig()['TEST_WRONG_DEBATE_CODE']
+    );
     expect(status['connected']).toBeFalsy()
     expect(service.isConnected()).toBeFalsy()
     
