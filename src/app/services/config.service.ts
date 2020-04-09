@@ -12,10 +12,10 @@ export class ConfigService {
   private testConfig: any;
 
   constructor() {
-    //Get the config file
+    // Get the config file
     var globalConfig = require("../../assets/config.json");
     
-    //Check the environment
+    // Check the environment
     switch(globalConfig["environment"]){
       case "DEV":
       this.config = globalConfig["constants"]["dev"];
@@ -25,7 +25,7 @@ export class ConfigService {
       this.config = globalConfig["constants"]["prod"];
       break;
 
-      //Assume production as default
+      // Assume production as default
       default: 
       console.warn("Environment not set. Assuming production")
       this.config = globalConfig["constants"]["prod"];

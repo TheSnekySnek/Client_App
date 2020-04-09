@@ -9,7 +9,7 @@ const NEW_QUESTION_TITLE: string = "Une nouvelle question est disponible";
 })
 export class QuestionService {
 
-  //We need to save the question between pages
+  // We need to save the question between pages
   savedQuestion: any;
 
   constructor(
@@ -23,7 +23,6 @@ export class QuestionService {
   public getQuestions() {
     var that = this;
     return new Promise(async function (resolve, reject) {
-      console.log("SOCKET", that.connection.isConnected())
       that.connection.socket.emit("getQuestions",
         {},
         (questions: any[]) => {

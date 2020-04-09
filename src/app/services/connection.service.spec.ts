@@ -24,7 +24,7 @@ describe('ConnectionService', () => {
     expect(service).toBeTruthy();
   });
 
-  //Debate isn't implemented server side yet
+  // Debate isn't implemented server side yet
   it('should be able to join a debate', async () => {
     const service: ConnectionService = TestBed.get(ConnectionService);
     expect(service).toBeTruthy();
