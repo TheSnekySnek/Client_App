@@ -25,7 +25,7 @@ describe('ConnectionService', () => {
   });
 
   //Debate isn't implemented server side yet
-  /*it('should be able to join a debate', async () => {
+  it('should be able to join a debate', async () => {
     const service: ConnectionService = TestBed.get(ConnectionService);
     expect(service).toBeTruthy();
     var status = await service.join(
@@ -36,7 +36,8 @@ describe('ConnectionService', () => {
     
   });
 
-  it('should not login with wrong credentials', async () => {
+  //Debate isn't implemented server side yet
+  /*it('should not login with wrong credentials', async () => {
     const service: ConnectionService = TestBed.get(ConnectionService);
     expect(service).toBeTruthy();
 
