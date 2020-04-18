@@ -16,7 +16,7 @@ export class ConnectionService {
 
   //Prevents from showing the error multiple times
   hasShownConnectError: boolean;
-  socket: Socket;
+  public socket: Socket;
 
   constructor(
     private notification: NotificationService,
@@ -82,6 +82,7 @@ export class ConnectionService {
 
       //Socket failed to connect
       that.socket.on('error', function (error) {
+        console.log(error)
         //Prevent events for firing again
         that.socket.removeAllListeners();
         resolve({

@@ -10,6 +10,12 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { ConnectionService } from './services/connection.service';
+import { QuestionService } from './services/question.service';
+import { IdentificationService } from './services/identification.service';
+import { NotificationService } from './services/notification.service';
+
+
 
 
 @NgModule({
@@ -21,6 +27,10 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
     SplashScreen,
     UniqueDeviceID,
     LocalNotifications,
+    ConnectionService,
+    QuestionService,
+    IdentificationService,
+    NotificationService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
