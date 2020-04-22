@@ -47,12 +47,12 @@ describe('ConnectionService', () => {
     expect(status['connected']).toBeFalsy()
     expect(service.isConnected()).toBeFalsy()
     
-  });*/
+  });
 
   it('should login as an admin', async () => {
     const service: ConnectionService = TestBed.get(ConnectionService);
     expect(service).toBeTruthy();
-    
+
     var status = await service.login(
       testConfig.getTestConfig()['TEST_USERNAME'],
       testConfig.getTestConfig()['TEST_PASSWORD']
@@ -62,14 +62,14 @@ describe('ConnectionService', () => {
   });
 
   it('should not login with wrong credentials', async () => {
-    const service: ConnectionService = TestBed.get(ConnectionService);
-    expect(service).toBeTruthy();
+  const service: ConnectionService = TestBed.get(ConnectionService);
+  expect(service).toBeTruthy();
 
-    var status = await service.login(
-      testConfig.getTestConfig()['TEST_USERNAME'],
-      testConfig.getTestConfig()['TEST_WRONG_PASSWORD']
-    );
-    expect(status['connected']).toBeFalsy()
-    expect(service.isConnected()).toBeFalsy()
-  });
+  var status = await service.login(
+    testConfig.getTestConfig()['TEST_USERNAME'],
+    testConfig.getTestConfig()['TEST_WRONG_PASSWORD']
+  );
+  expect(status['connected']).toBeFalsy()
+  expect(service.isConnected()).toBeFalsy()
+  });*/
 });
