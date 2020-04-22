@@ -17,14 +17,14 @@
         },
         "dev": {
             "admin": {
-                "SOCKET_ADDRESS"        : "http://villagrasa.ch",
-                "SOCKET_PORT"           : 4687,
+                "SOCKET_ADDRESS"        : "http://codeheure.com",
+                "SOCKET_PORT"           : 4356,
                 "SOCKET_PATH"           : "/socket-io",
                 "SOCKET_NAMESPACE"      : "/admin"
             },
             "client": {
-                "SOCKET_ADDRESS"        : "http://villagrasa.ch",
-                "SOCKET_PORT"           : 4687,
+                "SOCKET_ADDRESS"        : "http://codeheure.com",
+                "SOCKET_PORT"           : 4356,
                 "SOCKET_PATH"           : "/socket-io",
                 "SOCKET_NAMESPACE"      : "/client"
             }
