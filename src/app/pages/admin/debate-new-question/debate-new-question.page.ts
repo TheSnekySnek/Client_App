@@ -18,8 +18,16 @@ export class DebateNewQuestionPage implements OnInit {
   description: string;
   answers: string[] = new Array(8);
 
-  constructor(public navCtrl: NavController, private notification: NotificationService, private debateManager: DebateService, private router: Router) { }
+  constructor(
+    public navCtrl: NavController, 
+    private notification: NotificationService, 
+    private debateManager: DebateService,
+    private router: Router
+  ) {}
 
+  /**
+   * Adds a question to the debate via the question service
+   */
   async addQuestion() {
     if (!this.title || this.title.length == 0) {
       this.notification.displayError("Veuillez spécifier un titre");
@@ -50,10 +58,15 @@ export class DebateNewQuestionPage implements OnInit {
       this.navCtrl.navigateRoot(['/debate/questions']);
     }
     else {
-      this.notification.displayError("Une erreur est surveue lors de l'envoi de la question")
+      this.notification.displayError(
+        "Une erreur est surveue lors de l'envoi de la question"
+      )
     }
   }
 
+  /**
+   * Load the debate on page init
+   */
   ngOnInit() {
     this.debate = this.debateManager.getSavedDebate()
   }

@@ -13,10 +13,15 @@ export class HomePage implements OnInit {
   availableQuestions: any[] = [];
   answeredQuestions: any[] = [];
 
-  constructor(private questions: QuestionService, private router: Router, private notification: NotificationService) { 
-    
-  }
+  constructor(
+    private questions: QuestionService, 
+    private router: Router, 
+    private notification: NotificationService
+  ) {}
 
+  /**
+   * Updates the list of question
+   */
   private async updateQuestions(){
     console.log("GETTING QUESTIONS")
     this.availableQuestions = [];
@@ -32,15 +37,25 @@ export class HomePage implements OnInit {
     });
   }
 
+  /**
+   * Saves the question and loads the question page
+   * @param question Question to view
+   */
   viewQuestion(question){
     this.questions.saveQuestion(question);
     this.router.navigate(['question']);
   }
 
+  /**
+   * Loads the new question client page
+   */
   newQuestion(){
     this.router.navigate(['new-question']);
   }
 
+  /**
+   * Set up the listener for new question when the page starts
+   */
   ngOnInit() {
     this.questions.onNewQuestion((question) => {
       this.availableQuestions.push(question)
@@ -48,6 +63,9 @@ export class HomePage implements OnInit {
     })
   }
 
+  /**
+   * Update the list of questions when the page has loaded
+   */
   ionViewWillEnter(){
     this.updateQuestions()
   }

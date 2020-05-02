@@ -13,8 +13,15 @@ export class QuestionPage implements OnInit {
   question: any;
   selection: number = -1;
 
-  constructor(private questions: QuestionService, private router: Router, private notification: NotificationService) { }
+  constructor(
+    private questions: QuestionService, 
+    private router: Router, 
+    private notification: NotificationService
+  ) {}
 
+  /**
+   * Gets the answer of a question and sends it to the server
+   */
   async answerQuestion(){
     if(this.selection < 0){
       this.notification.displayError("Sélectionnez une réponse")
@@ -25,7 +32,9 @@ export class QuestionPage implements OnInit {
       this.router.navigate(['home']);
     }
     else{
-      this.notification.displayError("Erreur lors du vote. Veuillez réessayer plus tard")
+      this.notification.displayError(
+        "Erreur lors du vote. Veuillez réessayer plus tard"
+      )
     }
   }
 

@@ -13,8 +13,15 @@ export class LoginPage implements OnInit {
   private username: string;
   private password: string;
 
-  constructor(private connection: ConnectionService, private router: Router, private notification: NotificationService) { }
+  constructor(
+    private connection: ConnectionService, 
+    private router: Router, 
+    private notification: NotificationService
+  ) {}
 
+  /**
+   * Login the admin via the connection service
+   */
   async login() {
     var status = await this.connection.login(this.username, this.password);
     if (status['connected']) {

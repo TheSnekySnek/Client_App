@@ -13,8 +13,15 @@ export class NewDebatePage implements OnInit {
   private title: string;
   private description: string;
 
-  constructor(private debateManager: DebateService, private notification: NotificationService, private router: Router) { }
+  constructor(
+    private debateManager: DebateService, 
+    private notification: NotificationService, 
+    private router: Router
+  ) {}
 
+  /**
+   * Creates a new debate
+   */
   async createDebate(){
     if(!this.title || this.title.length == 0){
       this.notification.displayError("Please specify the title");
@@ -24,8 +31,12 @@ export class NewDebatePage implements OnInit {
       this.notification.displayError("Please specify the description");
       return;
     }
-    console.log("Create debate")
-    var debateId = await this.debateManager.createDebate({title: this.title, description: this.description});
+    var debateId = await this.debateManager.createDebate(
+      {
+        title: this.title,
+        description: this.description
+      }
+    );
     console.log("New Debate:", debateId)
     this.notification.displayInfo("Debat crée avec l'id " + debateId);
     this.debateManager.saveDebate({

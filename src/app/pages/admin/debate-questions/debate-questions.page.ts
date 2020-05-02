@@ -12,16 +12,28 @@ export class DebateQuestionsPage implements OnInit {
   availableQuestions: any[] = [];
   debateId: string;
 
-  constructor(private router: Router, private debateManager: DebateService) { }
+  constructor(
+    private router: Router, 
+    private debateManager: DebateService
+  ) {}
 
+  /**
+   * Go to the new question page
+   */
   addQuestion(){
     this.router.navigate(['debate-new-question'])
   }
 
+  /**
+   * Updates the list of questions
+   */
   private async updateQuestions(){
     this.availableQuestions = await this.debateManager.getDebateQuestions(this.debateId);
   }
 
+  /**
+   * Get the debate id from the debate manager
+   */
   ionViewWillEnter(){
     this.debateId = this.debateManager.getSavedDebate()['debateId'];
     this.updateQuestions()

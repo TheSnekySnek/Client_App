@@ -16,8 +16,15 @@ export class NewQuestionPage implements OnInit {
   description: string;
   answers: string[] = new Array(8);
 
-  constructor(private notification: NotificationService, private question: QuestionService, private router: Router) { }
-
+  constructor(
+    private notification: NotificationService, 
+    private question: QuestionService, 
+    private router: Router
+  ) {}
+  
+  /**
+   * Suggests a new question via the Question service
+   */
   async suggestQuestion(){
     if(!this.title || this.title.length == 0){
       this.notification.displayError("Veuillez spécifier un titre");
@@ -39,7 +46,8 @@ export class NewQuestionPage implements OnInit {
         isOpenQuestion: false,
         answers: ans
       })
-    }else{
+    }
+    else{
       status = await this.question.suggestQuestion({
         title: this.title,
         description: this.description,
@@ -51,7 +59,9 @@ export class NewQuestionPage implements OnInit {
       this.router.navigate(['home']);
     }
     else{
-      this.notification.displayError("Une erreur est survenue lors de l'envoi de la question")
+      this.notification.displayError(
+        "Une erreur est survenue lors de l'envoi de la question"
+      )
     }
   }
 
