@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Questions
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <ion-list *ngIf="availableQuestions.length > 0">
+      <ion-item *ngFor="let question of availableQuestions"  class="question-item" (click)="viewQuestion(question)">
+        <ion-label>{{question.title}}</ion-label>
+      </ion-item>
+    </ion-list>
+    <strong *ngIf="availableQuestions.length == 0" class="wait-text">En attente de questions</strong>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="newQuestion()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
