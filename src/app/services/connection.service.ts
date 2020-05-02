@@ -55,12 +55,12 @@ export class ConnectionService {
         url:  that.config.getClientConfig()['SOCKET_ADDRESS']  +
               ":"                                              +
               that.config.getClientConfig()['SOCKET_PORT']     +
-              that.config.getClientConfig()['SOCKET_NAMESPACE'],
+              that.config.getClientConfig()['SOCKET_NAMESPACE']+
+              code,
         options: {
           path: that.config.getClientConfig()["SOCKET_PATH"],
           autoConnect: false,
           query: {
-            code: code,
             uuid: uuid
           }
         }
@@ -130,6 +130,7 @@ export class ConnectionService {
         //Prevent events for firing again
         that.socket.removeAllListeners();
         that.setupListeners()
+        
         resolve({
           connected: true
         });
@@ -163,10 +164,10 @@ export class ConnectionService {
     });
 
     //Display a message if we are connected to the server
-    this.onConnect(() => {
+    /*this.onConnect(() => {
       this.notification.displayInfo("Connected to server")
     })
-
+    */
     //Display a message if we were disconnected from the server
     this.onDisconnect(() => {
       this.notification.displayInfo("Disconnected from server")
