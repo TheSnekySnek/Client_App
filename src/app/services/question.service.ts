@@ -10,11 +10,11 @@ const NEW_QUESTION_TITLE: string = "Une nouvelle question est disponible";
 export class QuestionService {
 
   // We need to save the question between pages
-  savedQuestion: any;
-  answeredQuestions: number[] = [];
+  savedQuestion     : any;
+  answeredQuestions : number[] = [];
 
   constructor(
-    private connection: ConnectionService,
+    private connection  : ConnectionService,
     private notification: NotificationService
   ) { }
   

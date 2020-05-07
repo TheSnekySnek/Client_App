@@ -10,16 +10,16 @@ import { Router } from '@angular/router';
 })
 export class NewQuestionPage implements OnInit {
 
-  isOpenQuestion: boolean = false;
-  numAnswers: number = 2;
-  title: string;
-  description: string;
-  answers: string[] = new Array(8);
+  isOpenQuestion  : boolean   = false;
+  numAnswers      : number    = 2;
+  title           : string;
+  description     : string;
+  answers         : string[]  = new Array(8);
 
   constructor(
     private notification: NotificationService, 
-    private question: QuestionService, 
-    private router: Router
+    private question    : QuestionService, 
+    private router      : Router
   ) {}
   
   /**
@@ -41,30 +41,33 @@ export class NewQuestionPage implements OnInit {
         ans.push(this.answers[i]);
       }
       status = await this.question.suggestQuestion({
-        title: this.title,
-        description: this.description,
+        title         : this.title,
+        description   : this.description,
         isOpenQuestion: false,
-        answers: ans
-      })
+        answers       : ans
+      });
     }
     else{
       status = await this.question.suggestQuestion({
-        title: this.title,
-        description: this.description,
+        title         : this.title,
+        description   : this.description,
         isOpenQuestion: true
-      })
+      });
     }
     if(status){
-      this.notification.displayInfo("Question envoyée")
+      this.notification.displayInfo("Question envoyée");
       this.router.navigate(['home']);
     }
     else{
       this.notification.displayError(
         "Une erreur est survenue lors de l'envoi de la question"
-      )
+      );
     }
   }
 
+  /**
+   * Executes on page initialisation
+   */
   ngOnInit() {
   }
 

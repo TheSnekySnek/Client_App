@@ -51,10 +51,7 @@ const GLOBAL_CONFIG = {
  * This service provides constants used by other services or componnents
  */
 export class ConfigService {
-  
-  
-
-  private config: any;
+  private config    : any;
   private testConfig: any;
 
   constructor() {

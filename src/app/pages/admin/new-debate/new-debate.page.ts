@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
 })
 export class NewDebatePage implements OnInit {
 
-  private title: string;
-  private description: string;
+  private title       : string;
+  private description : string;
 
   constructor(
-    private debateManager: DebateService, 
-    private notification: NotificationService, 
-    private router: Router
+    private debateManager : DebateService, 
+    private notification  : NotificationService, 
+    private router        : Router
   ) {}
 
   /**
@@ -33,20 +33,23 @@ export class NewDebatePage implements OnInit {
     }
     var debateId = await this.debateManager.createDebate(
       {
-        title: this.title,
-        description: this.description
+        title       : this.title,
+        description : this.description
       }
     );
-    console.log("New Debate:", debateId)
+    console.log("New Debate:", debateId);
     this.notification.displayInfo("Debat crée avec l'id " + debateId);
     this.debateManager.saveDebate({
-      debateId: debateId,
-      title: this.title,
-      description: this.description
-    })
-    this.router.navigate(['debate'])
+      debateId    : debateId,
+      title       : this.title,
+      description : this.description
+    });
+    this.router.navigate(['debate']);
   }
 
+  /**
+   * Executes on page initialisation
+   */
   ngOnInit() {
   }
 

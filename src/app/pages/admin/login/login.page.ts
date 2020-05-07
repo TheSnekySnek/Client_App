@@ -14,8 +14,8 @@ export class LoginPage implements OnInit {
   private password: string;
 
   constructor(
-    private connection: ConnectionService, 
-    private router: Router, 
+    private connection  : ConnectionService, 
+    private router      : Router, 
     private notification: NotificationService
   ) {}
 
@@ -28,10 +28,13 @@ export class LoginPage implements OnInit {
       this.router.navigate(['admin-home']);
     }
     else {
-      this.notification.displayError(status['message'])
+      this.notification.displayError(status['message']);
     }
   }
 
+  /**
+   * Executes on page initialisation
+   */
   ngOnInit() {
   }
 

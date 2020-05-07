@@ -16,12 +16,12 @@ export class ConnectionService {
 
   //Prevents from showing the error multiple times
   hasShownConnectError: boolean;
-  public socket: Socket;
+  public socket       : Socket;
 
   constructor(
-    private notification: NotificationService,
+    private notification  : NotificationService,
     private identification: IdentificationService,
-    private config: ConfigService
+    private config        : ConfigService
   ) { }
 
   /**

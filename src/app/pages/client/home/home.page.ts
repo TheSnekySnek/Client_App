@@ -11,11 +11,11 @@ import { NotificationService } from 'src/app/services/notification.service';
 export class HomePage implements OnInit {
 
   availableQuestions: any[] = [];
-  answeredQuestions: any[] = [];
+  answeredQuestions : any[] = [];
 
   constructor(
-    private questions: QuestionService, 
-    private router: Router, 
+    private questions   : QuestionService, 
+    private router      : Router, 
     private notification: NotificationService
   ) {}
 
@@ -23,12 +23,12 @@ export class HomePage implements OnInit {
    * Updates the list of question
    */
   private async updateQuestions(){
-    console.log("GETTING QUESTIONS")
+    console.log("GETTING QUESTIONS");
     this.availableQuestions = [];
     this.answeredQuestions = [];
     //var questions = await this.questions.getQuestions()
     var questions = await this.questions.getQuestions();
-    console.log(questions)
+    console.log(questions);
     questions.forEach(q => {
       if(q['answered'])
         this.answeredQuestions.push(q);
@@ -58,8 +58,8 @@ export class HomePage implements OnInit {
    */
   ngOnInit() {
     this.questions.onNewQuestion((question) => {
-      this.availableQuestions.push(question)
-      this.notification.displayNotification("Une nouvelle question est disponible", question['title'])
+      this.availableQuestions.push(question);
+      this.notification.displayNotification("Une nouvelle question est disponible", question['title']);
     })
   }
 
@@ -67,7 +67,7 @@ export class HomePage implements OnInit {
    * Update the list of questions when the page has loaded
    */
   ionViewWillEnter(){
-    this.updateQuestions()
+    this.updateQuestions();
   }
 
   

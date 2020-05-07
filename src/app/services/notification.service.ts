@@ -12,9 +12,9 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 export class NotificationService {
 
   constructor(
-    private toastCtrl: ToastController,
+    private toastCtrl         : ToastController,
     private localNotifications: LocalNotifications,
-    private platform: Platform
+    private platform          : Platform
     ) { 
 
       if(!this.platform.is("cordova")){

@@ -9,6 +9,9 @@ export class DebateSuggestedQuestionsPage implements OnInit {
 
   constructor() { }
 
+  /**
+   * Executes on page initialisation
+   */
   ngOnInit() {
   }
 

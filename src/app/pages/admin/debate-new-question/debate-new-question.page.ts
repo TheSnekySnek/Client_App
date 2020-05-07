@@ -11,18 +11,18 @@ import { NavController } from '@ionic/angular';
 })
 export class DebateNewQuestionPage implements OnInit {
 
-  debate: any;
-  isOpenQuestion: boolean = false;
-  numAnswers: number = 2;
-  title: string;
-  description: string;
-  answers: string[] = new Array(8);
+  debate          : any;
+  isOpenQuestion  : boolean   = false;
+  numAnswers      : number    = 2;
+  title           : string;
+  description     : string;
+  answers         : string[]  = new Array(8);
 
   constructor(
-    public navCtrl: NavController, 
-    private notification: NotificationService, 
-    private debateManager: DebateService,
-    private router: Router
+    public navCtrl        : NavController, 
+    private notification  : NotificationService, 
+    private debateManager : DebateService,
+    private router        : Router
   ) {}
 
   /**
@@ -46,21 +46,21 @@ export class DebateNewQuestionPage implements OnInit {
     }
 
     var status = await this.debateManager.addQuestion({
-      debateId: this.debate['debateId'],
-      title: this.title,
-      description: this.description,
-      answers: ans,
+      debateId      : this.debate['debateId'],
+      title         : this.title,
+      description   : this.description,
+      answers       : ans,
       isOpenQuestion: this.isOpenQuestion
-    })
+    });
 
     if (status) {
-      this.notification.displayInfo("Question envoyée")
+      this.notification.displayInfo("Question envoyée");
       this.navCtrl.navigateRoot(['/debate/questions']);
     }
     else {
       this.notification.displayError(
         "Une erreur est surveue lors de l'envoi de la question"
-      )
+      );
     }
   }
 
@@ -68,7 +68,7 @@ export class DebateNewQuestionPage implements OnInit {
    * Load the debate on page init
    */
   ngOnInit() {
-    this.debate = this.debateManager.getSavedDebate()
+    this.debate = this.debateManager.getSavedDebate();
   }
 
   //This lets us display the right number of inputs

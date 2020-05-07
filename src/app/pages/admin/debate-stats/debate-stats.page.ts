@@ -9,6 +9,9 @@ export class DebateStatsPage implements OnInit {
 
   constructor() { }
 
+  /**
+   * Executes on page initialisation
+   */
   ngOnInit() {
   }
 

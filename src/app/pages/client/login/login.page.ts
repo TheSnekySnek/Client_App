@@ -20,16 +20,19 @@ export class LoginPage implements OnInit {
   isQRCompatible: boolean = false;
 
   constructor(
-    private router: Router, 
+    private router        : Router, 
     private barcodeScanner: BarcodeScanner, 
-    private platform: Platform, 
-    private notification : NotificationService,
-    private connection : ConnectionService
+    private platform      : Platform, 
+    private notification  : NotificationService,
+    private connection    : ConnectionService
   ) {}
 
+  /**
+   * Executes on page initialisation
+   */
   ngOnInit() {
     //Check if the device supports QR code scanning
-    this.checkQRCompatibility()
+    this.checkQRCompatibility();
   }
 
   /**
@@ -57,18 +60,18 @@ export class LoginPage implements OnInit {
     //Check if the pin format is valid
     if(this.verifyPin(pin)){
       //If we successfuly joined go to question page
-      var joinResponse = await this.connection.join(pin)
+      var joinResponse = await this.connection.join(pin);
       if(joinResponse['connected']){
         //this.notification.displayInfo("Connected to debate")
         this.router.navigate(['home']);
         return;
       }else{
-        this.notification.displayError(joinResponse['message'])
+        this.notification.displayError(joinResponse['message']);
       }
     }
     else{
       //If pin is invalid show error
-      this.notification.displayError("Invalid Pin")
+      this.notification.displayError("Invalid Pin");
     }
     
   }

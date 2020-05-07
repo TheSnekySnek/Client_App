@@ -9,19 +9,19 @@ import { DebateService } from 'src/app/services/debate.service';
 })
 export class DebateQuestionsPage implements OnInit {
 
-  availableQuestions: any[] = [];
-  debateId: string;
+  availableQuestions  : any[] = [];
+  debateId            : string;
 
   constructor(
-    private router: Router, 
-    private debateManager: DebateService
+    private router        : Router, 
+    private debateManager : DebateService
   ) {}
 
   /**
    * Go to the new question page
    */
   addQuestion(){
-    this.router.navigate(['debate-new-question'])
+    this.router.navigate(['debate-new-question']);
   }
 
   /**
@@ -36,9 +36,12 @@ export class DebateQuestionsPage implements OnInit {
    */
   ionViewWillEnter(){
     this.debateId = this.debateManager.getSavedDebate()['debateId'];
-    this.updateQuestions()
+    this.updateQuestions();
   }
 
+  /**
+   * Executes on page initialisation
+   */
   ngOnInit() {
   }
 
