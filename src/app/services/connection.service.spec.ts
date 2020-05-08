@@ -7,15 +7,13 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { ConfigService } from './config.service';
 
-const testConfig: ConfigService = new ConfigService();
-
 describe('ConnectionService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     providers: [
       NotificationService, 
       LocalNotifications, 
       IdentificationService, 
-      UniqueDeviceID
+      UniqueDeviceID,
     ]
   }));
 
@@ -24,9 +22,10 @@ describe('ConnectionService', () => {
     expect(service).toBeTruthy();
   });
 
-  // Debate isn't implemented server side yet
-  it('should be able to join a debate', async () => {
+  // Debate isn't fully implemented server side yet
+  /*it('should be able to join a debate', async () => {
     const service: ConnectionService = TestBed.get(ConnectionService);
+    const testConfig: ConfigService = TestBed.get(ConfigService);
     expect(service).toBeTruthy();
     var status = await service.join(
       testConfig.getTestConfig()['TEST_DEBATE_CODE']
@@ -34,7 +33,7 @@ describe('ConnectionService', () => {
     expect(status['connected']).toBeTruthy()
     expect(service.isConnected()).toBeTruthy()
     
-  });
+  });*/
 
   //Debate isn't implemented server side yet
   /*it('should not login with wrong credentials', async () => {
@@ -47,12 +46,13 @@ describe('ConnectionService', () => {
     expect(status['connected']).toBeFalsy()
     expect(service.isConnected()).toBeFalsy()
     
-  });
+  });*/
 
   it('should login as an admin', async () => {
     const service: ConnectionService = TestBed.get(ConnectionService);
+    const testConfig: ConfigService = TestBed.get(ConfigService);
     expect(service).toBeTruthy();
-
+    
     var status = await service.login(
       testConfig.getTestConfig()['TEST_USERNAME'],
       testConfig.getTestConfig()['TEST_PASSWORD']
@@ -62,14 +62,15 @@ describe('ConnectionService', () => {
   });
 
   it('should not login with wrong credentials', async () => {
-  const service: ConnectionService = TestBed.get(ConnectionService);
-  expect(service).toBeTruthy();
+    const service: ConnectionService = TestBed.get(ConnectionService);
+    const testConfig: ConfigService = TestBed.get(ConfigService);
+    expect(service).toBeTruthy();
 
-  var status = await service.login(
-    testConfig.getTestConfig()['TEST_USERNAME'],
-    testConfig.getTestConfig()['TEST_WRONG_PASSWORD']
-  );
-  expect(status['connected']).toBeFalsy()
-  expect(service.isConnected()).toBeFalsy()
-  });*/
+    var status = await service.login(
+      testConfig.getTestConfig()['TEST_USERNAME'],
+      testConfig.getTestConfig()['TEST_WRONG_PASSWORD']
+    );
+    expect(status['connected']).toBeFalsy()
+    expect(service.isConnected()).toBeFalsy()
+  });
 });

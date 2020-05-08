@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, Platform } from '@ionic/angular';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Injectable({
@@ -12,9 +12,16 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 export class NotificationService {
 
   constructor(
-    private toastCtrl: ToastController,
-    private localNotifications: LocalNotifications
-    ) { }
+    private toastCtrl         : ToastController,
+    private localNotifications: LocalNotifications,
+    private platform          : Platform
+    ) { 
+
+      if(!this.platform.is("cordova")){
+        Notification.requestPermission().then(function (permission) {});
+      }
+
+    }
 
   /**
    * Display a toast info notification inside the app
@@ -50,10 +57,24 @@ export class NotificationService {
    * @param text  Text of thenotification
    */
   public displayNotification(title: string, text: string) {
-    this.localNotifications.schedule({
-      title: title,
-      text: text,
-      foreground: true
-    });
+
+    if(this.platform.is("cordova")){
+      this.localNotifications.schedule({
+        title: title,
+        text: text,
+        foreground: true
+      });
+    }
+    else{
+      if (!("Notification" in window)) {
+        return;
+      }
+      if (Notification.permission === "granted") {
+        // If it's okay let's create a notification
+        var notification = new Notification(title, {body: text});
+      }
+    }
+
+    
   }
 }

@@ -1,0 +1,23 @@
+<ion-content text-center >
+  <div class="center-content">
+    <div class="logo">
+      <img src="/assets/img/NICESURVEY2.png" alt="">
+    </div>
+    
+    <p class="welcome-text">Bienvenue! Connectez-vous à votre compte.</p>
+  
+    <ion-item>
+      <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="login-btn" (click)="login()">Se connecter</ion-button>
+
+  </div>
+  
+  
+  
+</ion-content>

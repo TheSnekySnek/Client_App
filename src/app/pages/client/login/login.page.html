@@ -1,0 +1,19 @@
+<ion-content>
+  <section class="center-content">
+    <p class="pin-label">Entrez votre code de session</p>
+    <ion-item class="pin-item">
+      <ion-input [(ngModel)]="inputPin" placeholder="code de session"></ion-input>
+    </ion-item>
+
+    <section>
+      <ion-button expand="block" class="join-btn" (click)="loginWithPin()">Rejoindre</ion-button>
+    </section>
+
+    <section *ngIf="isQRCompatible">
+      <ion-button color="secondary" expand="block" class="qr-btn" (click)="startQR()">Scan QR Code</ion-button>
+    </section>
+  </section>
+
+
+
+</ion-content>

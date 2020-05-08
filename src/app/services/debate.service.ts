@@ -6,6 +6,9 @@ import { ConnectionService } from './connection.service';
 })
 export class DebateService {
 
+    // We need to save the question between pages
+    private savedDebate: any;
+
     constructor(
         private connection: ConnectionService
     ) { }
@@ -15,21 +18,30 @@ export class DebateService {
      * @param eventName Name of the event
      * @param data      Data needed for the event
      */
-    private emitToSocket(eventName: string, data: {}) {
+    private emitToSocket(eventName: string, data?: any): Promise<any> {
         const that = this;
         return new Promise(async (resolve, reject) => {
-            that.connection.socket.emit(eventName, data,
-                (debates: any) => {
-                    resolve(debates);
-                });
+            console.log(data)
+            if(data)
+                that.connection.socket.emit(eventName, data,
+                    (debates: any) => {
+                        resolve(debates);
+                    }
+                );
+            else
+                that.connection.socket.emit(eventName,
+                    (debates: any) => {
+                        resolve(debates);
+                    }
+                );
         });
     }
 
     /**
      * Get the debates available from the server
      */
-    public getDebates() {
-        return this.emitToSocket('getDebates', {});
+    public getDebates(): Promise<any[]> {
+        return this.emitToSocket('getDebates',);
     }
 
     /**
@@ -37,7 +49,7 @@ export class DebateService {
      * @param id Id of the debate
      */
     public getDebateDetails(id: string) {
-        return this.emitToSocket('getDebateDetails', { debateId: id });
+        return this.emitToSocket('getDebateDetails', id);
     }
 
     /**
@@ -45,7 +57,7 @@ export class DebateService {
      * @param id Id of the debate
      */
     public getDebateQuestions(id: string) {
-        return this.emitToSocket('getDebateQuestions', { debateId: id });
+        return this.emitToSocket('getDebateQuestions', id);
     }
 
     /**
@@ -53,7 +65,7 @@ export class DebateService {
      * @param debate Debate to create
      */
     public createDebate(debate: any) {
-        return this.emitToSocket('newDebate', { debate });
+        return this.emitToSocket('newDebate', debate);
     }
 
     /**
@@ -61,7 +73,7 @@ export class DebateService {
      * @param id Id of the question
      */
     public approveQuestion(id: string) {
-        return this.emitToSocket('approveQuestion', { questionId: id });
+        return this.emitToSocket('approveQuestion', id);
     }
 
     /**
@@ -69,7 +81,7 @@ export class DebateService {
      * @param uuid UUID (identifier) of a user
      */
     public banUser(uuid: string) {
-        return this.emitToSocket('banUser', { uuid });
+        return this.emitToSocket('banUser', { uuid: uuid });
     }
 
     /**
@@ -77,7 +89,7 @@ export class DebateService {
      * @param uuid UUID (identifier) of a user
      */
     public unbanUser(uuid: string) {
-        return this.emitToSocket('unbanUser', { uuid });
+        return this.emitToSocket('unbanUser', { uuid: uuid });
     }
 
     /**
@@ -85,7 +97,7 @@ export class DebateService {
      * @param question Question to add
      */
     public addQuestion(question: any) {
-        return this.emitToSocket('addQuestion', { question });
+        return this.emitToSocket('newQuestion', question );
     }
 
     /**
@@ -100,5 +112,21 @@ export class DebateService {
                 callback(question);
             }
         );
+    }
+
+    /**
+   * Calls a function when a new question is available
+   * @param callback Function to call
+   */
+    public saveDebate(debate: any) {
+        this.savedDebate = debate;
+    }
+
+    /**
+     * Calls a function when a new question is available
+     * @param callback Function to call
+     */
+    public getSavedDebate() {
+        return this.savedDebate;
     }
 }
