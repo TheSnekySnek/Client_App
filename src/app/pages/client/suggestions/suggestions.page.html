@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Suggestions
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <ion-list *ngIf="availableSuggestions.length > 0">
+      <ion-item *ngFor="let s of availableSuggestions"  class="question-item">
+        <ion-label>{{s.suggestion}}</ion-label>
+      </ion-item>
+    </ion-list>
+    <strong *ngIf="availableSuggestions.length == 0" class="wait-text">En attente de suggestions</strong>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="newSuggestion()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

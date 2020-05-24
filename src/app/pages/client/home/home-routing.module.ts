@@ -18,16 +18,16 @@ const routes: Routes = [
           }
         ]
       },
-      // {
-      //   path: 'suggestions',
-      //   children: [
-      //     {
-      //       path: '',
-      //       loadChildren: () =>
-      //           import('../suggestions/suggestions.module').then(m => m.SuggestionsPageModule)
-      //     }
-      //   ]
-      // },
+      {
+        path: 'suggestions',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../suggestions/suggestions.module').then(m => m.SuggestionsPageModule)
+          }
+        ]
+      },
       {
         path: '',
         redirectTo: '/home/questions',
