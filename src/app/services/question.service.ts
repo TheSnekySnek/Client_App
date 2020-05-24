@@ -75,6 +75,8 @@ export class QuestionService {
           answer: answer
         },
         (result: boolean) => {
+          if(result)
+            that.answeredQuestions.push(questionId);
           resolve(result);
         }
       );

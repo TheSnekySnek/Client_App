@@ -14,7 +14,7 @@
   <div id="container">
     <p class="question-title"></p>
     <p class="question-text">{{question.title}}</p>
-    <div class="answers">
+    <div class="answers" *ngIf="question.isOpenQuestion === false">
       <div class="answer" [className]="i == selection ? 'answer selected':'answer'" *ngFor="let answer of question.answers; let i=index" (click)="selection = i">
         <div class="answer-select">
 
@@ -25,6 +25,10 @@
         
       </div>
     </div>
+    <div class="answer" *ngIf="question.isOpenQuestion === true">
+      <ion-label position="stacked">Votre réponse:</ion-label>
+      <ion-input required type="text" [(ngModel)]="openAnswer"></ion-input>
+    </div>
   </div>
-  <ion-button class="vote-btn" expand="block" (click)="answerQuestion()">Voter</ion-button>
+  <ion-button class="vote-btn" expand="block" (click)="question.isOpenQuestion ? answerOpenQuestion() : answerQuestion()">Voter</ion-button>
 </ion-content>
