@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-questions',
+  templateUrl: './questions.page.html',
+  styleUrls: ['./questions.page.scss'],
 })
-export class HomePage implements OnInit {
+export class QuestionsPage implements OnInit {
 
   availableQuestions: any[] = [];
   answeredQuestions : any[] = [];
