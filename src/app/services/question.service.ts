@@ -10,22 +10,29 @@ const NEW_QUESTION_TITLE: string = "Une nouvelle question est disponible";
 export class QuestionService {
 
   // We need to save the question between pages
-  savedQuestion: any;
+  savedQuestion     : any;
+  answeredQuestions : number[] = [];
 
   constructor(
-    private connection: ConnectionService,
+    private connection  : ConnectionService,
     private notification: NotificationService
   ) { }
   
   /**
    * Retrieves the questions of the debate
    */    
-  public getQuestions() {
+  public getQuestions(): Promise<any[]>  {
     var that = this;
     return new Promise(async function (resolve, reject) {
       that.connection.socket.emit("getQuestions",
-        {},
         (questions: any[]) => {
+          for (let i = 0; i < questions.length; i++) {
+            if(that.answeredQuestions.includes(questions[i]['id']))
+              questions[i]['answered'] = true
+            else
+              questions[i]['answered'] = false
+            
+          }
           resolve(questions);
         }
       );
@@ -46,6 +53,8 @@ export class QuestionService {
           answerId: answerId
         },
         (result: boolean) => {
+          if(result)
+            that.answeredQuestions.push(questionId)
           resolve(result);
         }
       );
@@ -66,6 +75,8 @@ export class QuestionService {
           answer: answer
         },
         (result: boolean) => {
+          if(result)
+            that.answeredQuestions.push(questionId);
           resolve(result);
         }
       );
@@ -95,9 +106,9 @@ export class QuestionService {
    * Suggest a question to be added to the debate
    * @param question Suggested question
    */
-  public suggestQuestion(question: any) {
+  public suggestQuestion(question: any): Promise<boolean> {
     var that = this;
-    return new Promise(async function (resolve, reject) {
+    return new Promise<boolean>(async function (resolve, reject) {
       that.connection.socket.emit("suggestQuestion",
         question, (result: boolean) => {
           resolve(result);

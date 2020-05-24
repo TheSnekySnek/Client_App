@@ -13,7 +13,7 @@ export class IdentificationService {
 
   constructor(
     private uniqueDeviceID: UniqueDeviceID,
-    private platform: Platform
+    private platform      : Platform
   ) { }
 
   /**

@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Question
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <p class="question-title"></p>
+    <p class="question-text">{{question.title}}</p>
+    <div class="answers" *ngIf="question.isOpenQuestion === false">
+      <div class="answer" [className]="i == selection ? 'answer selected':'answer'" *ngFor="let answer of question.answers; let i=index" (click)="selection = i">
+        <div class="answer-select">
+
+        </div>
+        <div class="answer-contain">
+          <p>{{answer}}</p>
+        </div>
+        
+      </div>
+    </div>
+    <div class="answer" *ngIf="question.isOpenQuestion === true">
+      <ion-label position="stacked">Votre réponse:</ion-label>
+      <ion-input required type="text" [(ngModel)]="openAnswer"></ion-input>
+    </div>
+  </div>
+  <ion-button class="vote-btn" expand="block" (click)="question.isOpenQuestion ? answerOpenQuestion() : answerQuestion()">Voter</ion-button>
+</ion-content>

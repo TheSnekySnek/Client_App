@@ -1,0 +1,33 @@
+.pin-item{
+    max-width: 300px;
+    text-align: center;
+    margin: auto;
+    font-size: 30px;
+}
+
+.join-btn{
+    max-width: 150px;
+    margin: auto;
+    height: 45px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.qr-btn{
+    max-width: 150px;
+    margin: auto;
+    height: 30px;
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+.center-content{
+    position:absolute; /*it can be fixed too*/
+    top: calc(50% - 150px);
+    width: 100%;
+}
+
+.pin-label{
+    text-align: center;
+    font-size: 20px;
+}

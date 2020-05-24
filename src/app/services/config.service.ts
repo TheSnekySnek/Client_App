@@ -1,5 +1,48 @@
 import { Injectable } from '@angular/core';
 
+
+const GLOBAL_CONFIG = {
+  "environment": "DEV",
+  "constants": {
+      "prod": {
+          "admin": {
+              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_PORT"           : 8080,
+              "SOCKET_PATH"           : "/socket-io",
+              "SOCKET_NAMESPACE"      : "/admin"
+          },
+          "client": {
+              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_PORT"           : 8080,
+              "SOCKET_PATH"           : "/socket-io",
+              "SOCKET_NAMESPACE"      : "/DEBATE-"
+          }
+      },
+      "dev": {
+          "admin": {
+              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_PORT"           : 4356,
+              "SOCKET_PATH"           : "/socket-io",
+              "SOCKET_NAMESPACE"      : "/admin"
+          },
+          "client": {
+              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_PORT"           : 4356,
+              "SOCKET_PATH"           : "/socket-io",
+              "SOCKET_NAMESPACE"      : "/DEBATE-"
+          }
+      },
+      "test":{
+          "TEST_DEBATE_CODE"          : "TEST",
+          "TEST_WRONG_DEBATE_CODE"    : "INVALID",
+          "TEST_USERNAME"             : "admin",
+          "TEST_PASSWORD"             : "pass",
+          "TEST_WRONG_PASSWORD"       : "wrongpass"
+      }
+  }
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,32 +51,29 @@ import { Injectable } from '@angular/core';
  * This service provides constants used by other services or componnents
  */
 export class ConfigService {
-  private config: any;
+  private config    : any;
   private testConfig: any;
 
   constructor() {
-    // Get the config file
-    var globalConfig = require("../../assets/config.json");
-    
-    // Check the environment
-    switch(globalConfig["environment"]){
+    switch(GLOBAL_CONFIG["environment"]){
       case "DEV":
-      this.config = globalConfig["constants"]["dev"];
+      this.config = GLOBAL_CONFIG["constants"]["dev"];
       break;
 
       case "PROD":
-      this.config = globalConfig["constants"]["prod"];
+      this.config = GLOBAL_CONFIG["constants"]["prod"];
       break;
 
       // Assume production as default
       default: 
       console.warn("Environment not set. Assuming production")
-      this.config = globalConfig["constants"]["prod"];
+      this.config = GLOBAL_CONFIG["constants"]["prod"];
       break;
     }
 
-    this.testConfig = globalConfig["constants"]["test"]
+    this.testConfig = GLOBAL_CONFIG["constants"]["test"]
   }
+
 
   /**
    * Returns the Cient configuration
@@ -55,4 +95,5 @@ export class ConfigService {
   public getTestConfig(){
     return this.testConfig;
   }
+
 }
