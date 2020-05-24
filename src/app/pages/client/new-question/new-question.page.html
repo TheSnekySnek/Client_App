@@ -10,35 +10,9 @@
 <ion-content [fullscreen]="true">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item>
-        <ion-label position="stacked">Titre</ion-label>
-        <ion-input required type="text" [(ngModel)]="title"></ion-input>
+        <ion-label position="stacked">Suggestion</ion-label>
+        <ion-input required type="text" [(ngModel)]="suggestedQuestion"></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Description</ion-label>
-        <ion-textarea [(ngModel)]="description"></ion-textarea>
-      </ion-item>
-
-      <ion-item>
-        <ion-label>Question Ouverte</ion-label>
-        <ion-toggle [ngModelOptions]="{standalone: true}" [(ngModel)]="isOpenQuestion"></ion-toggle>
-      </ion-item>
-
-      <div *ngIf="!isOpenQuestion">
-        <ion-item >
-          <ion-label position="stacked">Nombre de réponses</ion-label>
-          <ion-input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="numAnswers" min="2" max="8"></ion-input>
-        </ion-item>
-  
-        <ion-item *ngFor="let i of arrayTwo(numAnswers);">
-          <ion-label position="stacked">Réponse {{i+1}}</ion-label>
-          <ion-input required type="text" [(ngModel)]="answers[i]"></ion-input>
-        </ion-item>
-      </div>
-
-      
-
-      
     </ion-list>
 
     <div class="ion-padding">

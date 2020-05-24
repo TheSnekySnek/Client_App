@@ -9,12 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-question.page.scss'],
 })
 export class NewQuestionPage implements OnInit {
-
-  isOpenQuestion  : boolean   = false;
-  numAnswers      : number    = 2;
-  title           : string;
-  description     : string;
-  answers         : string[]  = new Array(8);
+  suggestedQuestion : string;
 
   constructor(
     private notification: NotificationService, 
@@ -26,41 +21,19 @@ export class NewQuestionPage implements OnInit {
    * Suggests a new question via the Question service
    */
   async suggestQuestion(){
-    if(!this.title || this.title.length == 0){
-      this.notification.displayError("Veuillez spécifier un titre");
+    if(!this.suggestedQuestion) {
+      this.notification.displayError("Veuillez spécifier une suggestion");
       return;
     }
-    if(!this.description || this.description.length == 0){
-      this.notification.displayError("Veuillez spécifier une description");
-      return;
-    }
-    var status = false;
-    if(!this.isOpenQuestion){
-      var ans = [];
-      for (let i = 0; i < this.numAnswers; i++) {
-        ans.push(this.answers[i]);
-      }
-      status = await this.question.suggestQuestion({
-        title         : this.title,
-        description   : this.description,
-        isOpenQuestion: false,
-        answers       : ans
-      });
-    }
-    else{
-      status = await this.question.suggestQuestion({
-        title         : this.title,
-        description   : this.description,
-        isOpenQuestion: true
-      });
-    }
+
+    const status = await this.question.suggestQuestion(this.suggestedQuestion);
     if(status){
-      this.notification.displayInfo("Question envoyée");
+      this.notification.displayInfo("Suggestion envoyée");
       this.router.navigate(['home']);
     }
     else{
       this.notification.displayError(
-        "Une erreur est survenue lors de l'envoi de la question"
+        "Une erreur est survenue lors de l'envoi de la suggestion"
       );
     }
   }
@@ -70,10 +43,4 @@ export class NewQuestionPage implements OnInit {
    */
   ngOnInit() {
   }
-
-  //This lets us display the right number of inputs
-  arrayTwo(n: number): number[] {
-    return [...Array(n).keys()];
-  }
-
 }
