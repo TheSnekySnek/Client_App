@@ -24,12 +24,6 @@ export class SuggestionService {
     return new Promise(async function (resolve, reject) {
       that.connection.socket.emit("getSuggestedQuestions",
           (suggestions: any[]) => {
-            for (let i = 0; i < suggestions.length; i++) {
-              if(that.votedSuggestions.includes(suggestions[i]['suggestionId']))
-                suggestions[i]['voted'] = true
-              else
-                suggestions[i]['voted'] = false
-            }
             resolve(suggestions);
           }
       );
