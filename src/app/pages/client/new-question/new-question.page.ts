@@ -29,7 +29,7 @@ export class NewQuestionPage implements OnInit {
     const status = await this.question.suggestQuestion(this.suggestedQuestion);
     if(status){
       this.notification.displayInfo("Suggestion envoyée");
-      this.router.navigate(['home']);
+      this.router.navigate(['home/suggestions']);
     }
     else{
       this.notification.displayError(
