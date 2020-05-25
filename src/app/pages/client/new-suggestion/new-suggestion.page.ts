@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-question',
-  templateUrl: './new-question.page.html',
-  styleUrls: ['./new-question.page.scss'],
+  templateUrl: './new-suggestion.page.html',
+  styleUrls: ['./new-suggestion.page.scss'],
 })
-export class NewQuestionPage implements OnInit {
+export class NewSuggestionPage implements OnInit {
   suggestedQuestion : string;
 
   constructor(
