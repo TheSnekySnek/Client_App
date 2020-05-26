@@ -9,8 +9,8 @@ import {SuggestionService} from "../../../services/suggestion.service";
   styleUrls: ['./suggestions.page.scss'],
 })
 export class SuggestionsPage implements OnInit {
-  availableSuggestions: any[] = [];
-  votedSuggestions : any[] = [];
+  availableSuggestions : any[] = [];
+  votedSuggestions     : any[] = [];
 
   constructor(
       private suggestions : SuggestionService,
@@ -24,32 +24,45 @@ export class SuggestionsPage implements OnInit {
   private async updateSuggestions(){
     console.log("GETTING SUGGESTIONS");
     this.availableSuggestions = [];
-    this.votedSuggestions = [];
 
     var suggestions = await this.suggestions.getSuggestions();
     console.log(suggestions);
     suggestions.forEach(s => {
-      if(s['voted'])
+      if (s["voted"] === true)
         this.votedSuggestions.push(s);
       else
         this.availableSuggestions.push(s);
     });
   }
 
-  // /**
-  //  * Saves the question and loads the question page
-  //  * @param question Question to view
-  //  */
-  // viewQuestion(question){
-  //   this.questions.saveQuestion(question);
-  //   this.router.navigate(['question']);
-  // }
-
   /**
    * Loads the new suggestion client page
    */
   newSuggestion(){
-    this.router.navigate(['new-question']);
+    this.router.navigate(['new-suggestion']);
+  }
+
+  /**
+   * Vote for a suggestion and remove it from the available suggestions list
+   * @param suggestion suggestion to vote for
+   */
+  async voteSuggestion(suggestion){
+    let res = await this.suggestions.voteSuggestion(suggestion.suggestionId);
+    if (res) {
+      this.votedSuggestions.push(suggestion);
+      this.availableSuggestions = this.availableSuggestions.filter(s =>
+        s.suggestionId !== suggestion.suggestionId
+      );
+
+      suggestion['voted'] = true;
+    }
+  }
+
+  /**
+   * This function sort and return the available suggestions when called
+   */
+  private getAvailableSuggestions() {
+    return this.availableSuggestions.sort((a, b) => b.votes - a.votes);
   }
 
   /**
@@ -57,11 +70,16 @@ export class SuggestionsPage implements OnInit {
    */
   ngOnInit() {
     this.suggestions.onNewSuggestion((suggestion) => {
-      this.availableSuggestions.push(suggestion);
+      this.updateSuggestions();
       this.notification.displayNotification(
           "Une nouvelle question suggérée est disponible",
           suggestion['suggestion']);
-    })
+    });
+
+    this.suggestions.onNewVote((suggestionId) => {
+      let suggestion = this.availableSuggestions.find(s => s.suggestionId == suggestionId);
+      suggestion["votes"]++;
+    });
   }
 
   /**

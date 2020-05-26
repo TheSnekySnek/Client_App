@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from 'src/app/services/notification.service';
-import { QuestionService } from 'src/app/services/question.service';
 import { Router } from '@angular/router';
+import {SuggestionService} from "../../../services/suggestion.service";
 
 @Component({
   selector: 'app-new-question',
@@ -13,7 +13,7 @@ export class NewSuggestionPage implements OnInit {
 
   constructor(
     private notification: NotificationService, 
-    private question    : QuestionService, 
+    private suggestion  : SuggestionService,
     private router      : Router
   ) {}
   
@@ -26,7 +26,7 @@ export class NewSuggestionPage implements OnInit {
       return;
     }
 
-    const status = await this.question.suggestQuestion(this.suggestedQuestion);
+    const status = await this.suggestion.suggestQuestion(this.suggestedQuestion);
     if(status){
       this.notification.displayInfo("Suggestion envoyée");
       this.router.navigate(['home/suggestions']);
