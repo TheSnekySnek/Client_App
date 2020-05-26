@@ -128,7 +128,21 @@ export class DebateService {
      */
     // tslint:disable-next-line:ban-types (disable warning for Function type)
     public onSuggestedQuestion(callback: Function) {
-        this.connection.socket.on('suggestedQuestion',
+        this.connection.socket.on('newSuggestedQuestion',
+          (question: any) => {
+              // Call the callback
+              callback(question);
+          }
+        );
+    }
+
+    /**
+     * Add a callback function when there is a new vote
+     * @param callback Function to call
+     */
+    // tslint:disable-next-line:ban-types (disable warning for Function type)
+    public onOpenQuestionAnswer(callback: Function) {
+        this.connection.socket.on('newOpenQuestionAnswer',
           (question: any) => {
               // Call the callback
               callback(question);
