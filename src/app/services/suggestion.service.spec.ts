@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SuggestionService } from './suggestion.service';
-import { QuestionService } from './question.service';
 import { NotificationService } from './notification.service'
 import { ConnectionService } from './connection.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';

@@ -53,9 +53,6 @@ export class SuggestionService {
    * @param callback Function to call
    */
   public onNewSuggestion(callback: Function) {
-    // suggestionId: this.suggestionId,
-    //     suggestion: this.question,
-    //     votes: this.getNbVotes()
     this.connection.socket.on("suggestedQuestion",
         (suggestion: any) => {
           // Send a notification
@@ -71,14 +68,27 @@ export class SuggestionService {
   }
 
   /**
+   * Calls a function when a new vote has been made
+   * @param callback Function to call
+   */
+  public onNewVote(callback: Function) {
+    this.connection.socket.on("newVote",
+      (suggestionId: number) => {
+        // Call the callback
+        callback(suggestionId)
+      }
+    );
+  }
+
+  /**
    * Suggest a question to be added to the debate
    * @param question Suggested question
    */
-  public suggestQuestion(question: any): Promise<boolean> {
+  public suggestQuestion(question: any): Promise<boolean | number> {
     var that = this;
-    return new Promise<boolean>(async function (resolve, reject) {
+    return new Promise<boolean | number>(async function (resolve, reject) {
       that.connection.socket.emit("suggestQuestion",
-          question, (result: boolean) => {
+          question, (result: boolean | number) => {
             resolve(result);
           }
       );
