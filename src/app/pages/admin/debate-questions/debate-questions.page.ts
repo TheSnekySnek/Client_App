@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import { DebateService } from 'src/app/services/debate.service';
+import {QuestionService} from "../../../services/question.service";
+import {NotificationService} from "../../../services/notification.service";
 
 @Component({
   selector: 'app-debate-questions',
@@ -13,9 +15,18 @@ export class DebateQuestionsPage implements OnInit {
   debateId            : string;
 
   constructor(
-    private router        : Router, 
+    private route         : ActivatedRoute,
+    private router        : Router,
     private debateManager : DebateService
-  ) {}
+  ) {
+    this.route.queryParams.subscribe(params => {
+      // Refresh if needed
+      if (this.router.getCurrentNavigation().extras.state &&
+        this.router.getCurrentNavigation().extras.state.refresh) {
+        this.updateQuestions();
+      }
+    });
+  }
 
   /**
    * Go to the new question page
