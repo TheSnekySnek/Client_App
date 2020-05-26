@@ -61,6 +61,14 @@ export class DebateService {
     }
 
     /**
+     * Get questions of the debate from the server
+     * @param id Id of the debate
+     */
+    public getDebateSuggestions(id: string) {
+        return this.emitToSocket('getDebateSuggestions', id);
+    }
+
+    /**
      * Create a debate on the server
      * @param debate Debate to create
      */
@@ -106,11 +114,25 @@ export class DebateService {
      */
     // tslint:disable-next-line:ban-types (disable warning for Function type)
     public onNewVote(callback: Function) {
-        this.connection.socket.on('onNewVote',
-            (question: any) => {
+        this.connection.socket.on('newVote',
+            (suggestionId: number) => {
                 // Call the callback
-                callback(question);
+                callback(suggestionId);
             }
+        );
+    }
+
+    /**
+     * Add a callback function when there is a new vote
+     * @param callback Function to call
+     */
+    // tslint:disable-next-line:ban-types (disable warning for Function type)
+    public onSuggestedQuestion(callback: Function) {
+        this.connection.socket.on('suggestedQuestion',
+          (question: any) => {
+              // Call the callback
+              callback(question);
+          }
         );
     }
 
