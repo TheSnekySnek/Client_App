@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from 'src/app/services/question.service';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
@@ -15,9 +15,18 @@ export class QuestionsPage implements OnInit {
 
   constructor(
     private questions   : QuestionService, 
-    private router      : Router, 
+    private route       : ActivatedRoute,
+    private router      : Router,
     private notification: NotificationService
-  ) {}
+  ) {
+    this.route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        let questionId = this.router.getCurrentNavigation().extras.state.questionId;
+        console.log(`Question ${questionId} was answered`);
+        this.updateQuestions();
+      }
+    });
+  }
 
   /**
    * Updates the list of question
@@ -26,11 +35,11 @@ export class QuestionsPage implements OnInit {
     console.log("GETTING QUESTIONS");
     this.availableQuestions = [];
     this.answeredQuestions = [];
-    //var questions = await this.questions.getQuestions()
+
     var questions = await this.questions.getQuestions();
     console.log(questions);
     questions.forEach(q => {
-      if(q['answered'])
+      if(q['answered'] === true)
         this.answeredQuestions.push(q);
       else
         this.availableQuestions.push(q);
@@ -64,7 +73,7 @@ export class QuestionsPage implements OnInit {
   }
 
   /**
-   * Update the list of questions when the page has loaded
+   * Element triggered when the page has loaded
    */
   ionViewWillEnter(){
     this.updateQuestions();
