@@ -26,13 +26,6 @@ export class QuestionService {
     return new Promise(async function (resolve, reject) {
       that.connection.socket.emit("getQuestions",
         (questions: any[]) => {
-          for (let i = 0; i < questions.length; i++) {
-            if(that.answeredQuestions.includes(questions[i]['id']))
-              questions[i]['answered'] = true
-            else
-              questions[i]['answered'] = false
-            
-          }
           resolve(questions);
         }
       );
@@ -96,25 +89,13 @@ export class QuestionService {
           question['title']
         )
 
+        if (question["id"] in this.answeredQuestions)
+          question["answered"] = true;
+
         // Call the callback
         callback(question)
       }
     );
-  }
-
-  /**
-   * Suggest a question to be added to the debate
-   * @param question Suggested question
-   */
-  public suggestQuestion(question: any): Promise<boolean> {
-    var that = this;
-    return new Promise<boolean>(async function (resolve, reject) {
-      that.connection.socket.emit("suggestQuestion",
-        question, (result: boolean) => {
-          resolve(result);
-        }
-      );
-    });
   }
 
   /**
@@ -131,5 +112,4 @@ export class QuestionService {
   public getSavedQuestion() {
     return this.savedQuestion;
   }
-
 }
