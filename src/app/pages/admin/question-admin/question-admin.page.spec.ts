@@ -17,8 +17,4 @@ describe('QuestionAdminPage', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
-
-  /*it('should create', () => {
-    expect(component).toBeTruthy();
-  });*/
 });

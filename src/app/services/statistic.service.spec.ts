@@ -18,6 +18,4 @@ describe('StatisticService', () => {
         const service: StatService = TestBed.get(StatService);
         expect(service).toBeTruthy();
     });
-
-    // TODO: Add tests
 });
