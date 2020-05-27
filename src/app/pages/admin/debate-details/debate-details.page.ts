@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {DebateService} from "../../../services/debate.service";
-import {ActionSheetController, ModalController} from "@ionic/angular";
+import {ActionSheetController, AlertController, ModalController} from "@ionic/angular";
 import { ActionSheetOptions } from '@ionic/core';
 import {QrcodePage} from "../qrcode/qrcode.page";
+import {NotificationService} from "../../../services/notification.service";
 
 @Component({
   selector: 'app-debate-details',
@@ -16,26 +17,26 @@ export class DebateDetailsPage implements OnInit {
     header: 'Actions sur le débat',
     cssClass: 'action-menu',
     buttons: [{
-      text: 'Close debate',
+      text: 'Fermer le débat',
       role: 'destructive',
       icon: 'close-circle-outline',
       handler: () => {
         this.closeDebate();
       }
     }, {
-      text: 'Lock debate',
+      text: 'Verrouiller le débat',
       icon: 'lock-closed-outline',
       handler: () => {
         this.lockDebate();
       }
     }, {
-      text: 'Generate QR Code',
+      text: 'Générer un code QR',
       icon: 'aperture-outline',
       handler: () => {
         this.displayQRCode();
       }
     }, {
-      text: 'Cancel',
+      text: 'Annuler',
       icon: 'close',
       role: 'cancel'
     }]
@@ -44,7 +45,9 @@ export class DebateDetailsPage implements OnInit {
   constructor(
     private debateManager         : DebateService,
     private actionSheetController : ActionSheetController,
-    private modalController       : ModalController
+    private modalController       : ModalController,
+    private alertController       : AlertController,
+    private notificationManager   : NotificationService
   ) { }
 
 
@@ -66,14 +69,45 @@ export class DebateDetailsPage implements OnInit {
   async ngOnInit() {
   }
 
-  closeDebate() {
+  /**
+   * Send a popup and close debate
+   */
+  async closeDebate() {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: "Fermer le débat",
+      message: 'Cette action est définitive, vous ne pourrez plus ajouter de questions.<br />Aucun utilisateur ne sera capable de répondre ou de se connecter au débat.',
+      buttons: [
+        {
+          text: 'Oui',
+          handler: async () => {
+            // Close the debate
+            let res = await this.debateManager.closeDebate(this.debateId);
+            if (res)
+              this.notificationManager.displayInfo("Le débat a été fermé.");
+            else
+              this.notificationManager.displayInfo("Erreur lors de la fermeture du débat.");
+          }
+        },
+        {
+          text: 'Non',
+          handler: () => {
+          }
+        },
+      ]
+    });
 
+    // Display the alert
+    await alert.present();
   }
 
   lockDebate() {
 
   }
 
+  /**
+   * Display the QRCode to join the debate
+   */
   async displayQRCode() {
     const modal = await this.modalController.create({
       component: QrcodePage,

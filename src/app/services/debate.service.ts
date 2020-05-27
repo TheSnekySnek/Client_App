@@ -85,6 +85,13 @@ export class DebateService {
     }
 
     /**
+     * Close a debate and terminate it
+     */
+    public closeDebate(debateId : string) {
+        return this.emitToSocket('closeDebate', debateId);
+    }
+
+    /**
      * Ban a user
      * @param uuid UUID (identifier) of a user
      */
