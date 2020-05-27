@@ -50,6 +50,10 @@ export class StatService {
         return this.emitToSocket('getDebateStats', id);
     }
 
+    /**
+     * Get the stats for a question on the server
+     * @param idQuestion Array containing the id of the question and the id of the discussion
+     */
     public getQuestionStats(idQuestion: any) {
         return this.emitToSocket('getQuestionStats', idQuestion);
     }

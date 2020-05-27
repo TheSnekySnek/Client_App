@@ -29,10 +29,10 @@ export class DebateQuestionsPage implements OnInit {
   }
 
   /**
-   * Go to the new question-admin page
+   * Go to the new question page
    */
   addQuestion(){
-    this.router.navigate(['debate-new-question-admin']);
+    this.router.navigate(['debate-new-question']);
   }
 
   /**
@@ -42,6 +42,10 @@ export class DebateQuestionsPage implements OnInit {
     this.availableQuestions = await this.debateManager.getDebateQuestions(this.debateId);
   }
 
+  /**
+   * Generate the view for a question
+   * @param question an object question that will be the question that we want to view
+   */
   private viewQuestion(question: any){
     const idQuestion: any = [question.id, this.debateId];
     this.questionManager.saveQuestion(idQuestion);

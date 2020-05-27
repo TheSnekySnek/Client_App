@@ -33,7 +33,7 @@ export class DebateStatsPage implements OnInit {
   }
 
   /**
-   * Updates the list of questions
+   * Get the stats for the debate on the server
    */
   private async getStats() {
     console.log("Sending things")
@@ -41,14 +41,21 @@ export class DebateStatsPage implements OnInit {
     console.log(this.statQuestions);
   }
 
+  /**
+   * Generate the view for a question
+   * @param question an object question that will be the question that we want to view
+   */
   private viewQuestion(question: any){
     const idQuestion: any = [question.id, this.debateId];
     this.questionManager.saveQuestion(idQuestion);
     this.router.navigate(['question-admin']);
   }
 
+  /**
+   * Generate the bar chart for the top 10 questions
+   */
   private generateChart() {
-    console.log("Generating stats")
+    // Initialize the chart
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: "bar",
       data: {
@@ -73,6 +80,7 @@ export class DebateStatsPage implements OnInit {
     });
     const nbQuestions = this.statQuestions[2].length > 10 ? 10 : this.statQuestions[2].length;
     console.log(nbQuestions);
+    // Add the questions to the chart
     for (let i = 0; i < nbQuestions; i++) {
       console.log(this.statQuestions[2][i]);
       this.barChart.data.labels.push(this.statQuestions[2][i].title);
@@ -82,11 +90,10 @@ export class DebateStatsPage implements OnInit {
       });
     }
     this.barChart.update();
-    return this.barChart;
   }
 
   /**
-   * Get the debate id from the debate manager
+   * Get the stats for a debate
    */
   async ionViewWillEnter() {
     if (this.debateManager.getSavedDebate() !== undefined && this.debateManager.getSavedDebate() !== null) {

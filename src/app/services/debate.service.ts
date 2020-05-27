@@ -77,8 +77,8 @@ export class DebateService {
     }
 
     /**
-     * Approve a question-admin, created by an device (auditor), on the server
-     * @param id Id of the question-admin
+     * Approve a question, created by an device (auditor), on the server
+     * @param id Id of the question
      */
     public approveQuestion(id: string) {
         return this.emitToSocket('approveQuestion', id);
@@ -101,7 +101,7 @@ export class DebateService {
     }
 
     /**
-     * Add a question-admin to the debate
+     * Add a question to the debate
      * @param question Question to add
      */
     public addQuestion(question: any) {
@@ -160,7 +160,6 @@ export class DebateService {
 
     /**
      * Get the debate that we saved
-     * @param callback Function to call
      */
     public getSavedDebate() {
         return this.savedDebate;

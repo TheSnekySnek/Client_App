@@ -25,7 +25,7 @@ export class DebateNewQuestionPage implements OnInit {
   ) {}
 
   /**
-   * Adds a question-admin to the debate via the question-admin service
+   * Adds a question to the debate via the question-admin service
    */
   async addQuestion() {
     if (!this.title || this.title.length == 0) {
@@ -64,7 +64,7 @@ export class DebateNewQuestionPage implements OnInit {
     }
     else {
       this.notification.displayError(
-        "Une erreur est surveue lors de l'envoi de la question-admin"
+        "Une erreur est surveue lors de l'envoi de la question"
       );
     }
   }

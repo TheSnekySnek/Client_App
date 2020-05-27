@@ -27,14 +27,14 @@ export class ClosedQuestionStatsPage implements OnInit {
     }
   }
 
-  statResponses       : any[] = [];
-  questionId            : any[] = [];
-  barChart: Chart;
-  doughnutChart: Chart;
+  statResponses : any[] = [];
+  questionId    : any[] = [];
+  barChart      : Chart;
+  doughnutChart : Chart;
 
   constructor(
-      private router        : Router,
-      private statManager   : StatService,
+      private router          : Router,
+      private statManager     : StatService,
       private questionManager : QuestionService
   ) {}
 
@@ -48,6 +48,9 @@ export class ClosedQuestionStatsPage implements OnInit {
     console.log(this.statResponses);
   }
 
+  /**
+   * Generate the bar chart with the number of votes for a response
+   */
   private generateBarChart() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: "bar",
@@ -81,6 +84,9 @@ export class ClosedQuestionStatsPage implements OnInit {
     }
   }
 
+  /**
+   * Generate the Doughnut chart with the percentage of votes between the responses
+   */
   private generateDoughnutChart() {
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: "doughnut",
@@ -104,7 +110,7 @@ export class ClosedQuestionStatsPage implements OnInit {
   }
 
   /**
-   * Get the debate id from the debate manager
+   * Get the stats on the execution of the page
    */
   async ionViewWillEnter(){
     if(this.questionManager.getSavedQuestion() !== undefined && this.questionManager.getSavedQuestion() !== null) {
