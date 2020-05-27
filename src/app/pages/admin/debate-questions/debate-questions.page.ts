@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import { DebateService } from 'src/app/services/debate.service';
-import {QuestionService} from "../../../services/question.service";
+import { QuestionService } from 'src/app/services/question.service';
 import {NotificationService} from "../../../services/notification.service";
 
 @Component({
@@ -15,13 +15,14 @@ export class DebateQuestionsPage implements OnInit {
 
   constructor(
     private route         : ActivatedRoute,
-    private router        : Router,
-    private debateManager : DebateService
+    private router        : Router, 
+    private debateManager : DebateService,
+    private questionManager : QuestionService
   ) {
-    this.route.queryParams.subscribe(params => {
+      this.route.queryParams.subscribe(params => {
       // Refresh if needed
       if (this.router.getCurrentNavigation().extras.state &&
-        this.router.getCurrentNavigation().extras.state.refresh) {
+      this.router.getCurrentNavigation().extras.state.refresh) {
         this.updateQuestions();
       }
     });
@@ -39,6 +40,16 @@ export class DebateQuestionsPage implements OnInit {
    */
   private async updateQuestions(){
     this.availableQuestions = await this.debateManager.getDebateQuestions(this.debateId);
+  }
+
+  /**
+   * Generate the view for a question
+   * @param question an object question that will be the question that we want to view
+   */
+  private viewQuestion(question: any){
+    const idQuestion: any = [question.id, this.debateId];
+    this.questionManager.saveQuestion(idQuestion);
+    this.router.navigate(['question-admin']);
   }
 
   /**

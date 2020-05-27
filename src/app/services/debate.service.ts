@@ -151,16 +151,15 @@ export class DebateService {
     }
 
     /**
-   * Calls a function when a new question is available
-   * @param callback Function to call
+   * Save a debate to have it in the other pages
+   * @param debate Function to call
    */
     public saveDebate(debate: any) {
         this.savedDebate = debate;
     }
 
     /**
-     * Calls a function when a new question is available
-     * @param callback Function to call
+     * Get the debate that we saved
      */
     public getSavedDebate() {
         return this.savedDebate;

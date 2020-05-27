@@ -40,6 +40,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/debate-new-question/debate-new-question.module').then( m => m.DebateNewQuestionPageModule)
   },
   {
+    path: 'question-admin',
+    loadChildren: () => import('./pages/admin/question-admin/question-admin.module').then(m => m.QuestionAdminPageModule)
+  },
+  {
     path: 'debate-details',
     loadChildren: () => import('./pages/admin/debate-details/debate-details.module').then( m => m.DebateDetailsPageModule)
   }
