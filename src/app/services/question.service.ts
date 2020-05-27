@@ -120,7 +120,7 @@ export class QuestionService {
   }
 
   /**
-   * Suggest a question-admin to be added to the debate
+   * Suggest a question to be added to the debate
    * @param question Suggested question
    */
   public suggestQuestion(question: any): Promise<boolean> {
