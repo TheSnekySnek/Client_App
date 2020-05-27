@@ -29,7 +29,8 @@ export class QuestionsPage implements OnInit {
   }
 
   /**
-   * Updates the list of question
+   * Clear the list of questions and query the server for an updated list of questions.
+   * If the server does not send anything, we trust the result and assume there are no questions.
    */
   private async updateQuestions(){
     console.log("GETTING QUESTIONS");

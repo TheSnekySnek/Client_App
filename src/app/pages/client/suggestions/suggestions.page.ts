@@ -19,7 +19,8 @@ export class SuggestionsPage implements OnInit {
   ) {}
 
   /**
-   * Updates the list of question
+   * Clear the list of suggestions and query the server for an updated list of suggestions.
+   * If the server does not send anything, we trust the result and assume there are no suggestions.
    */
   private async updateSuggestions(){
     console.log("GETTING SUGGESTIONS");
