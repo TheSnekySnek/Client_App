@@ -2,7 +2,15 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'begin', pathMatch: 'full' },
+  {
+    path: 'begin',
+    loadChildren: () => import('./pages/client/begin/begin.module').then( m => m.BeginPageModule)
+  },
+  {
+    path: 'help',
+    loadChildren: () => import('./pages/client/help/help.module').then( m => m.HelpPageModule)
+  },
   {
     path: 'login',
     loadChildren: () => import('./pages/client/login/login.module').then( m => m.LoginPageModule)
@@ -38,6 +46,10 @@ const routes: Routes = [
   {
     path: 'debate-new-question',
     loadChildren: () => import('./pages/admin/debate-new-question/debate-new-question.module').then( m => m.DebateNewQuestionPageModule)
+  },
+    {
+    path: 'admin-begin',
+    loadChildren: () => import('./pages/admin/admin-begin/admin-begin.module').then( m => m.AdminBeginPageModule)
   }
 ];
 
