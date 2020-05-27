@@ -6,7 +6,7 @@ import { ConnectionService } from './connection.service';
 })
 export class DebateService {
 
-    // We need to save the question-admin between pages
+    // We need to save the question between pages
     private savedDebate: any;
 
     constructor(

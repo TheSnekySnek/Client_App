@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { NotificationService } from './notification.service'
 import { ConnectionService } from './connection.service';
 
-const NEW_QUESTION_TITLE: string = "Une nouvelle question-admin est disponible";
+const NEW_QUESTION_TITLE: string = "Une nouvelle question est disponible";
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
 
-  // We need to save the question-admin between pages
+  // We need to save the question between pages
   savedQuestion     : any;
   answeredQuestions : number[] = [];
 
@@ -54,8 +54,8 @@ export class QuestionService {
   }
 
   /**
-   * Send's the user's answer of a closed question-admin
-   * @param questionId  Id of the question-admin
+   * Send's the user's answer of a closed question
+   * @param questionId  Id of the question
    * @param answerId    Id of the answer
    */
   public answerQuestion(questionId: number, answerId: number) {
@@ -76,8 +76,8 @@ export class QuestionService {
   }
 
   /**
-   * Send's the user's answer of an open question-admin
-   * @param questionId  Id of the question-admin
+   * Send's the user's answer of an open question
+   * @param questionId  Id of the question
    * @param answer      User's answer
    */
   public answerOpenQuestion(questionId: number, answer: string) {
@@ -98,7 +98,7 @@ export class QuestionService {
   }
 
   /**
-   * Calls a function when a new question-admin is available
+   * Calls a function when a new question is available
    * @param callback Function to call
    */
   public onNewQuestion(callback: Function) {
@@ -120,9 +120,8 @@ export class QuestionService {
   }
 
   /**
-<<<<<<< HEAD
    * Suggest a question-admin to be added to the debate
-   * @param question Suggested question-admin
+   * @param question Suggested question
    */
   public suggestQuestion(question: any): Promise<boolean> {
     var that = this;
@@ -144,7 +143,7 @@ export class QuestionService {
   }
 
   /**
-   * Retrieves the saved question-admin
+   * Retrieves the saved question
    */
   public getSavedQuestion() {
     return this.savedQuestion;

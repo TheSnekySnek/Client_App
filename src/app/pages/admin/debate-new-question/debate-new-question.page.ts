@@ -25,7 +25,7 @@ export class DebateNewQuestionPage implements OnInit {
   ) {}
 
   /**
-   * Adds a question to the debate via the question-admin service
+   * Adds a question to the debate via the question service
    */
   async addQuestion() {
     if (!this.title || this.title.length == 0) {
