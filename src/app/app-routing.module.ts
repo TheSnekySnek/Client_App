@@ -16,8 +16,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/client/question/question.module').then( m => m.QuestionPageModule)
   },
   {
-    path: 'new-question',
-    loadChildren: () => import('./pages/client/new-question/new-question.module').then( m => m.NewQuestionPageModule)
+    path: 'new-suggestion',
+    loadChildren: () => import('./pages/client/new-suggestion/new-suggestion.module').then(m => m.NewSuggestionPageModule)
   },
   {
     path: 'admin-login',
@@ -41,7 +41,11 @@ const routes: Routes = [
   },
   {
     path: 'question-admin',
-    loadChildren: () => import('./pages/admin/question-admin/question-admin.module').then( m => m.QuestionAdminPageModule)
+    loadChildren: () => import('./pages/admin/question-admin/question-admin.module').then(m => m.QuestionAdminPageModule)
+  },
+  {
+    path: 'debate-details',
+    loadChildren: () => import('./pages/admin/debate-details/debate-details.module').then( m => m.DebateDetailsPageModule)
   }
 ];
 

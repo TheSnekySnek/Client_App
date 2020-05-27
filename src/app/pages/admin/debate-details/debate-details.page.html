@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Détails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding" *ngIf="details">
+    <ion-item>
+      <ion-label position="stacked">ID du débat</ion-label>
+      <ion-input disabled="" type="text" [(ngModel)]="details.debateId"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Titre</ion-label>
+      <ion-input disabled="" type="text" [(ngModel)]="details.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-input disabled="" type="text" [(ngModel)]="details.description"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div id="qrCode">
+    <qrcode *ngIf="debateId" [qrdata]="debateId.toString()" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  </div>
+</ion-content>

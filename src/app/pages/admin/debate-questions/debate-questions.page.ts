@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Route, Router} from '@angular/router';
 import { DebateService } from 'src/app/services/debate.service';
 import { QuestionService } from 'src/app/services/question.service';
+import {NotificationService} from "../../../services/notification.service";
 
 @Component({
   selector: 'app-debate-questions',
@@ -9,15 +10,23 @@ import { QuestionService } from 'src/app/services/question.service';
   styleUrls: ['./debate-questions.page.scss'],
 })
 export class DebateQuestionsPage implements OnInit {
-
   availableQuestions  : any[] = [];
-  debateId            : string;
+  public debateId     : string;
 
   constructor(
+    private route         : ActivatedRoute,
     private router        : Router, 
     private debateManager : DebateService,
     private questionManager : QuestionService
-  ) {}
+  ) {
+      this.route.queryParams.subscribe(params => {
+      // Refresh if needed
+      if (this.router.getCurrentNavigation().extras.state &&
+      this.router.getCurrentNavigation().extras.state.refresh) {
+        this.updateQuestions();
+      }
+    });
+  }
 
   /**
    * Go to the new question-admin page

@@ -12,15 +12,17 @@
     <ion-list *ngIf="availableSuggestions.length > 0">
       <ion-item *ngFor="let suggestion of getAvailableSuggestions()" class="question-item">
         <ion-label>{{suggestion.suggestion}}</ion-label>
-        <ion-button float-right disabled="">
+        <ion-button float-right (click)="voteSuggestion(suggestion)">
           <ion-label>{{suggestion.votes}}</ion-label>
           <ion-icon name="arrow-up-circle"></ion-icon>
         </ion-button>
-        <ion-buttons slot="end">
-          <ion-icon name="alert-circle-outline" class="ban-btn" (click)="presentBanAlert(suggestion.uuid)"></ion-icon>
-        </ion-buttons>
       </ion-item>
     </ion-list>
     <strong *ngIf="availableSuggestions.length == 0" class="wait-text">En attente de suggestions</strong>
   </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="newSuggestion()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

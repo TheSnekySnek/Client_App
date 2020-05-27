@@ -26,13 +26,6 @@ export class QuestionService {
     return new Promise(async function (resolve, reject) {
       that.connection.socket.emit("getQuestions",
         (questions: any[]) => {
-          for (let i = 0; i < questions.length; i++) {
-            if(that.answeredQuestions.includes(questions[i]['id']))
-              questions[i]['answered'] = true
-            else
-              questions[i]['answered'] = false
-            
-          }
           resolve(questions);
         }
       );
@@ -117,6 +110,9 @@ export class QuestionService {
           question['title']
         )
 
+        if (question["id"] in this.answeredQuestions)
+          question["answered"] = true;
+
         // Call the callback
         callback(question)
       }
@@ -124,6 +120,7 @@ export class QuestionService {
   }
 
   /**
+<<<<<<< HEAD
    * Suggest a question-admin to be added to the debate
    * @param question Suggested question-admin
    */
@@ -139,7 +136,7 @@ export class QuestionService {
   }
 
   /**
-   * Saves the question-admin for use in another page
+   * Saves the question for use in another page
    * @param question Question to save
    */
   public saveQuestion(question: any) {
@@ -152,5 +149,4 @@ export class QuestionService {
   public getSavedQuestion() {
     return this.savedQuestion;
   }
-
 }

@@ -61,6 +61,14 @@ export class DebateService {
     }
 
     /**
+     * Get questions of the debate from the server
+     * @param id Id of the debate
+     */
+    public getDebateSuggestions(id: string) {
+        return this.emitToSocket('getDebateSuggestions', id);
+    }
+
+    /**
      * Create a debate on the server
      * @param debate Debate to create
      */
@@ -106,24 +114,52 @@ export class DebateService {
      */
     // tslint:disable-next-line:ban-types (disable warning for Function type)
     public onNewVote(callback: Function) {
-        this.connection.socket.on('onNewVote',
-            (question: any) => {
+        this.connection.socket.on('newVote',
+            (suggestionId: number) => {
                 // Call the callback
-                callback(question);
+                callback(suggestionId);
             }
         );
     }
 
     /**
-   * Calls a function when a new question-admin is available
-   * @param callback Function to call
+     * Add a callback function when there is a new vote
+     * @param callback Function to call
+     */
+    // tslint:disable-next-line:ban-types (disable warning for Function type)
+    public onSuggestedQuestion(callback: Function) {
+        this.connection.socket.on('newSuggestedQuestion',
+          (question: any) => {
+              // Call the callback
+              callback(question);
+          }
+        );
+    }
+
+    /**
+     * Add a callback function when there is a new vote
+     * @param callback Function to call
+     */
+    // tslint:disable-next-line:ban-types (disable warning for Function type)
+    public onOpenQuestionAnswer(callback: Function) {
+        this.connection.socket.on('newOpenQuestionAnswer',
+          (question: any) => {
+              // Call the callback
+              callback(question);
+          }
+        );
+    }
+
+    /**
+   * Save a debate to have it in the other pages
+   * @param debate Function to call
    */
     public saveDebate(debate: any) {
         this.savedDebate = debate;
     }
 
     /**
-     * Calls a function when a new question-admin is available
+     * Get the debate that we saved
      * @param callback Function to call
      */
     public getSavedDebate() {
