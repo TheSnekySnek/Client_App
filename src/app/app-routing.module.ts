@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'debate-new-question',
     loadChildren: () => import('./pages/admin/debate-new-question/debate-new-question.module').then( m => m.DebateNewQuestionPageModule)
+  },
+  {
+    path: 'debate-details',
+    loadChildren: () => import('./pages/admin/debate-details/debate-details.module').then( m => m.DebateDetailsPageModule)
   }
 ];
 
