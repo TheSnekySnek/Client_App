@@ -86,10 +86,11 @@ export class DebateService {
 
     /**
      * Ban a user
+     * @param debateId id of the debate
      * @param uuid UUID (identifier) of a user
      */
-    public banUser(uuid: string) {
-        return this.emitToSocket('banUser', { uuid: uuid });
+    public banUser(debateId: string, uuid: string) {
+        return this.emitToSocket('banUser', {debateId: debateId, uuid: uuid });
     }
 
     /**
