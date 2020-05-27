@@ -1,11 +1,14 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Détails</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list lines="full" class="ion-no-margin ion-no-padding" *ngIf="details">
+<ion-content *ngIf="details">
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
     <ion-item>
       <ion-label position="stacked">ID du débat</ion-label>
       <ion-input disabled="" type="text" [(ngModel)]="details.debateId"></ion-input>
@@ -20,7 +23,7 @@
     </ion-item>
   </ion-list>
 
-  <div id="qrCode">
-    <qrcode *ngIf="debateId" [qrdata]="debateId.toString()" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+  <div class="ion-padding">
+    <ion-button expand="block" class="actions-btn" (click)="debateActions()">Actions</ion-button>
   </div>
 </ion-content>

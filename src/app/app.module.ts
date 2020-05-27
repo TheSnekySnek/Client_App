@@ -17,6 +17,7 @@ import { QuestionService } from './services/question.service';
 import { IdentificationService } from './services/identification.service';
 import { NotificationService } from './services/notification.service';
 import { DebateService } from './services/debate.service';
+import {QrcodePageModule} from "./pages/admin/qrcode/qrcode.module";
 
 
 
@@ -24,7 +25,13 @@ import { DebateService } from './services/debate.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
+    QrcodePageModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
