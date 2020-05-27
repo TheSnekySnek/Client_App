@@ -1,0 +1,122 @@
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import {Router} from "@angular/router";
+import {StatService} from "../../../services/statistic.service";
+import { QuestionService } from 'src/app/services/question.service';
+import { Chart } from "chart.js";
+
+@Component({
+  selector: 'app-debate-stats',
+  templateUrl: './closedquestion-stats.page.html',
+  styleUrls: ['./closedquestion-stats.page.scss'],
+})
+export class ClosedQuestionStatsPage implements OnInit {
+  private barCanvas: ElementRef;
+  private doughnutCanvas: ElementRef;
+
+  @ViewChild("barCanvas", {static: false}) set contentB(content: ElementRef) {
+    if(content) { // initially setter gets called with undefined
+      this.barCanvas = content;
+      this.generateBarChart();
+    }
+  }
+
+  @ViewChild("doughnutCanvas", {static: false}) set contentD(content: ElementRef) {
+    if(content) { // initially setter gets called with undefined
+      this.doughnutCanvas = content;
+      this.generateDoughnutChart();
+    }
+  }
+
+  statResponses       : any[] = [];
+  questionId            : any[] = [];
+  barChart: Chart;
+  doughnutChart: Chart;
+
+  constructor(
+      private router        : Router,
+      private statManager   : StatService,
+      private questionManager : QuestionService
+  ) {}
+
+  /**
+   * Updates the list of questions
+   */
+  private async getStats() {
+    console.log("Sending things")
+    console.log(this.questionId)
+    this.statResponses = await this.statManager.getQuestionStats(this.questionId);
+    console.log(this.statResponses);
+  }
+
+  private generateBarChart() {
+    this.barChart = new Chart(this.barCanvas.nativeElement, {
+      type: "bar",
+      data: {
+        datasets: []
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
+    this.barChart.data.datasets.push({
+      label: "# number of votes",
+      data: []
+      //color: if we need a color
+    });
+    for (const response of this.statResponses[2]) {
+      console.log(response); // To Remove
+      this.barChart.data.labels.push(response.response);
+      this.barChart.data.datasets.forEach((dataset) => {
+        dataset.data.push(response.numberVotes);
+      });
+      this.barChart.update();
+    }
+  }
+
+  private generateDoughnutChart() {
+    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+      type: "doughnut",
+      data: {
+          datasets: []
+      }
+    });
+    this.doughnutChart.data.datasets.push({
+      label: "# Percentage of votes",
+      data: []
+      //color: if we need a color
+    });
+    for (const response of this.statResponses[2]) {
+      console.log(response); // To Remove
+      this.doughnutChart.data.labels.push(response.response);
+      this.doughnutChart.data.datasets.forEach((dataset) => {
+        dataset.data.push(response.percentage);
+      });
+      this.doughnutChart.update();
+    }
+  }
+
+  /**
+   * Get the debate id from the debate manager
+   */
+  async ionViewWillEnter(){
+    if(this.questionManager.getSavedQuestion() !== undefined && this.questionManager.getSavedQuestion() !== null) {
+      this.questionId = this.questionManager.getSavedQuestion();
+      await this.getStats();
+    }
+  }
+
+  /**
+   * Executes on page initialisation
+   */
+  ngOnInit() {
+  }
+
+}

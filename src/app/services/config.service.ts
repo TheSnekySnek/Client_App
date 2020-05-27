@@ -2,17 +2,17 @@ import { Injectable } from '@angular/core';
 
 
 const GLOBAL_CONFIG = {
-  "environment": "DEV",
+  "environment": "PROD",
   "constants": {
       "prod": {
           "admin": {
-              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_ADDRESS"        : "127.0.0.1",
               "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/admin"
           },
           "client": {
-              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_ADDRESS"        : "127.0.0.1",
               "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/DEBATE-"
@@ -20,13 +20,13 @@ const GLOBAL_CONFIG = {
       },
       "dev": {
           "admin": {
-              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_ADDRESS"        : "127.0.0.1",
               "SOCKET_PORT"           : 4356,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/admin"
           },
           "client": {
-              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_ADDRESS"        : "127.0.0.1",
               "SOCKET_PORT"           : 4356,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/DEBATE-"

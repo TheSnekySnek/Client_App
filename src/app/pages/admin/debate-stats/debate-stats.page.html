@@ -1,9 +1,70 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>DebateStats</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Stats of the debate
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <ion-refresher slot="fixed" (ionRefresh)="getStats()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-refresher slot="fixed" (ionRefresh)="generateChart()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list *ngIf="statQuestions.length > 0">
+      <ion-item>
+        <ion-label>
+          Number of questions : {{statQuestions[0]}}
+        </ion-label>
+        <ion-icon name="assets/help-outline.svg"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Number of auditors : {{statQuestions[1]}}
+        </ion-label>
+        <ion-icon name="assets/people-circle-outline.svg"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <strong *ngIf="statQuestions.length != 3" class="wait-text">No stats to be shown for the moment</strong>
+  </div>
+
+  <div id="chart">
+    <ion-refresher slot="fixed" (ionRefresh)="getStats()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list *ngIf="statQuestions.length == 3">
+      <ion-card style="position: relative; height: 40vh; width:50vw">
+        <ion-card-header>
+          Top 10 questions
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barCanvas style="position: relative; height: 25vh; width: 35vw"></canvas>
+        </ion-card-content>
+      </ion-card>
+      <ion-item>
+        <ion-label>
+          <ion-text color="primary">
+            <h1>Title of question</h1>
+          </ion-text>
+        </ion-label>
+        <ion-label>
+          <ion-text color="primary">
+            <h1>Number of votes</h1>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngFor="let question of statQuestions[2]"  class="question-item" (click)="viewQuestion(question)">
+        <ion-label>{{question.title}}</ion-label>
+        <ion-label>{{question.numberVotes}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>

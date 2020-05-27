@@ -6,7 +6,7 @@ import { ConnectionService } from './connection.service';
 })
 export class DebateService {
 
-    // We need to save the question between pages
+    // We need to save the question-admin between pages
     private savedDebate: any;
 
     constructor(
@@ -69,8 +69,8 @@ export class DebateService {
     }
 
     /**
-     * Approve a question, created by an device (auditor), on the server
-     * @param id Id of the question
+     * Approve a question-admin, created by an device (auditor), on the server
+     * @param id Id of the question-admin
      */
     public approveQuestion(id: string) {
         return this.emitToSocket('approveQuestion', id);
@@ -93,7 +93,7 @@ export class DebateService {
     }
 
     /**
-     * Add a question to the debate
+     * Add a question-admin to the debate
      * @param question Question to add
      */
     public addQuestion(question: any) {
@@ -115,7 +115,7 @@ export class DebateService {
     }
 
     /**
-   * Calls a function when a new question is available
+   * Calls a function when a new question-admin is available
    * @param callback Function to call
    */
     public saveDebate(debate: any) {
@@ -123,7 +123,7 @@ export class DebateService {
     }
 
     /**
-     * Calls a function when a new question is available
+     * Calls a function when a new question-admin is available
      * @param callback Function to call
      */
     public getSavedDebate() {

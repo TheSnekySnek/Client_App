@@ -36,8 +36,12 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/debate/debate.module').then( m => m.DebatePageModule)
   },
   {
-    path: 'debate-new-question',
+    path: 'debate-new-question-admin',
     loadChildren: () => import('./pages/admin/debate-new-question/debate-new-question.module').then( m => m.DebateNewQuestionPageModule)
+  },
+  {
+    path: 'question-admin',
+    loadChildren: () => import('./pages/admin/question-admin/question-admin.module').then( m => m.QuestionAdminPageModule)
   }
 ];
 

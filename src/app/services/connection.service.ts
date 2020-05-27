@@ -48,7 +48,7 @@ export class ConnectionService {
     var that = this
     return new Promise(async function (resolve, reject) {
       //Get the id of the device
-      const uuid = that.identification.getUUID();
+      const uuid = await that.identification.getUUID();
       //Create a new socket to the client endpoint
       if (that.socket) that.disconnect();
       const clientSocketConfig: SocketIoConfig = {

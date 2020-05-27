@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DebateService } from 'src/app/services/debate.service';
+import { QuestionService } from 'src/app/services/question.service';
 
 @Component({
   selector: 'app-debate-questions',
@@ -14,14 +15,15 @@ export class DebateQuestionsPage implements OnInit {
 
   constructor(
     private router        : Router, 
-    private debateManager : DebateService
+    private debateManager : DebateService,
+    private questionManager : QuestionService
   ) {}
 
   /**
-   * Go to the new question page
+   * Go to the new question-admin page
    */
   addQuestion(){
-    this.router.navigate(['debate-new-question']);
+    this.router.navigate(['debate-new-question-admin']);
   }
 
   /**
@@ -29,6 +31,12 @@ export class DebateQuestionsPage implements OnInit {
    */
   private async updateQuestions(){
     this.availableQuestions = await this.debateManager.getDebateQuestions(this.debateId);
+  }
+
+  private viewQuestion(question: any){
+    const idQuestion: any = [question.id, this.debateId];
+    this.questionManager.saveQuestion(idQuestion);
+    this.router.navigate(['question-admin']);
   }
 
   /**
