@@ -10,9 +10,8 @@ import {NotificationService} from "../../../services/notification.service";
   styleUrls: ['./debate-questions.page.scss'],
 })
 export class DebateQuestionsPage implements OnInit {
-
   availableQuestions  : any[] = [];
-  debateId            : string;
+  public debateId     : string;
 
   constructor(
     private route         : ActivatedRoute,
