@@ -9,7 +9,7 @@ const routes: Routes = [
     component: QuestionAdminPage,
     children: [
       {
-        path: 'stats',
+        path: 'closedstats',
         children: [
           {
             path: '',
@@ -19,15 +19,25 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'openstats',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../openquestion-stats/openquestion-stats.module').then(m => m.OpenQuestionStatsPageModule)
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/question-admin/stats',
+        redirectTo: '/question-admin/closedstats',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/question-admin/stats',
+    redirectTo: '/question-admin/closedstats',
     pathMatch: 'full'
   }
 ];

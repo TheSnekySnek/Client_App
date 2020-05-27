@@ -1,5 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       Questions
     </ion-title>
@@ -8,12 +11,29 @@
 
 <ion-content [fullscreen]="true">
 
-  <div id="container">
-    <ion-list *ngIf="availableQuestions.length > 0">
+  <div class="first">
+    <img src="assets/icon/Logo.png" class="logo">
+    <ion-card>
+      <h1 class = head>Bienvenue sur NiceSurvey!</h1>
+      <div class="first2">
+        <img src="assets/icon/Groupe 14.png"  class = "logo1">
+        <img src="assets/icon/Groupe 26.png"  class = "logo1">
+      </div><br>
+    </ion-card>
+      <p class="other">Préparez-vous à réagir au débat et à poser vos propres questions en direct</p>
+  </div>
+
+  <div id="container" class="second">
+    <strong *ngIf="availableQuestions.length == 0" class="wait-text">
+      <p>En attente de questions </p>
+      <img src="assets/icon/Groupe 27.png" alt = "Dessin 1" class = "logo2">
+    </strong>
+    <ion-list *ngIf="availableQuestions.length > 0" class="wait-text">
       <ion-item *ngFor="let question of availableQuestions"  class="question-item" (click)="viewQuestion(question)">
         <ion-label>{{question.title}}</ion-label>
       </ion-item>
     </ion-list>
-    <strong *ngIf="availableQuestions.length == 0" class="wait-text">En attente de questions</strong>
+    
   </div>
+
 </ion-content>

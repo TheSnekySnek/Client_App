@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DebateService } from 'src/app/services/debate.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +15,11 @@ export class HomePage implements OnInit {
 
   constructor(
     private router        : Router, 
-    private debateManager : DebateService
-  ) {}
+    private debateManager : DebateService,
+    public menuCtrl: MenuController
 
+  ) {}
+ 
   /**
    * Update the list of debates
    */
@@ -52,6 +55,8 @@ export class HomePage implements OnInit {
    */
   ionViewWillEnter(){
     this.updateDebates();
+    this.menuCtrl.enable(false);
+
   }
 
   /**

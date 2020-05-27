@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-debate',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DebatePage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public menuCtrl: MenuController
+
+    ) {}
+    ionViewWillEnter() {
+      this.menuCtrl.enable(false);
+    }
 
   /**
    * Executes on page initialisation

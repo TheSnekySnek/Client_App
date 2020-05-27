@@ -1,10 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="admin-home"></ion-back-button>
+      <ion-back-button defaultHref="debate/questions"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Stats of the question {{questionManager.getSavedQuestion().title}}
+      Statistique de la question {{questionManager.getSavedQuestion().title}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -24,18 +24,18 @@
     <ion-list *ngIf="statResponses.length > 0">
       <ion-item>
         <ion-label>
-          Number of choices : {{statResponses[0]}}
+          Nombre de choix possible : {{statResponses[0]}}
         </ion-label>
         <ion-icon name="assets/help-outline.svg"></ion-icon>
       </ion-item>
       <ion-item>
         <ion-label>
-          Interest for the question : {{statResponses[1]}} %
+          Intêret de l'audience : {{statResponses[1]}} %
         </ion-label>
         <ion-icon name="assets/people-circle-outline.svg"></ion-icon>
       </ion-item>
     </ion-list>
-    <strong *ngIf="statResponses.length != 3" class="wait-text">No stats to be shown for the moment</strong>
+    <strong *ngIf="statResponses.length != 3" class="wait-text">Pas de statistique à afficher pour le moment</strong>
   </div>
 
   <div id="chart1" style="float:left; margin: 10px;">
@@ -51,7 +51,7 @@
       </ion-refresher>
       <ion-card style="position: relative; height: 40vh; width:45vw">
         <ion-card-header>
-          Response Stats
+          Nombre de réponses par choix
         </ion-card-header>
         <ion-card-content>
           <canvas #barCanvas style="position: relative; height: 25vh; width: 35vw;"></canvas>
@@ -70,7 +70,7 @@
       </ion-refresher>
       <ion-card style="position: relative; height: 40vh; width:45vw">
         <ion-card-header>
-          Response Stats
+          Pourcentage des choix
         </ion-card-header>
         <ion-card-content>
           <canvas #doughnutCanvas style="position: relative; height: 25vh; width: 35vw"></canvas>

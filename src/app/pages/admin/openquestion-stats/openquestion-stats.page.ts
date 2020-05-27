@@ -9,7 +9,7 @@ import { Chart } from "chart.js";
   templateUrl: './openquestion-stats.page.html',
   styleUrls: ['./openquestion-stats.page.scss'],
 })
-export class ClosedQuestionStatsPage implements OnInit {
+export class OpenQuestionStatsPage implements OnInit {
   private barCanvas: ElementRef;
   private doughnutCanvas: ElementRef;
 

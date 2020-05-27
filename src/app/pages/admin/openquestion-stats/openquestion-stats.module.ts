@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ClosedQuestionStatsPageRoutingModule } from './openquestion-stats-routing.module';
+import { OpenQuestionStatsPageRoutingModule } from './openquestion-stats-routing.module';
 
-import { ClosedQuestionStatsPage } from './openquestion-stats.page';
+import { OpenQuestionStatsPage } from './openquestion-stats.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ClosedQuestionStatsPageRoutingModule
+    OpenQuestionStatsPageRoutingModule
   ],
-  declarations: [ClosedQuestionStatsPage]
+  declarations: [OpenQuestionStatsPage]
 })
-export class ClosedQuestionStatsPageModule {}
+export class OpenQuestionStatsPageModule {}

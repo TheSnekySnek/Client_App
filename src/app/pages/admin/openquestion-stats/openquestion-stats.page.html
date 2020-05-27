@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="admin-home"></ion-back-button>
+      <ion-back-button defaultHref="debate/questions"></ion-back-button>
     </ion-buttons>
     <ion-title>
       Stats of the question {{questionManager.getSavedQuestion().title}}
@@ -24,59 +24,27 @@
     <ion-list *ngIf="statResponses.length > 0">
       <ion-item>
         <ion-label>
-          Number of choices : {{statResponses[0]}}
+          Nombre de réponses : {{statResponses[0]}}
         </ion-label>
         <ion-icon name="assets/help-outline.svg"></ion-icon>
       </ion-item>
       <ion-item>
         <ion-label>
-          Interest for the question : {{statResponses[1]}} %
+          Intêret pour la question : {{statResponses[1]}} %
         </ion-label>
         <ion-icon name="assets/people-circle-outline.svg"></ion-icon>
       </ion-item>
     </ion-list>
+    <ion-item>
+      <ion-label>
+        <ion-text color="primary">
+          <h1>Réponse</h1>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let response of statResponses[2]"  class="response-item">
+      <ion-label>{{response.response}}</ion-label>
+    </ion-item>
     <strong *ngIf="statResponses.length != 3" class="wait-text">No stats to be shown for the moment</strong>
   </div>
-
-  <div id="chart1" style="float:left; margin: 10px;">
-    <ion-list *ngIf="statResponses.length > 0">
-      <ion-refresher slot="fixed" (ionRefresh)="getStats()">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-      <ion-refresher slot="fixed" (ionRefresh)="generateBarChart()">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-      <ion-refresher slot="fixed" (ionRefresh)="generateDoughnutChart()">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-      <ion-card style="position: relative; height: 40vh; width:45vw">
-        <ion-card-header>
-          Response Stats
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #barCanvas style="position: relative; height: 25vh; width: 35vw;"></canvas>
-        </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
-  <div id="chart2" style="float:left; margin: 10px;">
-    <ion-list *ngIf="statResponses.length > 0">
-      <ion-refresher slot="fixed" (ionRefresh)="getStats()">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-      <ion-refresher slot="fixed" (ionRefresh)="generateDoughnutChart()">
-        <ion-refresher-content></ion-refresher-content>
-      </ion-refresher>
-      <ion-card style="position: relative; height: 40vh; width:45vw">
-        <ion-card-header>
-          Response Stats
-        </ion-card-header>
-        <ion-card-content>
-          <canvas #doughnutCanvas style="position: relative; height: 25vh; width: 35vw"></canvas>
-        </ion-card-content>
-      </ion-card>
-    </ion-list>
-  </div>
-
 </ion-content>
