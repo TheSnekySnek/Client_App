@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import {QuestionService} from "../../../services/question.service";
+import {ConnectionService} from "../../../services/connection.service";
 
 describe('QuestionsPageClient', () => {
   let component: QuestionsPage;
@@ -15,15 +17,11 @@ describe('QuestionsPageClient', () => {
     TestBed.configureTestingModule({
       declarations: [ QuestionsPage ],
       imports: [FormsModule, IonicModule.forRoot(), RouterTestingModule],
-      providers:[LocalNotifications, UniqueDeviceID]
+      providers: [ConnectionService, QuestionService, LocalNotifications, UniqueDeviceID]
     }).compileComponents();
 
     fixture = TestBed.createComponent(QuestionsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
-
-  /*it('should create', () => {
-    expect(component).toBeTruthy();
-  });*/
 });

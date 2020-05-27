@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { NewSuggestionPage } from './new-suggestion.page';
+import {FormsModule} from "@angular/forms";
 
 describe('NewSuggestionPage', () => {
   let component: NewSuggestionPage;
@@ -10,15 +11,11 @@ describe('NewSuggestionPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ NewSuggestionPage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), FormsModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NewSuggestionPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
-
-  /*it('should create', () => {
-    expect(component).toBeTruthy();
-  });*/
 });
