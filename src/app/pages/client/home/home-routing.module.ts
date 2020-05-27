@@ -6,7 +6,39 @@ import { HomePage } from './home.page';
 const routes: Routes = [
   {
     path: '',
-    component: HomePage
+    component: HomePage,
+    children: [
+      {
+        path: 'questions',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../questions/questions.module').then(m => m.QuestionsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'suggestions',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../suggestions/suggestions.module').then(m => m.SuggestionsPageModule)
+          }
+        ]
+      },
+      {
+        path: '',
+        redirectTo: '/home/questions',
+        pathMatch: 'full'
+      }
+    ]
+  },
+  {
+    path: '',
+    redirectTo: '/home/questions',
+    pathMatch: 'full'
   }
 ];
 
