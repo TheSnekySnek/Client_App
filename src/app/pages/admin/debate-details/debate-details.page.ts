@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DebateService} from "../../../services/debate.service";
 import {ActionSheetController, AlertController, ModalController} from "@ionic/angular";
-import { ActionSheetOptions } from '@ionic/core';
+import { ActionSheetOptions, ActionSheetButton } from '@ionic/core';
 import {QrcodePage} from "../qrcode/qrcode.page";
 import {NotificationService} from "../../../services/notification.service";
 
@@ -13,34 +13,9 @@ import {NotificationService} from "../../../services/notification.service";
 export class DebateDetailsPage implements OnInit {
   debateId              : string;
   details               : any;
-  debateActionsOptions  : ActionSheetOptions = {
-    header: 'Actions sur le débat',
-    cssClass: 'action-menu',
-    buttons: [{
-      text: 'Fermer le débat',
-      role: 'destructive',
-      icon: 'close-circle-outline',
-      handler: () => {
-        this.closeDebate();
-      }
-    }, {
-      text: 'Verrouiller le débat',
-      icon: 'lock-closed-outline',
-      handler: () => {
-        this.lockDebate();
-      }
-    }, {
-      text: 'Générer un code QR',
-      icon: 'aperture-outline',
-      handler: () => {
-        this.displayQRCode();
-      }
-    }, {
-      text: 'Annuler',
-      icon: 'close',
-      role: 'cancel'
-    }]
-  };
+  lockAction            : ActionSheetButton;
+  unlockAction          : ActionSheetButton;
+  curAction             : ActionSheetButton;
 
   constructor(
     private debateManager         : DebateService,
@@ -52,7 +27,31 @@ export class DebateDetailsPage implements OnInit {
 
 
   async debateActions() {
-    const actionSheet = await this.actionSheetController.create(this.debateActionsOptions);
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Actions sur le débat',
+      cssClass: 'action-menu',
+      buttons: [{
+        text: 'Fermer le débat',
+        role: 'destructive',
+        icon: 'close-circle-outline',
+        handler: () => {
+          this.closeDebate();
+        }
+      },
+        this.curAction,
+        {
+          text: 'Générer un code QR',
+          icon: 'aperture-outline',
+          handler: () => {
+            this.displayQRCode();
+          }
+        }, {
+          text: 'Annuler',
+          icon: 'close',
+          role: 'cancel'
+        }]
+    });
+
     await actionSheet.present();
   }
 
@@ -61,12 +60,31 @@ export class DebateDetailsPage implements OnInit {
    */
   async updateDetails() {
     this.details = await this.debateManager.getDebateDetails(this.debateId);
+    if (this.details.locked === true)
+      this.curAction = this.unlockAction;
+    else
+      this.curAction = this.lockAction;
   }
 
   /**
    * Executes on page initialisation
    */
   async ngOnInit() {
+    this.lockAction   = {
+      text: 'Verrouiller le débat',
+      icon: 'lock-closed-outline',
+      handler: () => {
+        this.lockDebate();
+      }
+    };
+    this.unlockAction = {
+      text: 'Déverrouiller le débat',
+      icon: 'lock-open-outline',
+      handler: () => {
+        this.unlockDebate();
+      }
+    };
+    this.curAction = this.lockAction;
   }
 
   /**
@@ -101,10 +119,31 @@ export class DebateDetailsPage implements OnInit {
     await alert.present();
   }
 
-  lockDebate() {
-
+  /**
+   * Lock the debate
+   */
+  async lockDebate() {
+    let res = await this.debateManager.lockDebate(this.debateId);
+    if (res === true) {
+      this.curAction = this.unlockAction;
+      this.notificationManager.displayInfo("Le débat a été verrouillé.");
+    } else {
+      this.notificationManager.displayInfo("Impossible de verrouiller le débat.");
+    }
   }
 
+  /**
+   * Unlock the debate
+   */
+  async unlockDebate() {
+    let res = await this.debateManager.unlockDebate(this.debateId);
+    if (res === true) {
+      this.curAction = this.lockAction;
+      this.notificationManager.displayInfo("Le débat a été déverrouillé.");
+    } else {
+      this.notificationManager.displayInfo("Impossible de déverrouiller le débat.")
+    }
+  }
   /**
    * Display the QRCode to join the debate
    */

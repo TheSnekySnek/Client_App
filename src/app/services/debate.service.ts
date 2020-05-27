@@ -92,6 +92,20 @@ export class DebateService {
     }
 
     /**
+     * Lock a debate
+     */
+    public lockDebate(debateId : string) {
+        return this.emitToSocket('lockDebate', debateId);
+    }
+
+    /**
+     * Unlock a debate
+     */
+    public unlockDebate(debateId : string) {
+        return this.emitToSocket('unlockDebate', debateId);
+    }
+
+    /**
      * Ban a user
      * @param uuid UUID (identifier) of a user
      */
