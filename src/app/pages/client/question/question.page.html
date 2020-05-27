@@ -11,7 +11,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <div id="container">
+  <div id="container" *ngIf="question != null">
     <p class="question-title"></p>
     <p class="question-text">{{question.title}}</p>
     <div class="answers" *ngIf="question.isOpenQuestion === false">

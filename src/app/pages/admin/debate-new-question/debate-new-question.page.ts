@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DebateService } from 'src/app/services/debate.service';
-import { Router } from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
 import { NavController } from '@ionic/angular';
 
@@ -19,8 +19,7 @@ export class DebateNewQuestionPage implements OnInit {
   answers         : string[]  = new Array(8);
 
   constructor(
-    public navCtrl        : NavController, 
-    private notification  : NotificationService, 
+    private notification  : NotificationService,
     private debateManager : DebateService,
     private router        : Router
   ) {}
@@ -55,7 +54,13 @@ export class DebateNewQuestionPage implements OnInit {
 
     if (status) {
       this.notification.displayInfo("Question envoyée");
-      this.navCtrl.navigateRoot(['/debate/questions']);
+      // Use navigation extra to refresh the questions
+      let navigationExtras : NavigationExtras = {
+        state: {
+          refresh: true
+        }
+      };
+      this.router.navigate(['/debate/questions'], navigationExtras);
     }
     else {
       this.notification.displayError(
