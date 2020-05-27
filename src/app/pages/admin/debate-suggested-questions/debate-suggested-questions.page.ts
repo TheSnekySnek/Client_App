@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {DebateService} from "../../../services/debate.service";
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-debate-suggested-questions',
@@ -13,8 +14,11 @@ export class DebateSuggestedQuestionsPage implements OnInit {
 
   constructor(
     private router        : Router,
-    private debateManager : DebateService
-  ) {}
+    private debateManager : DebateService,
+    public menuCtrl: MenuController
+
+    ) {}
+    
 
   /**
    * Sort and return the sorted suggestions
@@ -51,5 +55,7 @@ export class DebateSuggestedQuestionsPage implements OnInit {
   ionViewWillEnter(){
     this.debateId = this.debateManager.getSavedDebate()['debateId'];
     this.updateSuggestions();
+    this.menuCtrl.enable(false);
+
   }
 }

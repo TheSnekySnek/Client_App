@@ -15,7 +15,7 @@ export class AppComponent {
     {label: 'Accueil', url: 'home', icon: 'home'},
     {label: 'Poser une question', url: 'new-suggestion', icon: 'chatbubbles'},
     {label: 'Aide', url: 'help', icon: 'help'},
-    {label: 'Se Déconnecter', url: 'begin', icon: 'log-out'}
+    {label: 'Se Déconnecter', url: 'admin-begin', icon: 'log-out'}
   ];
 
 

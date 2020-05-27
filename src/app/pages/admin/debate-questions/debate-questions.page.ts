@@ -3,6 +3,7 @@ import {ActivatedRoute, Route, Router} from '@angular/router';
 import { DebateService } from 'src/app/services/debate.service';
 import {QuestionService} from "../../../services/question.service";
 import {NotificationService} from "../../../services/notification.service";
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-debate-questions',
@@ -17,7 +18,8 @@ export class DebateQuestionsPage implements OnInit {
   constructor(
     private route         : ActivatedRoute,
     private router        : Router,
-    private debateManager : DebateService
+    private debateManager : DebateService,
+    public menuCtrl       : MenuController
   ) {
     this.route.queryParams.subscribe(params => {
       // Refresh if needed
@@ -27,7 +29,7 @@ export class DebateQuestionsPage implements OnInit {
       }
     });
   }
-
+ 
   /**
    * Go to the new question page
    */
@@ -48,6 +50,8 @@ export class DebateQuestionsPage implements OnInit {
   ionViewWillEnter(){
     this.debateId = this.debateManager.getSavedDebate()['debateId'];
     this.updateQuestions();
+    this.menuCtrl.enable(false);
+
   }
 
   /**

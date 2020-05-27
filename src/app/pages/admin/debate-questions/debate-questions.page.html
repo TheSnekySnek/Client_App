@@ -10,7 +10,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
+  <div class="description">
+    <h1>Discutez, questionez, et rendez vos débats plus interactifs avec NiceSurvey</h1>
+    <p> Créez vos débats rapidement avec l'application et intéragissez avec votre audience. 
+      Vous pouvez créez plusieurs débats et visionner leurs statistiques. </p>
+  </div>
   <div id="container">
     <ion-refresher slot="fixed" (ionRefresh)="updateQuestions()">
       <ion-refresher-content></ion-refresher-content>
@@ -20,7 +24,9 @@
         <ion-label>{{question.title}}</ion-label>
       </ion-item>
     </ion-list>
-    <strong *ngIf="availableQuestions.length == 0" class="wait-text">Ajoutez une nouvelle question en appuyant sur (+)</strong>
+    <strong *ngIf="availableQuestions.length == 0" class="wait-text">
+      <img src="assets/icon/debat.png" class= "logo">
+      <p>Ajoutez une nouvelle question en appuyant sur (+)</p> </strong>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addQuestion()">
