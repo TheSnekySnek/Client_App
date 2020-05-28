@@ -184,8 +184,6 @@ export class ConnectionService {
         that.socket.removeAllListeners();
         that.setupListeners();
 
-        console.log("Connected to socket")
-        
         //Send the register message
         that.socket.emit("newAdmin", {
           username: username,
