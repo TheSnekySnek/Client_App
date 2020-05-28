@@ -73,10 +73,12 @@ export class DebateSuggestedQuestionsPage implements OnInit {
    */
   async unbanUser(user: string) {
     let res = await this.debateManager.unbanUser(user);
-    if (res)
+    if (res) {
       this.notificationManager.displayInfo("Le ban a été annulé");
-    else
+      this.availableSuggestions = this.availableSuggestions.filter(s => s.uuid !== user);
+    } else {
       this.notificationManager.displayInfo("Erreur lors de l'annulation du ban");
+    }
   }
 
   /**
