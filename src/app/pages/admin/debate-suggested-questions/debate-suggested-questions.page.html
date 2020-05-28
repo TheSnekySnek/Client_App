@@ -24,11 +24,11 @@
           <ion-label>{{suggestion.votes}}</ion-label>
           <ion-icon name="arrow-up-circle"></ion-icon>
         </ion-button>
-        <ion-buttons slot="end">
+        <ion-buttons slot="end" *ngIf="suggestion.removed == false">
           <ion-icon name="alert-circle-outline" class="ban-btn" (click)="presentBanAlert(suggestion.uuid)"></ion-icon>
         </ion-buttons>
-        <ion-buttons slot="end">
-          <ion-icon name="alert-circle-outline" class="unban-btn" (click)="unbanDevice(suggestion.uuid)"></ion-icon>
+        <ion-buttons slot="end" *ngIf="suggestion.removed === true">
+          <ion-icon name="alert-circle-outline" class="unban-btn" (click)="unbanUser(suggestion.uuid)"></ion-icon>
         </ion-buttons>
       </ion-item>
     </ion-list>

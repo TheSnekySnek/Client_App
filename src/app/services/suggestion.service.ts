@@ -68,6 +68,19 @@ export class SuggestionService {
   }
 
   /**
+   * Calls a function when a suggestion must be deleted
+   * @param callback Function to call
+   */
+  public onDeletedSuggestion(callback: Function) {
+    this.connection.socket.on("deletedSuggestion",
+      (suggestionId: number) => {
+        // Call the callback
+        callback(suggestionId)
+      }
+    );
+  }
+
+  /**
    * Calls a function when a new vote has been made
    * @param callback Function to call
    */

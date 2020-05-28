@@ -67,6 +67,10 @@ export class DebateSuggestedQuestionsPage implements OnInit {
     await alert.present();
   }
 
+  /**
+   * Unban a user from the debate
+   * @param user
+   */
   async unbanUser(user: string) {
     let res = await this.debateManager.unbanUser(user);
     if (res)
@@ -87,6 +91,14 @@ export class DebateSuggestedQuestionsPage implements OnInit {
     this.debateManager.onSuggestedQuestion(suggestion => {
       this.availableSuggestions.push(suggestion);
     });
+
+    this.debateManager.onDeletedSuggestion(suggestionId => {
+      for (let s of this.availableSuggestions) {
+        if (s.suggestionId === suggestionId) {
+          s.removed = true;
+        }
+      }
+    });
   }
 
   /**
@@ -96,6 +108,5 @@ export class DebateSuggestedQuestionsPage implements OnInit {
     this.debateId = this.debateManager.getSavedDebate()['debateId'];
     this.updateSuggestions();
     this.menuCtrl.enable(false);
-
   }
 }
