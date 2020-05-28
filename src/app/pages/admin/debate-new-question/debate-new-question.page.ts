@@ -15,7 +15,6 @@ export class DebateNewQuestionPage implements OnInit {
   isOpenQuestion  : boolean   = false;
   numAnswers      : number    = 2;
   title           : string;
-  description     : string;
   answers         : string[]  = new Array(8);
 
   constructor(
@@ -37,10 +36,6 @@ export class DebateNewQuestionPage implements OnInit {
       this.notification.displayError("Veuillez spécifier un titre");
       return;
     }
-    if (!this.description || this.description.length == 0) {
-      this.notification.displayError("Veuillez spécifier une description");
-      return;
-    }
 
     if (!this.isOpenQuestion) {
       var ans = [];
@@ -52,7 +47,6 @@ export class DebateNewQuestionPage implements OnInit {
     var status = await this.debateManager.addQuestion({
       debateId      : this.debate['debateId'],
       title         : this.title,
-      description   : this.description,
       answers       : ans,
       isOpenQuestion: this.isOpenQuestion
     });
