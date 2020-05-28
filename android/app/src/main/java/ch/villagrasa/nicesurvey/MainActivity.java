@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package ch.villagrasa.nicesurvey;
 
 import android.os.Bundle;
 
