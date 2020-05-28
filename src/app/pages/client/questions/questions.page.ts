@@ -70,6 +70,13 @@ export class QuestionsPage implements OnInit {
   }
 
   /**
+   * Returns the user to the home page
+   */
+  disconnect(){
+    this.router.navigate(['admin-begin']);
+  }
+  
+  /**
    * Set up the listener for new question when the page starts
    */
   ngOnInit() {

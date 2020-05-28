@@ -39,6 +39,13 @@ export class SuggestionsPage implements OnInit {
   }
 
   /**
+   * Returns the user to the home page
+   */
+  disconnect(){
+    this.router.navigate(['admin-begin']);
+  }
+
+  /**
    * Loads the new suggestion client page
    */
   newSuggestion(){
