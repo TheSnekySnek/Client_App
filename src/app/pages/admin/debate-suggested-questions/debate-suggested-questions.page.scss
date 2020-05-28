@@ -88,9 +88,20 @@ ion-toolbar{
   height: 25px;
 }
 
+.unban-btn{
+  color: green;
+  width: 30px;
+  height: 25px;
+}
+
 .ban-btn:hover{
   cursor: pointer;
 }
+
+.unban-btn:hover{
+  cursor: pointer;
+}
+
 @media(min-width:1800px){
   .logo{
     width:75%;

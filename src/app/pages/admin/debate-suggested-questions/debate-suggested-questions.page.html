@@ -27,6 +27,9 @@
         <ion-buttons slot="end">
           <ion-icon name="alert-circle-outline" class="ban-btn" (click)="presentBanAlert(suggestion.uuid)"></ion-icon>
         </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-icon name="alert-circle-outline" class="unban-btn" (click)="unbanDevice(suggestion.uuid)"></ion-icon>
+        </ion-buttons>
       </ion-item>
     </ion-list>
     <strong *ngIf="availableSuggestions.length == 0" class="wait-text">
