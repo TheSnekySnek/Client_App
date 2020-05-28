@@ -100,7 +100,8 @@ export class DebateStatsPage implements OnInit {
                 beginAtZero: true
               }
             }
-          ]
+          ],
+          xAxes: [{ barPercentage: 0.5 }]
         }
       }
     });
@@ -133,5 +134,23 @@ export class DebateStatsPage implements OnInit {
    * Executes on page initialisation
    */
   ngOnInit() {
+
+    this.debateManager.onNewQuestion(async question => {
+      console.log("Rceived new question");
+      await this.getStats();
+      this.generateChart();
+    });
+
+    this.questionManager.onNewResponseOpenQuestion(async response => {
+      console.log("Rceived new question");
+      await this.getStats();
+      this.generateChart();
+    });
+
+    this.questionManager.onNewResponseCloseQuestion(async response => {
+      console.log("Rceived new question");
+      await this.getStats();
+      this.generateChart();
+    });
   }
 }

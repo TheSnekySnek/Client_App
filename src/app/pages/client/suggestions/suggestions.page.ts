@@ -90,6 +90,13 @@ export class SuggestionsPage implements OnInit {
       let suggestion = this.availableSuggestions.find(s => s.suggestionId == suggestionId);
       suggestion["votes"]++;
     });
+
+    // Remove the deleted suggestion
+    this.suggestions.onDeletedSuggestion(suggestionId => {
+      this.availableSuggestions = this.availableSuggestions.filter(s =>
+        s.suggestionId !== suggestionId
+      );
+    });
   }
 
   /**

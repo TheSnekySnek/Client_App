@@ -18,6 +18,4 @@ describe('SuggestionService', () => {
     const service: SuggestionService = TestBed.get(SuggestionService);
     expect(service).toBeTruthy();
   });
-
-  // TODO: Add tests
 });

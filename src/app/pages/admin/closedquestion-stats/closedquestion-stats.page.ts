@@ -97,7 +97,6 @@ export class ClosedQuestionStatsPage implements OnInit {
       data: []
     });
     for (const response of this.statResponses[2]) {
-      console.log(response); // To Remove
       this.doughnutChart.data.labels.push(response.response);
       this.doughnutChart.data.datasets.forEach((dataset) => {
         dataset.data.push(response.percentage);
@@ -120,6 +119,11 @@ export class ClosedQuestionStatsPage implements OnInit {
    * Executes on page initialisation
    */
   ngOnInit() {
+    this.questionManager.onNewResponseCloseQuestion(async () => {
+        await this.getStats();
+        this.generateBarChart();
+        this.generateDoughnutChart();
+    });
   }
 
 }
