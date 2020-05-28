@@ -17,7 +17,6 @@ export class HomePage implements OnInit {
    */
   ngOnInit() {
     this.menuCtrl.enable(true); //used to close the menu
-
   }
 
 }
