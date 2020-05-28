@@ -25,12 +25,20 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.qrcode-modal .modal-wrapper {
-  width: 80vw;
-  height: 80vw;
-}
 
 .qr-element svg {
   width: 99%;
   height: 99%;
+}
+
+.qrcode-modal .modal-wrapper{
+  max-height: 80vw;
+  max-width: 80vw;
+}
+
+@media only screen and (min-width: 80vh)  {
+  .qrcode-modal .modal-wrapper{
+    max-height: 80vh;
+    max-width: 80vw;
+  }
 }
