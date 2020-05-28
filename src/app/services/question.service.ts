@@ -119,6 +119,10 @@ export class QuestionService {
     );
   }
 
+  /**
+   * Calls a function when a new closed question is available
+   * @param callback Function to call
+   */
   public onNewResponseCloseQuestion(callback: Function){
     this.connection.socket.on('questionAnswered',
         (response: any) => {
@@ -129,6 +133,10 @@ export class QuestionService {
     );
   }
 
+  /**
+   * Calls a function when a new open question is available
+   * @param callback Function to call
+   */
   public  onNewResponseOpenQuestion(callback: Function){
     this.connection.socket.on('newOpenQuestionAnswer',
         (response: any) => {
