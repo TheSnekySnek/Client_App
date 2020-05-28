@@ -4,12 +4,29 @@ ion-content {
     text-align: left;
 
 }
+
+fieldset{
+  border-width: 0px;
+}
+
+ion-item.item-highlight{
+  margin-right: 12%;
+  margin-left: 12%;
+  margin-top: 10px;
+  min-width: 12em;
+  padding-right: 10%;
+  padding-left: 10%;
+}
+
+.no-scroll{
+  --overflow: hidden;
+}
    
 .head{
     position: absolute;
     text-align: center;
     top: 3%;
-    left: 10px;
+    width: 100%;
     font-family: "Gill Sans", sans-serif;
     font-weight: lighter;
     font-size: 50px;
@@ -51,16 +68,28 @@ ion-content {
 
 .login-btn{
     text-decoration: none;
-    margin-top: 100px;
-    margin-right: 15px;
-    --padding: 10px;
-    --padding-left: 20px;
-    --padding-right: 20px;
+    margin-right: 12%;
+    margin-left: 12%;
+    margin-top: 10px;
+    min-width: 12em;
+  padding-right: 10%;
+  padding-left: 10%;
     font-size: 16px;
     --background: #0E0E52;
     font-weight: 600;
     --color: white;
     --border-color:white;
+}
+
+ion-item{
+    text-decoration: none;
+    margin-right: 12%;
+    margin-left: 12%;
+    margin-top: 10px;
+    min-width: 12em;
+    --padding-right: 10%;
+    --padding-left: 10%;
+    font-size: 16px;
 }
 
   .animation-area {
@@ -165,4 +194,3 @@ ion-content {
         margin-right: 15%;
     }
 }
-  

@@ -17,7 +17,7 @@ ion-title{
 
 ion-toolbar{
   --color:white;
-  --background:rgb(9, 12, 54);
+  --background: #006494;;
 }
 
 ion-card{
@@ -100,8 +100,8 @@ ion-label{
   ion-content {  
     text-align: center;
     font-weight: 400;
-    height: 100vh;
-    width: 72vw;
+    height: 100%;
+    width: 100%;
   }
 }
 

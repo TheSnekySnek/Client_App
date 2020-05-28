@@ -2,7 +2,8 @@ ion-content{
   --color:  rgb(24, 29, 68);
   text-align: center;
   font-weight: 400;
-  width:100vw;
+  width:100%;
+  height: 100%;
 }
 
 ion-menu-button{
@@ -11,7 +12,7 @@ ion-menu-button{
 
 ion-toolbar{
   --color:white;
-  --background:rgb(9, 12, 54);
+  --background: #006494;
 }
 
 ion-title{
@@ -86,8 +87,9 @@ ion-card{
   ion-content {  
     text-align: center;
     font-weight: 400;
-    height: 100vh;
-    width: 72vw;
+    height: 100%;
+    width: 100%;
+    --color: black;
   }
 }
 
