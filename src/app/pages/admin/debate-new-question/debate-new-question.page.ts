@@ -69,7 +69,7 @@ export class DebateNewQuestionPage implements OnInit {
     }
     else {
       this.notification.displayError(
-        "Une erreur est surveue lors de l'envoi de la question"
+        "Une erreur est survenue lors de l'envoi de la question"
       );
     }
   }
