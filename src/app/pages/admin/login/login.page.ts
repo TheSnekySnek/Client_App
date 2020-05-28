@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
    * Login the admin via the connection service
    */
   async register() {
-    
+
     if (!this.username || this.username.length == 0) {
       this.notification.displayError("Veuillez spécifier un nom d'utilisateur");
       return;
@@ -57,7 +57,7 @@ export class LoginPage implements OnInit {
     
     console.log(status)
     if(status['res']){
-      this.notification.displayInfo("Compte crée");
+      this.notification.displayInfo("Compte créé");
       
       //Auth with the account
       this.login();
