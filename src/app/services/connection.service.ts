@@ -22,8 +22,7 @@ export class ConnectionService {
   constructor(
     private notification  : NotificationService,
     private identification: IdentificationService,
-    private config        : ConfigService,
-    private router : Router
+    private config        : ConfigService
   ) { }
 
   /**
