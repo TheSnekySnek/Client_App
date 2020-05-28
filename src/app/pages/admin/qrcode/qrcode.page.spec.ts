@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { QrcodePage } from './qrcode.page';
+import {QRCodeModule} from "angularx-qrcode";
 
 describe('QrcodePage', () => {
   let component: QrcodePage;
@@ -10,7 +11,7 @@ describe('QrcodePage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ QrcodePage ],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot(), QRCodeModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(QrcodePage);

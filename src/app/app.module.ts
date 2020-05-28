@@ -18,7 +18,7 @@ import { IdentificationService } from './services/identification.service';
 import { NotificationService } from './services/notification.service';
 import { DebateService } from './services/debate.service';
 import {QrcodePageModule} from "./pages/admin/qrcode/qrcode.module";
-
+import {QRCodeModule} from "angularx-qrcode";
 
 
 
@@ -30,6 +30,7 @@ import {QrcodePageModule} from "./pages/admin/qrcode/qrcode.module";
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
+    QRCodeModule,
     QrcodePageModule
   ],
   providers: [
