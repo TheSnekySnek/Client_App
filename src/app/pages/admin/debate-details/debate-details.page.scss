@@ -1,9 +1,18 @@
+ion-toolbar{
+  --color:white;
+  --background: #006494;
+}
+
+ion-content{
+  font-family: 'Gill Sans', sans-serif;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 

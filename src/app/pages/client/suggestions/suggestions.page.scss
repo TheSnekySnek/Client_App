@@ -1,95 +1,115 @@
 ion-content{
-  --color:  rgb(24, 29, 68);
+  --color:rgb(24, 29, 68);
   text-align: center;
   font-weight: 400;
+}
 
+ion-menu-button{
+  --color:white;
+}
+
+ion-title{
+  text-align: center;
+  position: absolute;
+  top: 15px;
+  left: calc(50% - 85px);
 }
 
 ion-toolbar{
   --color:white;
   --background:rgb(9, 12, 54);
+}
 
-}
-ion-menu-button{
-  --color: white;
-}
 ion-card{
   --background: rgb(153, 204, 228);
-  --color:  rgb(24, 29, 68);
- 
+  --color:  rgb(24, 29, 68); 
+}
+
+ion-item{
+  --padding-top:15px;
+  --padding-bottom:15px;
+}
+
+ion-label{
+  font-family: cursive;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.rond{
+  color:rgb(9, 12, 54);
+  margin-left: 9%!important;
+  margin-right: 10px!important;
 }
 
 .head{
   font-family: "Gill Sans", sans-serif;
   font-size: 20px;
 }
+
 .center-content{
   margin-top: 5%;
   width: 100%;
 }
 
 .first{
-  margin-top: 0px;
+  margin-top: 10px;
   p{
     margin-left: 40px;
     margin-right: 40px;
   }
 }
+
 .logo1{
   margin-top: 0px;
   margin: 15px;
-
 }
+
 .logo2{
   margin-top: 0px;
   margin: 15px;
   width:60%;
-
 }
+
 .second{
   margin-top: 25px;
   font-size: 16px;
   font-family: "Gill Sans", sans-serif;
 }
 
-	
 .wait-text{
   color: rgb(24, 29, 68);
- animation: Test 2.5s infinite;
+  animation: Test 2.5s infinite;
 }
+
 @keyframes Test{
-   0%{opacity: 1;}
-   50%{opacity: 0;}
-   100%{opacity: 1;}
+  0%{opacity: 1;}
+  50%{opacity: 0;}
+  100%{opacity: 1;}
 }
  
-
 @media only screen and (min-width: 500px) {
-
- .logo2{
-   margin-top: 0px;
-   margin: 15px;
-   width:300px;
-
- }
+  .logo2{
+    margin-top: 0px;
+    margin: 15px;
+    width:300px;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
-
- ion-content {  
-   text-align: center;
-   font-weight: 400;
-   height: 100vh;
-   width: 72vw;
- }
+  ion-content {  
+    text-align: center;
+    font-weight: 400;
+    height: 100vh;
+    width: 72vw;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
-
- ion-card{
-     margin-left: 120px;
-     margin-right:120px;
- }
+  ion-card{
+    margin-left: 120px;
+    margin-right:120px;
+  }
 }
 
 

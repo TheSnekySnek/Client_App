@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 import {NotificationService} from '../../../services/notification.service'
 import {ConnectionService} from '../../../services/connection.service'
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -24,8 +23,15 @@ export class LoginPage implements OnInit {
     private barcodeScanner: BarcodeScanner, 
     private platform      : Platform, 
     private notification  : NotificationService,
-    private connection    : ConnectionService
+    private connection    : ConnectionService,
+    public menuCtrl       : MenuController
   ) {}
+    /**
+   * Automatically closes the menu 
+   */
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   /**
    * Executes on page initialisation
