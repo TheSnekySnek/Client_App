@@ -120,6 +120,34 @@ export class QuestionService {
   }
 
   /**
+   * Calls a function when a new closed question is available
+   * @param callback Function to call
+   */
+  public onNewResponseCloseQuestion(callback: Function){
+    this.connection.socket.on('questionAnswered',
+        (response: any) => {
+          console.log("Received new question");
+          // Call the callback
+          callback(response);
+        }
+    );
+  }
+
+  /**
+   * Calls a function when a new open question is available
+   * @param callback Function to call
+   */
+  public  onNewResponseOpenQuestion(callback: Function){
+    this.connection.socket.on('newOpenQuestionAnswer',
+        (response: any) => {
+          console.log("Received new question");
+          // Call the callback
+          callback(response);
+        }
+    );
+  }
+
+  /**
    * Suggest a question to be added to the debate
    * @param question Suggested question
    */
