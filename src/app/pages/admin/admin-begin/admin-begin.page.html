@@ -21,8 +21,8 @@
           <p>Etes-vous administrateur ou auditeur ?</p>
         </div>	
       <div class="buttons">
-        <a href="admin-login" class="b1"> Admin</a>
-        <a href="login" class="b2"> Auditeur</a>
+        <a (click)="this.router.navigate(['admin-login'])" class="b1"> Admin</a>
+        <a (click)="this.router.navigate(['login'])" class="b2"> Auditeur</a>
       </div>
     </div>	
 

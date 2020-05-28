@@ -92,6 +92,20 @@ ion-item{
     font-size: 16px;
 }
 
+.register-btn{
+  text-decoration: none;
+  margin-top: 20px;
+  margin-right: 15px;
+  --padding: 10px;
+  --padding-left: 20px;
+  --padding-right: 20px;
+  font-size: 16px;
+  --background: #0E0E52;
+  font-weight: 600;
+  --color: yellow;
+  --border-color:yellow;
+}
+
   .animation-area {
     width: 100%;
     height: 100vh;
