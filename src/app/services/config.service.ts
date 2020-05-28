@@ -7,13 +7,13 @@ const GLOBAL_CONFIG = {
       "prod": {
           "admin": {
               "SOCKET_ADDRESS"        : "http://sondage.codeheure.com",
-              "SOCKET_PORT"           : 4356,
+              "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/admin"
           },
           "client": {
               "SOCKET_ADDRESS"        : "http://sondage.codeheure.com",
-              "SOCKET_PORT"           : 4356,
+              "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/DEBATE-"
           }
@@ -21,13 +21,13 @@ const GLOBAL_CONFIG = {
       "dev": {
           "admin": {
               "SOCKET_ADDRESS"        : "http://sondage.codeheure.com",
-              "SOCKET_PORT"           : 4356,
+              "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/admin"
           },
           "client": {
               "SOCKET_ADDRESS"        : "http://sondage.codeheure.com",
-              "SOCKET_PORT"           : 4356,
+              "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/DEBATE-"
           }
