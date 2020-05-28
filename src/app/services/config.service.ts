@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 
 const GLOBAL_CONFIG = {
-  "environment": "DEV",
+  "environment": "PROD",
   "constants": {
       "prod": {
           "admin": {

@@ -21,12 +21,9 @@ export class DebateNewQuestionPage implements OnInit {
     private notification  : NotificationService,
     private debateManager : DebateService,
     private router        : Router,  
-    public menuCtrl: MenuController
+    public menuCtrl       : MenuController
 
     ) {}
-    ionViewWillEnter() {
-      this.menuCtrl.enable(false);
-    }
 
   /**
    * Adds a question to the debate via the question service
@@ -78,6 +75,13 @@ export class DebateNewQuestionPage implements OnInit {
   //This lets us display the right number of inputs
   arrayTwo(n: number): number[] {
     return [...Array(n).keys()];
+  }
+
+  /**
+   * Closes the menu automatically
+   */
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
 }

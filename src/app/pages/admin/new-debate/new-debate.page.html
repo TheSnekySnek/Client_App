@@ -7,26 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-   
+<ion-content [fullscreen]="true">  
   <h1>De quoi voulez vous parler aujourd'hui ?</h1>
   <p>Décrivez ci-dessous quel est l'objet de la discussion du jour</p>
-
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
-
-      <ion-item>
-        <ion-label position="stacked">Titre</ion-label>
-        <ion-input required type="text" [(ngModel)]="title"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Description</ion-label>
-        <ion-textarea [(ngModel)]="description"></ion-textarea>
-      </ion-item>
-      
-    </ion-list>
-
-    <img src="assets/icon/stats.png" alt="" class=logo>
-    <ion-button expand="block" class="send-btn" (click)="createDebate()">Créer</ion-button>
-
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+    <ion-item>
+      <ion-label position="stacked">Titre</ion-label>
+      <ion-input required type="text" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-textarea [(ngModel)]="description"></ion-textarea>
+    </ion-item> 
+  </ion-list>
+  <img src="assets/icon/stats.png" alt="" class=logo>
+  <ion-button expand="block" class="send-btn" (click)="createDebate()">Créer</ion-button>
 </ion-content>

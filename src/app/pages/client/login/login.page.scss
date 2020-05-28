@@ -1,49 +1,37 @@
 ion-content {
     --ion-background-color:rgb(153, 204, 228);
-    --color: white     ;
+    --color: white; 
     text-align: center;
     font-weight: 400;
-
 }
+
 ion-toolbar{
     --color:white;
-    --background:rgb(9, 12, 54);
-
+    --background: #006494;
 }
+
 ion-title{
     text-align: center !important;
+    position: absolute;
+    top: 15px;
+    left: calc(50% - 78px);
 }
-ion-back-button{
-    --color:white;
 
-}
 ion-card{
     --background:white;
-
 }
+
 ion-item{
     text-align: center;
 }
 
-.back-content{
-    --background:rgb(153, 204, 228);
- 
-}
-.center-icon{
-    width: 150px;
-    .logo{
-        position: fixed;
-        left: 35%;
-    }    
-  }
 @media (min-width: 450px)and (max-width:770px){
-
   .logo{
-    position: fixed;
-    left: 40%!important;
-}   
-
+        position: fixed;
+        left: 40%!important;
+    }   
 }
+
 .center-content{
     margin-top: 10%;
     width: 100%;
@@ -54,14 +42,16 @@ ion-item{
     position:relative; /*it can be fixed too*/
     left: -25%;
 }
+
 .first{
     margin-top: 20px;
 }
+
 .logo1{
     margin: 25px;
     margin-bottom: 0;
-
 }
+
 .second{
     margin-top: 60px;
     font-size: 16px;
@@ -76,21 +66,15 @@ ion-item{
     font-size: 16px;
     width: 250px;
     border-bottom: 2px solid white;
-
-
 }
-
-
-
 
 .join-btn{
     --background: #4A8BBD;
     width: 150px;
     margin: auto;
     height: 45px;
-    margin-top: 100px;
+    margin-top: 10px;
 }
-
 
 .qr-btn{
     max-width: 150px;
@@ -100,152 +84,8 @@ ion-item{
     font-size: 12px;
 }
 
-
 .pin-label{
     text-align: center;
 }
 
 
-/*!
- * Start Bootstrap - Coming Soon v5.0.7 (https://startbootstrap.com/template-overviews/coming-soon)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-coming-soon/blob/master/LICENSE)
- */
-
- html {
-    height: 100%;
-  }
-  
-  body {
-    height: 100%;
-    min-height: 35rem;
-    position: relative;
-    font-family: 'Source Sans Pro';
-    font-weight: 300;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Merriweather';
-    font-weight: 700;
-  }
-  
-  .video {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 0;
-  }
-  
-  @media (pointer: coarse) and (hover: none) {
-    body {
-      --background:rgb(153, 204, 228);
-      
-    }
-    body .video {
-      display: none;
-    }
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgb(16, 0, 245);
-    opacity: 0.2;
-    z-index: 1;
-  }
-  
-  .masthead {
-    position: relative;
-    overflow: hidden;
-    padding-bottom: 3rem;
-    z-index: 2;
-  }
-   .masthead .masthead-bg {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    min-height: 35rem;
-    height: 100%;
-
-    background-color: rgb(153, 204, 228);
-    transform: skewY(4deg);
-    transform-origin: bottom right;
-  }
- 
-  
-  .masthead .masthead-content h1 {
-    font-size: 2.5rem;
-  }
-  
-  .masthead .masthead-content p {
-    font-size: 1.2rem;
-  }
-  
-  .masthead .masthead-content p strong {
-    font-weight: 700;
-  }
-  
-  .masthead .masthead-content .input-group-newsletter input {
-    height: auto;
-    font-size: 1rem;
-    padding: 1rem;
-  }
-  
-  .masthead .masthead-content .input-group-newsletter button {
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 1rem;
-  }
-
-  
-  @media (min-width: 768px) {
-    .masthead {
-      height: 100%;
-      min-height: 0;
-      width: 40.5rem;
-      padding-bottom: 0;
-    }
-    .masthead .masthead-bg {
-      min-height: 0;
-      transform: skewX(-8deg);
-      transform-origin: top right;
-    }
-    .masthead .masthead-content {
-      padding-left: 3rem;
-      padding-right: 10rem;
-    }
-    .masthead .masthead-content h1 {
-      font-size: 3.5rem;
-    }
-    .masthead .masthead-content p {
-      font-size: 1.3rem;
-    }
-    .center-icon{
-        width: 150px;
-        .logo{
-            position: fixed;
-            left: 250px;
-        }    
-    }
-  }
-
-  
- 
