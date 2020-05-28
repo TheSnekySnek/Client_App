@@ -3,6 +3,11 @@
     <ion-title>
       Débats
     </ion-title>
+    <ion-buttons slot="end" >
+      <ion-button autoHide="false" color="Lignt" href="admin-begin">
+        <ion-icon name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -15,11 +20,13 @@
   <div id="container">
     <ion-list *ngIf="activeDebates.length > 0">
       <ion-item *ngFor="let debate of activeDebates" class="debate-item" (click)="viewDebate(debate)">
+        <ion-icon name="podium-outline" class="rond"></ion-icon>
         <ion-label>{{debate.title}}</ion-label>
       </ion-item>
     </ion-list>
     <ion-list *ngIf="pastDebates.length > 0">
       <ion-item *ngFor="let debate of pastDebates" class="debate-item" (click)="viewDebate(debate)">
+        <ion-icon name="podium-outline"class="rond"></ion-icon>
         <ion-label>{{debate.title}}</ion-label>
       </ion-item>
     </ion-list>

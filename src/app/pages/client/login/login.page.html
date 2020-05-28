@@ -1,46 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button color="Light"></ion-back-button>
-    </ion-buttons>
     <ion-title>
       Connexion   
     </ion-title>
+    <ion-buttons slot="start" >
+      <ion-button autoHide="false" color="Lignt" href="admin-begin">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-
-
-
 <ion-content>
-  
-  
   <section class="center-content">
-
-      <img src="assets/icon/Logo3.png" class="logo">
-
-    <ion-card>
       <div class="first">
-        <img src="assets/icon/Groupe 14.png"  class = "logo1">
-        <img src="assets/icon/Groupe 26.png"  class = "logo1">
-      </div> 
+        <img src="assets/icon/Dessin 3.png"  class = "logo1">
+      </div>
       <br><br>
-    </ion-card>
-
     <p class="pin-label">Entrez votre code de session</p>
     <ion-item class="pin-item">
       <ion-input [(ngModel)]="inputPin" placeholder="code de session"></ion-input>
     </ion-item>
-
     <section>
       <ion-button expand="block" class="join-btn" (click)="loginWithPin()">Rejoindre</ion-button>
     </section>
-
     <section *ngIf="isQRCompatible">
       <ion-button color="secondary" expand="block" class="qr-btn" (click)="startQR()">Scan QR Code</ion-button>
     </section>
   </section>
-
-
-
 </ion-content>

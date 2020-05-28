@@ -61,6 +61,7 @@ export class ConnectionService {
         options: {
           path: that.config.getClientConfig()["SOCKET_PATH"],
           autoConnect: false,
+          secure: true,
           query: {
             uuid: uuid
           }
@@ -117,6 +118,7 @@ export class ConnectionService {
         options: {
           path: that.config.getAdminConfig()["SOCKET_PATH"],
           autoConnect: false,
+          secure: true,
           query: {
             username: username,
             password: password
@@ -170,6 +172,7 @@ export class ConnectionService {
               that.config.getAdminConfig()['SOCKET_PORT'],
         options: {
           path: that.config.getAdminConfig()["SOCKET_PATH"],
+          secure: true,
           autoConnect: false
         }
       };

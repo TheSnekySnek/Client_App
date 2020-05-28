@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "resources": "cordova-res android && node scripts/resources.js"
   },
   "private": true,
   "dependencies": {
@@ -30,7 +31,7 @@
     "@ionic/angular": "^5.0.0",
     "angularx-qrcode": "^2.1.1",
     "capacitor-app": "file:electron",
-    "chart.js": "^2.6.0",
+    "chart.js": "^2.9.3",
     "cordova-plugin-badge": "^0.8.8",
     "cordova-plugin-device": "^2.0.3",
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
@@ -56,6 +57,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "cordova-res": "^0.14.0",
     "electron-packager": "^14.2.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",

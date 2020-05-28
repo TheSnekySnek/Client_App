@@ -1,0 +1,36 @@
+ion-item{
+  --background:  #0F1122;
+  --background-hover: slategray !important;
+  --color : white;
+  --padding-bottom: 30px;
+  --padding-top: 25px;
+  --padding-start: 25px;
+  font-size: 18px;
+  font-weight: 100;
+  font-family: "Gill Sans", sans-serif;
+}
+ion-item:hover {
+  --background: slategray !important;
+}
+ion-toolbar{
+  --background:  #0F1122;
+  --color : white;
+  text-align: center;
+  height : 180px;
+
+  .logo2{
+    width: 50px;
+    margin-top: 20px;
+  }
+  .logoBlanc{
+    width: 150px;
+    margin-top: 30px;
+  }
+}
+
+ion-menu{
+  ion-content{
+    --ion-background-color:  #0F1122;
+    --color : white;
+  }
+}

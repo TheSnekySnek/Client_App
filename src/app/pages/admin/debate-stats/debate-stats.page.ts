@@ -26,13 +26,12 @@ export class DebateStatsPage implements OnInit {
   barChart: Chart;
 
   constructor(
-      private router: Router,
-      private statManager: StatService,
-      private debateManager: DebateService,
+      private router          : Router,
+      private statManager     : StatService,
+      private debateManager   : DebateService,
       private questionManager : QuestionService,
-      public menuCtrl: MenuController
-  ) {
-  }
+      public menuCtrl         : MenuController
+  ) {}
 
   /**
    * Get the stats for the debate on the server
