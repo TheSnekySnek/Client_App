@@ -119,6 +119,26 @@ export class QuestionService {
     );
   }
 
+  public onNewResponseCloseQuestion(callback: Function){
+    this.connection.socket.on('questionAnswered',
+        (response: any) => {
+          console.log("Received new question");
+          // Call the callback
+          callback(response);
+        }
+    );
+  }
+
+  public  onNewResponseOpenQuestion(callback: Function){
+    this.connection.socket.on('newOpenQuestionAnswer',
+        (response: any) => {
+          console.log("Received new question");
+          // Call the callback
+          callback(response);
+        }
+    );
+  }
+
   /**
    * Suggest a question to be added to the debate
    * @param question Suggested question

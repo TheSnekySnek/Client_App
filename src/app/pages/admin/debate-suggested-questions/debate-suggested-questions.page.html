@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="admin-home"></ion-back-button>
+      <ion-back-button defaultHref="admin-details"></ion-back-button>
     </ion-buttons>
     <ion-title>
       Suggestions
@@ -23,6 +23,7 @@
         <ion-button float-right disabled="">
           <ion-label>{{suggestion.votes}}</ion-label>
           <ion-icon name="arrow-up-circle"></ion-icon>
+          <ion-label>{{suggestion.uuid}}</ion-label>
         </ion-button>
         <ion-buttons slot="end">
           <ion-icon name="alert-circle-outline" class="ban-btn" (click)="presentBanAlert(suggestion.uuid)"></ion-icon>

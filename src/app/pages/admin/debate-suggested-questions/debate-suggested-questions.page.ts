@@ -49,6 +49,7 @@ export class DebateSuggestedQuestionsPage implements OnInit {
         {
           text: 'Oui',
           handler: async () => {
+            console.log(user);
             //Ban the user
             await this.debateManager.banUser(this.debateId, user);
             this.notificationManager.displayInfo("L'utilisateur à été banni");
