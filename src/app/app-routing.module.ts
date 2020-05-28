@@ -9,10 +9,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/admin-begin/admin-begin.module').then( m => m.AdminBeginPageModule)
   },  
   {
-    path: 'help',
-    loadChildren: () => import('./pages/client/help/help.module').then( m => m.HelpPageModule)
-  },
-  {
     path: 'login',
     loadChildren: () => import('./pages/client/login/login.module').then( m => m.LoginPageModule)
   },
