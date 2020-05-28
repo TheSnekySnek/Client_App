@@ -10,7 +10,7 @@
     <ion-content >
       <ion-list>
         <ion-menu-toggle auto-hide="false" *ngFor="let p of appMenu">
-          <ion-item [routerDirection]="'root'" [href]="[p.url]" lines = "none">
+          <ion-item [routerDirection]="'root'" (click)="this.router.navigate([p.url])" lines = "none">
             <ion-icon slot= "start" color="primary" [name] = "p.icon"></ion-icon>
             <ion-label>{{p.label}}</ion-label>
           </ion-item>

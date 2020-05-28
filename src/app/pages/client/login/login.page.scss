@@ -12,6 +12,9 @@ ion-toolbar{
 
 ion-title{
     text-align: center !important;
+    position: absolute;
+    top: 15px;
+    left: calc(50% - 78px);
 }
 
 ion-card{

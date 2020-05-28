@@ -3,6 +3,10 @@ ion-toolbar{
   --background: #006494; 
 }
 
+ion-content{
+  text-align:center;
+}
+
 ion-item{
   --padding-top:15px;
   --padding-bottom:15px;
@@ -23,7 +27,7 @@ ion-label{
 .description{
   margin-top: 30px;
   margin-left: 10%;
-  margin-right: 15%;
+  margin-right: 10%;
   font-family:"Gill Sans", sans-serif;
   
   h1{

@@ -8,6 +8,13 @@ ion-menu-button{
   --color:white;
 }
 
+ion-title{
+  text-align: center;
+  position: absolute;
+  top: 15px;
+  left: calc(50% - 85px);
+}
+
 ion-toolbar{
   --color:white;
   --background:rgb(9, 12, 54);
@@ -46,7 +53,7 @@ ion-label{
 }
 
 .first{
-  margin-top: 0px;
+  margin-top: 10px;
   p{
     margin-left: 40px;
     margin-right: 40px;

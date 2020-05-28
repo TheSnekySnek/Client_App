@@ -8,7 +8,7 @@
        position: absolute;
        text-align: center;
        top: 10%;
-       left: 10px;
+       left: 3%;
        font-family: "Gill Sans", sans-serif;
        font-weight: lighter;
        font-size: 40px;
@@ -24,8 +24,8 @@
        text-align: center;
        top: 120%;
        margin-top: 10px;
-       margin-left: 22%;
-       margin-right: 22%;
+       margin-left: 25%;
+       margin-right: 25%;
        font-family: "Gill Sans", sans-serif;
        font-weight: lighter;
        font-size: 15px;
@@ -43,10 +43,10 @@
        padding-left: 30px;
        padding-right: 30px;
        font-size: 18px;
-       background-color: yellow;
+       background-color: white;
        font-weight: 600;
        color: #0E0E52;
-       border: solid  yellow;
+       border: solid #68bdc9;
        cursor: pointer;
    }
     
@@ -70,9 +70,9 @@
       padding-right: 20px;
       font-size: 18px;
       font-weight: 600;
-      color: yellow;
+      color: white;
       background-color: #0E0E52;
-      border: solid yellow;
+      border: solid rgb(21, 85, 128);
       cursor: pointer;
     }
      
@@ -89,7 +89,6 @@
       color: white;
       cursor: pointer;
       border: solid  #68bdc9;
-      cursor: pointer;
     }
    
     .animation-area {

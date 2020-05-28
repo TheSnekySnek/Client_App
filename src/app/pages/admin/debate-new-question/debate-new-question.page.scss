@@ -1,6 +1,6 @@
 ion-content{
   --background:   white;
-  text-align: left;
+  text-align: center;
   margin-top: 15px;
 }
 
@@ -37,12 +37,13 @@ h1{
     font-size: 25px!important;
 }
 
-@media(max-width:1000px){
+@media(max-width:1500px){
   .dessin{
-    height:80%;
+    height:90%;
     width:100%;
   }
 }
+
 
 .grid-container {
   display: grid;
@@ -86,7 +87,7 @@ h1{
 }
 
  .send-btn{
-   --color:yellow;
+   --color:white;
    --background: rgb(15, 34, 88);
  }
 
