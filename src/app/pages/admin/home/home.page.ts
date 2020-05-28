@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   constructor(
     private router        : Router, 
     private debateManager : DebateService,
-    public menuCtrl: MenuController
+    public menuCtrl       : MenuController
 
   ) {}
  
@@ -55,8 +55,7 @@ export class HomePage implements OnInit {
    */
   ionViewWillEnter(){
     this.updateDebates();
-    this.menuCtrl.enable(false);
-
+    this.menuCtrl.enable(false); //used to close the menu
   }
 
   /**

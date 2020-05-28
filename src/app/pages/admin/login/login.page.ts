@@ -19,12 +19,8 @@ export class LoginPage implements OnInit {
     private connection  : ConnectionService, 
     private router      : Router, 
     private notification: NotificationService,
-    public menuCtrl: MenuController
+    public menuCtrl     : MenuController
   ) {}
-
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-  }
 
   /**
    * Login the admin via the connection service
@@ -43,6 +39,13 @@ export class LoginPage implements OnInit {
    * Executes on page initialisation
    */
   ngOnInit() {
+  }
+
+  /**
+   * Automatically closes the menu 
+   */
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
 }

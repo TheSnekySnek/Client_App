@@ -6,6 +6,11 @@
     <ion-title>
       Questions
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="Lignt" href="admin-begin">
+        <ion-icon name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -21,6 +26,7 @@
     </ion-refresher>
     <ion-list *ngIf="availableQuestions.length > 0">
       <ion-item *ngFor="let question of availableQuestions"  class="question-item" (click)="viewQuestion(question)">
+        <ion-icon name="chatbubbles" class="rond"></ion-icon>
         <ion-label>{{question.title}}</ion-label>
       </ion-item>
     </ion-list>

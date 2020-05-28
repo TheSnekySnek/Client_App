@@ -18,12 +18,9 @@ export class NewDebatePage implements OnInit {
     private debateManager : DebateService, 
     private notification  : NotificationService, 
     private router        : Router,
-    public menuCtrl: MenuController
+    public menuCtrl       : MenuController
 
     ) {}
-    ionViewWillEnter() {
-      this.menuCtrl.enable(false);
-    }
 
   /**
    * Creates a new debate
@@ -57,6 +54,13 @@ export class NewDebatePage implements OnInit {
    * Executes on page initialisation
    */
   ngOnInit() {
+  }
+
+  /**
+   * Closes the menu automatically
+   */
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
 }

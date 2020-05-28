@@ -1,28 +1,26 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
 ion-toolbar{
   --color:white;
-  //--background:rgb(9, 12, 54);
   --background: #006494; 
 }
 
 ion-content{
-color: rgb(9, 12, 54) !important;
-font-size: 18px;
-text-align: center;
---ion-background-color: white;//#adddf1; 
-
+  color: rgb(9, 12, 54) !important;
+  font-size: 18px;
+  text-align: center;
+  --ion-background-color: white;
 }
+
 ion-input{
-border-bottom: 2px solid  rgb(9, 12, 54) !important;
-
+  border-bottom: 2px solid  rgb(9, 12, 54) !important;
 }
+
 ion-textarea{
-border: 2px solid  rgb(9, 12, 54) !important;
-
+  border: 2px solid  rgb(9, 12, 54) !important;
 }
-
 
 ion-title{
   text-align: center;
@@ -44,28 +42,27 @@ ion-title{
 }
 
 h1{
-
   margin-top: 30px;
   margin-left: 15%;
   margin-right: 15%;
   font-family:cursive;
-    --color:rgb(9, 12, 54) !important;
-    font-variant: small-caps;
-    font-size: 30px;
-    font-kerning: initial;
-  }
-  p{
-    margin-left: 15%;
-    margin-right: 15%;
-    font-family:cursive;
+  --color:rgb(9, 12, 54) !important;
+  font-variant: small-caps;
+  font-size: 30px;
+}
 
-  }
+p{
+  margin-left: 15%;
+  margin-right: 15%;
+  font-family:cursive;
+}
+
 @media(min-width:800px){
   .logo{
-  //  width:80%;
     height:60%;
   }
 }
+
 @media(min-width:1300px){
   .logo{
     width:50%;

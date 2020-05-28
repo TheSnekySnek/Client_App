@@ -3,6 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
     <ion-title>
       Question
     </ion-title>
@@ -10,7 +13,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <div id="container" *ngIf="question != null">
     <p class="question-title"></p>
     <p class="question-text">{{question.title}}</p>

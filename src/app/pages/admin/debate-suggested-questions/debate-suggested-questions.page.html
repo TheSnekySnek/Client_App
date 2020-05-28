@@ -1,8 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-home"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       Suggestions
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="Lignt" href="admin-begin">
+        <ion-icon name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -16,10 +24,11 @@
   <div id="container">
     <ion-list *ngIf="availableSuggestions.length > 0">
       <ion-item *ngFor="let suggestion of getAvailableSuggestions()" class="question-item">
+        <ion-icon name="chatbubbles-outline" class="rond"></ion-icon>
         <ion-label>{{suggestion.suggestion}}</ion-label>
         <ion-button float-right disabled="">
           <ion-label>{{suggestion.votes}}</ion-label>
-          <ion-icon name="arrow-up-circle"></ion-icon>
+          <ion-icon name="arrow-up-circle" color="Warning-tint"></ion-icon>
         </ion-button>
       </ion-item>
     </ion-list>

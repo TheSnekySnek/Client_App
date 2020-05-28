@@ -11,11 +11,14 @@ export class DebatePage implements OnInit {
 
   constructor(
     public menuCtrl: MenuController
-
     ) {}
-    ionViewWillEnter() {
-      this.menuCtrl.enable(false);
-    }
+
+  /**
+   * Ferme le menu automatiquement
+   */  
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   /**
    * Executes on page initialisation

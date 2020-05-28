@@ -12,14 +12,13 @@
     <img src="assets/icon/Dessin 3.png" class="logo">
   </div>
   <p>Vous pouvez suggérer des questions à poser ici</p>
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
-        <ion-label position="stacked">Suggestion</ion-label>
-        <ion-input required type="text" [(ngModel)]="suggestedQuestion"></ion-input>
-      </ion-item>
-    </ion-list>
-
-    <div class="ion-padding">
-      <ion-button expand="block" class="send-btn" (click)="suggestQuestion()">Envoyer</ion-button>
-    </div>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+    <ion-item>
+      <ion-label position="stacked">Suggestion</ion-label>
+      <ion-input required type="text" [(ngModel)]="suggestedQuestion"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="ion-padding">
+    <ion-button expand="block" class="send-btn" (click)="suggestQuestion()">Envoyer</ion-button>
+  </div>
 </ion-content>
