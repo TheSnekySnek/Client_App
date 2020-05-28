@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionService } from 'src/app/services/question.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
+import {ConnectionService} from "../../../services/connection.service";
 
 @Component({
   selector: 'app-questions',
@@ -17,7 +18,8 @@ export class QuestionsPage implements OnInit {
     private questions   : QuestionService, 
     private route       : ActivatedRoute,
     private router      : Router,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private connection  : ConnectionService
   ) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -25,6 +27,10 @@ export class QuestionsPage implements OnInit {
         console.log(`Question ${questionId} was answered`);
         this.updateQuestions();
       }
+    });
+
+    this.connection.onDisconnect(() => {
+      this.router.navigate(["/login"])
     });
   }
 
@@ -70,7 +76,7 @@ export class QuestionsPage implements OnInit {
     this.questions.onNewQuestion((question) => {
       this.availableQuestions.push(question);
       this.notification.displayNotification("Une nouvelle question est disponible", question['title']);
-    })
+    });
   }
 
   /**

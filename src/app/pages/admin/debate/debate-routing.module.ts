@@ -50,14 +50,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/debate/questions',
+        redirectTo: '/debate/details',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/debate/questions',
+    redirectTo: '/debate/details',
     pathMatch: 'full'
   }
 ];

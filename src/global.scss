@@ -24,3 +24,13 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.qrcode-modal .modal-wrapper {
+  width: 80vw;
+  height: 80vw;
+}
+
+.qr-element svg {
+  width: 99%;
+  height: 99%;
+}
