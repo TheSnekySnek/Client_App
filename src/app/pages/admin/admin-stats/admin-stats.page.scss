@@ -1,0 +1,60 @@
+
+ion-toolbar{
+  --color:white;
+  --background: #006494;
+}
+
+
+
+.description{
+  margin-top: 30px;
+  margin-left: 10%;
+  margin-right: 15%;
+  font-family:"Gill Sans", sans-serif;
+
+  h1{
+    font-variant: small-caps;
+    font-size: 30px;
+    font-kerning: initial;
+  }
+
+}
+
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #006494;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+ion-title{
+  text-align: center;
+  position: absolute;
+  top: 15px;
+  left: calc(50% - 50px);
+}
+
+.wait-text{
+  color: #aaa;
+  font-size: 18px;
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  margin: 0 10px;
+}
+

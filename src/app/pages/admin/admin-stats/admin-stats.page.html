@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-details"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Statistique pour l'administrateur
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <ion-refresher slot="fixed" (ionRefresh)="getStats()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list *ngIf="statDebates.length > 0">
+      <ion-item>
+        <ion-label>
+          Nombre de débats : {{statDebates[0]}}
+        </ion-label>
+        <ion-icon name="assets/help-outline.svg"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <strong *ngIf="statDebates.length != 2" class="wait-text">Pas de statistiques à afficher pour le moment</strong>
+  </div>
+
+  <div id="stats">
+    <ion-refresher slot="fixed" (ionRefresh)="getStats()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list *ngIf="statDebates.length == 2">
+      <ion-item>
+        <ion-label>
+          <ion-text color="primary">
+            <h1>ID</h1>
+          </ion-text>
+        </ion-label>
+        <ion-label>
+          <ion-text color="primary">
+            <h1>Titre</h1>
+          </ion-text>
+        </ion-label>
+        <ion-label>
+          <ion-text color="primary">
+            <h1>Description</h1>
+          </ion-text>
+        </ion-label>
+        <ion-label>
+          <ion-text color="primary">
+            <h1>Durée totale</h1>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngFor="let debate of statDebates[1]"  class="question-item" (click)="viewDebate(debate)">
+        <ion-label>{{debate.id}}</ion-label>
+        <ion-label>{{debate.title}}</ion-label>
+        <ion-label>{{debate.description}}</ion-label>
+        <ion-label>{{debate.time}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

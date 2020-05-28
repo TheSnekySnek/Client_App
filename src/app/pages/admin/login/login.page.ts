@@ -30,13 +30,18 @@ export class LoginPage implements OnInit {
    * Login the admin via the connection service
    */
   async login() {
+    console.log("I'm logging");
     var status = await this.connection.login(this.username, this.password);
     if (status['connected']) {
-      this.router.navigate(['admin-home']);
+      this.router.navigate(['admin-details']);
     }
     else {
       this.notification.displayError(status['message']);
     }
+  }
+
+  async getUsername(){
+    return this.username;
   }
 
   /**
