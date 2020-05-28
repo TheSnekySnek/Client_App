@@ -6,13 +6,13 @@ const GLOBAL_CONFIG = {
   "constants": {
       "prod": {
           "admin": {
-              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_ADDRESS"        : "https://sondage.codeheure.com",
               "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/admin"
           },
           "client": {
-              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
+              "SOCKET_ADDRESS"        : "https://sondage.codeheure.com",
               "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/DEBATE-"
@@ -20,14 +20,14 @@ const GLOBAL_CONFIG = {
       },
       "dev": {
           "admin": {
-              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
-              "SOCKET_PORT"           : 4356,
+              "SOCKET_ADDRESS"        : "https://sondage.codeheure.com",
+              "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/admin"
           },
           "client": {
-              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
-              "SOCKET_PORT"           : 4356,
+              "SOCKET_ADDRESS"        : "https://sondage.codeheure.com",
+              "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/DEBATE-"
           }
@@ -36,7 +36,7 @@ const GLOBAL_CONFIG = {
           "TEST_DEBATE_CODE"          : "TEST",
           "TEST_WRONG_DEBATE_CODE"    : "INVALID",
           "TEST_USERNAME"             : "admin",
-          "TEST_PASSWORD"             : "pass",
+          "TEST_PASSWORD"             : "passpass",
           "TEST_WRONG_PASSWORD"       : "wrongpass"
       }
   }

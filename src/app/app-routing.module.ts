@@ -33,8 +33,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'admin-home',
-    loadChildren: () => import('./pages/admin/home/home.module').then( m => m.HomePageModule)
+    path: 'admin-details',
+    loadChildren: () => import('./pages/admin/admin-details/admin-details.module').then( m => m.AdminDetailPageModule)
   },
   {
     path: 'admin-newDebate',

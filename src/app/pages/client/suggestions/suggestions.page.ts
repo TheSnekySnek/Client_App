@@ -27,7 +27,9 @@ export class SuggestionsPage implements OnInit {
     this.availableSuggestions = [];
 
     var suggestions = await this.suggestions.getSuggestions();
-    console.log(suggestions);
+    if (suggestions.length === 0)
+      return;
+
     suggestions.forEach(s => {
       if (s["voted"] === true)
         this.votedSuggestions.push(s);

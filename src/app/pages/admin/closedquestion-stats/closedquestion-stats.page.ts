@@ -72,10 +72,8 @@ export class ClosedQuestionStatsPage implements OnInit {
     this.barChart.data.datasets.push({
       label: "# number of votes",
       data: []
-      //color: if we need a color
     });
     for (const response of this.statResponses[2]) {
-      console.log(response); // To Remove
       this.barChart.data.labels.push(response.response);
       this.barChart.data.datasets.forEach((dataset) => {
         dataset.data.push(response.numberVotes);
@@ -97,7 +95,6 @@ export class ClosedQuestionStatsPage implements OnInit {
     this.doughnutChart.data.datasets.push({
       label: "# Percentage of votes",
       data: []
-      //color: if we need a color
     });
     for (const response of this.statResponses[2]) {
       console.log(response); // To Remove
