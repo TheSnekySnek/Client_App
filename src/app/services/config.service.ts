@@ -35,8 +35,8 @@ const GLOBAL_CONFIG = {
       "test":{
           "TEST_DEBATE_CODE"          : "TEST",
           "TEST_WRONG_DEBATE_CODE"    : "INVALID",
-          "TEST_USERNAME"             : "admin",
-          "TEST_PASSWORD"             : "pass",
+          "TEST_USERNAME"             : "test_admin",
+          "TEST_PASSWORD"             : "adminPassword",
           "TEST_WRONG_PASSWORD"       : "wrongpass"
       }
   }
