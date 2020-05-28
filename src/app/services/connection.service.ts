@@ -176,8 +176,6 @@ export class ConnectionService {
 
       that.socket = new Socket(adminSocketConfig);
 
-      //Listen for successful connection or failure
-
       //Socket connected
       that.socket.on('connect', function () {
         //Prevent events for firing again
