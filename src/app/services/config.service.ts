@@ -6,13 +6,13 @@ const GLOBAL_CONFIG = {
   "constants": {
       "prod": {
           "admin": {
-              "SOCKET_ADDRESS"        : "127.0.0.1",
+              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
               "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/admin"
           },
           "client": {
-              "SOCKET_ADDRESS"        : "127.0.0.1",
+              "SOCKET_ADDRESS"        : "sondage.codeheure.com",
               "SOCKET_PORT"           : 8080,
               "SOCKET_PATH"           : "/socket-io",
               "SOCKET_NAMESPACE"      : "/DEBATE-"
