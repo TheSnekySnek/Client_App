@@ -72,6 +72,12 @@ ion-title{
   margin: 0 10px;
 }
 
+@media(max-width: 500px)  {
+  .logo{
+    display:none;
+  }
+}
+
 @media(min-width:1000px){
   .logo{
     width:80%;
@@ -89,3 +95,4 @@ ion-title{
     width:60%;
   }
 }
+
