@@ -21,6 +21,12 @@ export class LoginPage implements OnInit {
     private notification: NotificationService,
     public menuCtrl     : MenuController
   ) {}
+    /**
+   * Automatically closes the menu 
+   */
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   /**
    * Login the admin via the connection service
@@ -41,11 +47,6 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  /**
-   * Automatically closes the menu 
-   */
-  ionViewWillEnter() {
-    this.menuCtrl.enable(false);
-  }
+
 
 }

@@ -50,11 +50,13 @@ h1{
   font-variant: small-caps;
   font-size: 30px;
   font-kerning: initial;
-  }
-  p{
-    margin-left: 15%;
-    margin-right: 15%;
-    font-family:"Gill Sans", sans-serif;
+}
+
+p{
+  margin-left: 15%;
+  margin-right: 15%;
+  font-family:"Gill Sans", sans-serif;
+}
 
 @media(min-width:800px){
   .logo{
@@ -68,5 +70,3 @@ h1{
     height:55%;
   }
 }
-
-

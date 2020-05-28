@@ -2,8 +2,11 @@ ion-content{
   --color:  rgb(24, 29, 68);
   text-align: center;
   font-weight: 400;
+  width:100vw;
 }
-
+ion-menu-button{
+  --color:white;
+}
 ion-toolbar{
   --color:white;
   --background:rgb(9, 12, 54);

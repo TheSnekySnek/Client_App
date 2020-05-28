@@ -6,11 +6,6 @@
     <ion-title>
       Questions
     </ion-title>
-    <ion-buttons slot="end">
-      <ion-button color="Lignt" href="admin-begin">
-        <ion-icon name="power-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -31,8 +26,9 @@
       </ion-item>
     </ion-list>
     <strong *ngIf="availableQuestions.length == 0" class="wait-text">
-      <img src="assets/icon/sujets2.png" class= "logo">
-      <p>Ajoutez une nouvelle question en appuyant sur (+)</p> </strong>
+      <p><img src="assets/icon/sujets2.png"> <br>
+      Ajoutez une nouvelle question en appuyant sur (+)</p> 
+    </strong>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addQuestion()">
