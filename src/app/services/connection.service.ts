@@ -3,6 +3,7 @@ import { NotificationService } from './notification.service'
 import { IdentificationService } from './identification.service'
 import { Socket, SocketIoConfig } from 'ngx-socket-io';
 import { ConfigService } from './config.service';
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -21,7 +22,8 @@ export class ConnectionService {
   constructor(
     private notification  : NotificationService,
     private identification: IdentificationService,
-    private config        : ConfigService
+    private config        : ConfigService,
+    private router : Router
   ) { }
 
   /**
@@ -72,6 +74,8 @@ export class ConnectionService {
 
       //Socket connected
       that.socket.on('connect', function () {
+        //Reset the flag
+        that.hasShownConnectError = false;
         //Prevent events for firing again
         that.socket.removeAllListeners();
         that.setupListeners()
@@ -157,7 +161,10 @@ export class ConnectionService {
     //Display an error if we are unable to connect to the server
     this.socket.on('connect_error', (error) => {
       //Only show the error once
+      console.log('errror pre');
+
       if (!this.hasShownConnectError) {
+        console.log('errror');
         this.notification.displayError(error)
         this.hasShownConnectError = true;
       }
@@ -170,7 +177,8 @@ export class ConnectionService {
     */
     //Display a message if we were disconnected from the server
     this.onDisconnect(() => {
-      this.notification.displayInfo("Disconnected from server")
+      if (!this.hasShownConnectError)
+        this.notification.displayInfo("Disconnected from server")
     })
   }
 
@@ -198,6 +206,10 @@ export class ConnectionService {
    * @param callback function to callback
    */
   public onDisconnect(callback: Function) {
+    // If we already disconnected in the meantime
+    if (this.hasShownConnectError)
+      callback();
+
     //Listen for the disconnect event
     this.socket.on('disconnect', () => {
       callback()
