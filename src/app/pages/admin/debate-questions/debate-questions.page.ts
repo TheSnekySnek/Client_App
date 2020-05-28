@@ -15,11 +15,11 @@ export class DebateQuestionsPage implements OnInit {
   public debateId     : string;
 
   constructor(
-    private route         : ActivatedRoute,
-    private router        : Router, 
-    private debateManager : DebateService,
+    private route           : ActivatedRoute,
+    private router          : Router,
+    private debateManager   : DebateService,
     private questionManager : QuestionService,
-    public menuCtrl       : MenuController
+    public menuCtrl         : MenuController
   ) {
       this.route.queryParams.subscribe(params => {
       // Refresh if needed

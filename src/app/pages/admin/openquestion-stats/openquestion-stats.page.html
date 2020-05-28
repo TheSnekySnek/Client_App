@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="debate/questions"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Stats of the question {{questionManager.getSavedQuestion().title}}
+      Statistique de la question {{questionManager.getSavedQuestion().title}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -45,6 +45,6 @@
     <ion-item *ngFor="let response of statResponses[2]"  class="response-item">
       <ion-label>{{response.response}}</ion-label>
     </ion-item>
-    <strong *ngIf="statResponses.length != 3" class="wait-text">No stats to be shown for the moment</strong>
+    <strong *ngIf="statResponses.length != 3" class="wait-text">Pas de statistique à afficher pour le moment</strong>
   </div>
 </ion-content>

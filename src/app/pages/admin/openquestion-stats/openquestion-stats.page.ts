@@ -42,10 +42,9 @@ export class OpenQuestionStatsPage implements OnInit {
    * Updates the list of questions
    */
   private async getStats() {
-    console.log("Sending things")
-    console.log(this.questionId)
+    console.log("Sending things");
+    console.log(this.questionId);
     this.statResponses = await this.statManager.getQuestionStats(this.questionId);
-    console.log(this.statResponses);
   }
 
   /**
@@ -72,10 +71,8 @@ export class OpenQuestionStatsPage implements OnInit {
     this.barChart.data.datasets.push({
       label: "# number of votes",
       data: []
-      //color: if we need a color
     });
     for (const response of this.statResponses[2]) {
-      console.log(response); // To Remove
       this.barChart.data.labels.push(response.response);
       this.barChart.data.datasets.forEach((dataset) => {
         dataset.data.push(response.numberVotes);
@@ -97,10 +94,8 @@ export class OpenQuestionStatsPage implements OnInit {
     this.doughnutChart.data.datasets.push({
       label: "# Percentage of votes",
       data: []
-      //color: if we need a color
     });
     for (const response of this.statResponses[2]) {
-      console.log(response); // To Remove
       this.doughnutChart.data.labels.push(response.response);
       this.doughnutChart.data.datasets.forEach((dataset) => {
         dataset.data.push(response.percentage);

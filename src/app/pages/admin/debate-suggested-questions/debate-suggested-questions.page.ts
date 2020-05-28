@@ -19,7 +19,7 @@ export class DebateSuggestedQuestionsPage implements OnInit {
     private debateManager       : DebateService,
     private alertController     : AlertController,
     private notificationManager : NotificationService,
-    public menuCtrl: MenuController
+    public menuCtrl             : MenuController
   ) {}
 
   /**

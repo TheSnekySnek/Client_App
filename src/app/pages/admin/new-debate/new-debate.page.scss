@@ -3,7 +3,6 @@ ion-content ion-toolbar {
 }
 ion-toolbar{
   --color:white;
-  //--background:rgb(9, 12, 54);
   --background: #006494; 
 }
 
@@ -11,7 +10,7 @@ ion-content{
 color: rgb(9, 12, 54) !important;
 font-size: 18px;
 text-align: center;
---ion-background-color: white;//#adddf1; 
+--ion-background-color: white;
 
 }
 ion-input{
@@ -62,7 +61,6 @@ h1{
   }
 @media(min-width:800px){
   .logo{
-  //  width:80%;
     height:60%;
   }
 }

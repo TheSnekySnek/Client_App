@@ -16,7 +16,7 @@ export class HomePage implements OnInit {
   constructor(
     private router        : Router, 
     private debateManager : DebateService,
-    public menuCtrl: MenuController
+    public menuCtrl       : MenuController
 
   ) {}
  

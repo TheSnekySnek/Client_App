@@ -1,11 +1,8 @@
 
 ion-toolbar{
   --color:white;
-  //--background:rgb(9, 12, 54);
   --background: #006494;
 }
-
-
 
 .description{
   margin-top: 30px;
@@ -21,12 +18,11 @@ ion-toolbar{
 
 }
 
-
 #container p {
   font-size: 16px;
   line-height: 22px;
 
-  color: #006494; //#8c8c8c;
+  color: #006494;
 
   margin: 0;
 }
