@@ -1,6 +1,6 @@
 {
-  "appId": "ch.villagrasa.client",
-  "appName": "client",
+  "appId": "ch.villagrasa.nicesurvey",
+  "appName": "NiceSurvey",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
