@@ -8,7 +8,20 @@
 
 <ion-content [fullscreen]="true">
 
-  <div id="container">
+
+  <div class="first">
+    <img src="assets/icon/Logo.png" class="logo">
+    <ion-card>
+      <h1 class = head>Bienvenue sur NiceSurvey!</h1>
+      <div class="first2">
+        <img src="assets/icon/Groupe 14.png"  class = "logo1">
+        <img src="assets/icon/Groupe 26.png"  class = "logo1">
+      </div><br>
+    </ion-card>
+      <p class="other">Préparez-vous à réagir au débat, choisissez les questions les plus pertinentes pour vous</p>
+  </div>
+
+  <div id="container" class="second">
     <ion-list *ngIf="availableSuggestions.length > 0">
       <ion-item *ngFor="let suggestion of getAvailableSuggestions()" class="question-item">
         <ion-label>{{suggestion.suggestion}}</ion-label>
@@ -18,7 +31,10 @@
         </ion-button>
       </ion-item>
     </ion-list>
-    <strong *ngIf="availableSuggestions.length == 0" class="wait-text">En attente de suggestions</strong>
+    <strong *ngIf="availableSuggestions.length == 0" class="wait-text">
+      <p>En attente de suggestions </p>
+      <img src="assets/icon/Groupe 27.png" alt = "Dessin 1" class = "logo2">
+    </strong>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="newSuggestion()">

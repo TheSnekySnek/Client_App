@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DebateService } from 'src/app/services/debate.service';
 import {NavigationExtras, Router} from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
-import { NavController } from '@ionic/angular';
+import { NavController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-debate-new-question',
@@ -21,8 +21,13 @@ export class DebateNewQuestionPage implements OnInit {
   constructor(
     private notification  : NotificationService,
     private debateManager : DebateService,
-    private router        : Router
-  ) {}
+    private router        : Router,  
+    public menuCtrl: MenuController
+
+    ) {}
+    ionViewWillEnter() {
+      this.menuCtrl.enable(false);
+    }
 
   /**
    * Adds a question to the debate via the question service

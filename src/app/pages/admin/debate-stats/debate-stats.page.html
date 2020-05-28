@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="admin-home"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Stats of the debate
+      Statistique du débat
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -21,18 +21,18 @@
     <ion-list *ngIf="statQuestions.length > 0">
       <ion-item>
         <ion-label>
-          Number of questions : {{statQuestions[0]}}
+          Nombre de questions posées : {{statQuestions[0]}}
         </ion-label>
         <ion-icon name="assets/help-outline.svg"></ion-icon>
       </ion-item>
       <ion-item>
         <ion-label>
-          Number of auditors : {{statQuestions[1]}}
+          Nombre d'auditeurs : {{statQuestions[1]}}
         </ion-label>
         <ion-icon name="assets/people-circle-outline.svg"></ion-icon>
       </ion-item>
     </ion-list>
-    <strong *ngIf="statQuestions.length != 3" class="wait-text">No stats to be shown for the moment</strong>
+    <strong *ngIf="statQuestions.length != 3" class="wait-text">Pas de statistiques à afficher pour le moment</strong>
   </div>
 
   <div id="chart">
@@ -51,12 +51,12 @@
       <ion-item>
         <ion-label>
           <ion-text color="primary">
-            <h1>Title of question</h1>
+            <h1>Titre de la question</h1>
           </ion-text>
         </ion-label>
         <ion-label>
           <ion-text color="primary">
-            <h1>Number of votes</h1>
+            <h1>Nombre de vote</h1>
           </ion-text>
         </ion-label>
       </ion-item>

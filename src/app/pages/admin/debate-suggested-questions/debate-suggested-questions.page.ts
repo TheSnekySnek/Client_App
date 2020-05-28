@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {DebateService} from "../../../services/debate.service";
 import { AlertController } from '@ionic/angular';
 import { NotificationService } from 'src/app/services/notification.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-debate-suggested-questions',
@@ -17,7 +18,8 @@ export class DebateSuggestedQuestionsPage implements OnInit {
     private router              : Router,
     private debateManager       : DebateService,
     private alertController     : AlertController,
-    private notificationManager : NotificationService
+    private notificationManager : NotificationService,
+    public menuCtrl             : MenuController
   ) {}
 
   /**
@@ -70,7 +72,7 @@ export class DebateSuggestedQuestionsPage implements OnInit {
    */
   ngOnInit() {
     this.debateManager.onNewVote(suggestionId => {
-      let suggestion = this.availableSuggestions.find(s => s.suggestionId == suggestionId);
+      const suggestion = this.availableSuggestions.find(s => s.suggestionId == suggestionId);
       suggestion["votes"]++;
     });
 
@@ -85,5 +87,7 @@ export class DebateSuggestedQuestionsPage implements OnInit {
   ionViewWillEnter(){
     this.debateId = this.debateManager.getSavedDebate()['debateId'];
     this.updateSuggestions();
+    this.menuCtrl.enable(false);
+
   }
 }

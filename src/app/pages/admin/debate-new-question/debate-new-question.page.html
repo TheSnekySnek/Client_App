@@ -8,45 +8,61 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">New Question</ion-title>
-    </ion-toolbar>
-  </ion-header>
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
-        <ion-label position="stacked">Titre</ion-label>
-        <ion-input required type="text" [(ngModel)]="title"></ion-input>
-      </ion-item>
+  <div class="grid-container">
 
-      <ion-item>
-        <ion-label position="stacked">Description</ion-label>
-        <ion-textarea [(ngModel)]="description"></ion-textarea>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label>Question Ouverte</ion-label>
-        <ion-toggle [ngModelOptions]="{standalone: true}" [(ngModel)]="isOpenQuestion"></ion-toggle>
-      </ion-item>
-
-      <div *ngIf="!isOpenQuestion">
-        <ion-item >
-          <ion-label position="stacked">Nombre de réponses</ion-label>
-          <ion-input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="numAnswers" min="2" max="8"></ion-input>
-        </ion-item>
-  
-        <ion-item *ngFor="let i of arrayTwo(numAnswers);">
-          <ion-label position="stacked">Réponse {{i+1}}</ion-label>
-          <ion-input required type="text" [(ngModel)]="answers[i]"></ion-input>
-        </ion-item>
+      <div class="first">
+        <h1>Quelles sont les questions que vous aimeriez poser à votre audience?</h1>
+        <img src="assets/icon/question.png" alt="" class="dessin">
       </div>
 
-      
+      <div class="center-container">
 
-      
-    </ion-list>
+        <div class="head">
+          <img src="assets/icon/Dessin 3.png" class="logo">  
+        </div>
 
-    <div class="ion-padding">
-      <ion-button expand="block" class="send-btn" (click)="addQuestion()">Ajouter</ion-button>
-    </div>
+        <ion-header collapse="condense">
+          <ion-toolbar>
+            <ion-title size="large">Nouvelle Question</ion-title>
+          </ion-toolbar>
+        </ion-header>
+      
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          
+          <ion-item>
+            <ion-label position="stacked">Titre</ion-label>
+            <ion-input required type="text" [(ngModel)]="title"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-textarea [(ngModel)]="description"></ion-textarea>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label>Question Ouverte</ion-label>
+            <ion-toggle [ngModelOptions]="{standalone: true}" [(ngModel)]="isOpenQuestion"></ion-toggle>
+          </ion-item>
+
+          <div *ngIf="!isOpenQuestion">
+            <ion-item >
+              <ion-label position="stacked">Nombre de réponses</ion-label>
+              <ion-input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="numAnswers" min="2" max="8"></ion-input>
+            </ion-item>
+      
+            <ion-item *ngFor="let i of arrayTwo(numAnswers);">
+              <ion-label position="stacked">Réponse {{i+1}}</ion-label>
+              <ion-input required type="text" [(ngModel)]="answers[i]"></ion-input>
+            </ion-item>
+          </div>
+
+        </ion-list>
+
+        <div class="ion-padding">
+          <ion-button expand="block" class="send-btn" (click)="addQuestion()">Ajouter</ion-button>
+        </div>
+
+  </div>
+</div>
+
 </ion-content>

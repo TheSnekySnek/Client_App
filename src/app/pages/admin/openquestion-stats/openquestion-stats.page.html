@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="debate/questions"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Statistique de la question {{questionManager.getSavedQuestion().title}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <ion-refresher slot="fixed" (ionRefresh)="getStats()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-refresher slot="fixed" (ionRefresh)="generateBarChart()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-refresher slot="fixed" (ionRefresh)="generateDoughnutChart()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list *ngIf="statResponses.length > 0">
+      <ion-item>
+        <ion-label>
+          Nombre de réponses : {{statResponses[0]}}
+        </ion-label>
+        <ion-icon name="assets/help-outline.svg"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          Intêret pour la question : {{statResponses[1]}} %
+        </ion-label>
+        <ion-icon name="assets/people-circle-outline.svg"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <ion-item>
+      <ion-label>
+        <ion-text color="primary">
+          <h1>Réponse</h1>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let response of statResponses[2]"  class="response-item">
+      <ion-label>{{response.response}}</ion-label>
+    </ion-item>
+    <strong *ngIf="statResponses.length != 3" class="wait-text">Pas de statistique à afficher pour le moment</strong>
+  </div>
+</ion-content>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/services/notification.service';
+import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -16,8 +18,13 @@ export class LoginPage implements OnInit {
   constructor(
     private connection  : ConnectionService, 
     private router      : Router, 
-    private notification: NotificationService
+    private notification: NotificationService,
+    public menuCtrl: MenuController
   ) {}
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   /**
    * Login the admin via the connection service
