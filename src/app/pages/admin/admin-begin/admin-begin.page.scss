@@ -3,8 +3,8 @@
        --background: #006494; 
        text-align: left; 
    }
-    .inner-scroll.scroll-y{
-      overflow: hidden;
+    .no-scroll{
+      --overflow: hidden;
     }
 
    .head{
