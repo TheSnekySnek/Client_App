@@ -173,6 +173,19 @@ export class DebateService {
     }
 
     /**
+     * Add a callback function when a suggestion is deleted
+     * @param callback Function to call
+     */
+    public onDeletedSuggestion(callback: Function) {
+        this.connection.socket.on("deletedSuggestion",
+          (suggestionId: number) => {
+              // Call the callback
+              callback(suggestionId)
+          }
+        );
+    }
+
+    /**
    * Save a debate to have it in the other pages
    * @param debate Function to call
    */
