@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin-begin',
@@ -8,15 +7,12 @@ import { MenuController } from '@ionic/angular';
 })
 export class AdminBeginPage implements OnInit {
 
-  constructor(
-    public menuCtrl: MenuController
-  ) {}
+  constructor() {}
 
   /**
    * Closes the menu automatically
    */
   ionViewWillEnter() {
-    this.menuCtrl.enable(false);
   }
 
   ngOnInit() {
