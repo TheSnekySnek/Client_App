@@ -19,11 +19,11 @@
   <div id="container">
     <ion-list *ngIf="availableSuggestions.length > 0">
       <ion-item *ngFor="let suggestion of getAvailableSuggestions()" class="question-item">
+        <ion-icon name="chatbubbles-outline" class="rond"></ion-icon>
         <ion-label>{{suggestion.suggestion}}</ion-label>
         <ion-button float-right disabled="">
           <ion-label>{{suggestion.votes}}</ion-label>
-          <ion-icon name="arrow-up-circle"></ion-icon>
-          <ion-label>{{suggestion.uuid}}</ion-label>
+          <ion-icon name="arrow-up-circle" color="Warning-tint"></ion-icon>
         </ion-button>
         <ion-buttons slot="end">
           <ion-icon name="alert-circle-outline" class="ban-btn" (click)="presentBanAlert(suggestion.uuid)"></ion-icon>
@@ -31,8 +31,8 @@
       </ion-item>
     </ion-list>
     <strong *ngIf="availableSuggestions.length == 0" class="wait-text">
-      <img src="assets/icon/debat.png" class= "logo">
-      <p>En attente de suggestions </p>
+      <p><img src="assets/icon/debat2.png" class="logo"> <br>
+      En attente de suggestions </p>
     </strong>
   </div>
 </ion-content>

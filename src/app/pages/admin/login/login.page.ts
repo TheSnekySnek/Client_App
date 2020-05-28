@@ -19,11 +19,12 @@ export class LoginPage implements OnInit {
     private connection  : ConnectionService, 
     private router      : Router, 
     private notification: NotificationService,
-    public menuCtrl: MenuController
+    public menuCtrl     : MenuController
   ) {}
-
+    /**
+   * Automatically closes the menu 
+   */
   ionViewWillEnter() {
-    this.menuCtrl.enable(false);
   }
 
   /**
@@ -40,6 +41,33 @@ export class LoginPage implements OnInit {
     }
   }
 
+  /**
+   * Login the admin via the connection service
+   */
+  async register() {
+
+    if (!this.username || this.username.length == 0) {
+      this.notification.displayError("Veuillez spécifier un nom d'utilisateur");
+      return;
+    }
+    if (!this.password || this.password.length == 0) {
+      this.notification.displayError("Veuillez spécifier un mot de passe");
+      return;
+    }
+    var status = await this.connection.register(this.username, this.password);
+    
+    console.log(status)
+    if(status['res']){
+      this.notification.displayInfo("Compte créé");
+      
+      //Auth with the account
+      this.login();
+    }
+    else{
+      this.notification.displayError(status['err']);
+    }
+  }
+
   async getUsername(){
     return this.username;
   }
@@ -49,5 +77,7 @@ export class LoginPage implements OnInit {
    */
   ngOnInit() {
   }
+
+
 
 }

@@ -1,71 +1,58 @@
 ion-content{
   --background:   white;
-  text-align: left;
+  text-align: center;
   margin-top: 15px;
 }
+
 ion-item{
   --background:  white;
-
 }
-ion-list{
-  --background:   #B4B1D3;
 
-}
-ion-header{
+
+ion-title{
   text-align: center;
+  position: absolute;
+  top: 15px;
+  left: calc(50% - 120px);
 }
+
 ion-toolbar{
   --color:white;
-  --background: #006494; 
-
-}
-ion-menu-button{
-  --color: white;
-}
-ion-content ion-toolbar {
-    --background:  #B1D1D3;
-  }
-ion-toggle{
-  --background: rgb(153, 204, 228);
-  --background-checked:rgb(97, 178, 216);
-  --handle-background-checked: rgb(15, 34, 88);
-}
-
-ion-back-button{
-  --color:white;
-
+  --background: #006494;
 }
 
 ion-label{
-  margin: 10px;;
+  margin: 10px;
 }
 
 ion-input{
   border-bottom: solid 1px rgb(15, 34, 88);
 
 }
+
 ion-textarea{
   --background: rgb(227, 239, 245);
   --background-opacity:20%;
 }
+
 h1{
     font-family:"Gill Sans", sans-serif;
     font-variant: small-caps;
     font-size: 25px!important;
-  
 }
 
-@media(max-width:1000px){
-.dessin{
-  height:80%;
-  width:100%;
+@media(max-width:1500px){
+  .dessin{
+    height:90%;
+    width:100%;
+  }
 }
-}
+
 
 .grid-container {
   display: grid;
   grid-template-columns: 50% 50% ;
-  grid-gap: 10px;
+  grid-gap: 5px;
   padding: 10px;
 }
 
@@ -97,14 +84,14 @@ h1{
   }
   p{
     font-weight: 100;
-    font-family: cursive;
+    font-family: "Gill Sans", sans-serif;
     font-size: 20px;
     margin-bottom: 30px;
   }
 }
 
  .send-btn{
-   --color:yellow;
+   --color:white;
    --background: rgb(15, 34, 88);
  }
 
@@ -119,9 +106,7 @@ h1{
   }
 
   @media only screen and (min-width: 800px) {
-
     .center-container{
       margin: 70px;
     }
-    
   }

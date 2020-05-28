@@ -61,6 +61,7 @@ export class ConnectionService {
         options: {
           path: that.config.getClientConfig()["SOCKET_PATH"],
           autoConnect: false,
+          secure: true,
           query: {
             uuid: uuid
           }
@@ -117,6 +118,7 @@ export class ConnectionService {
         options: {
           path: that.config.getAdminConfig()["SOCKET_PATH"],
           autoConnect: false,
+          secure: true,
           query: {
             username: username,
             password: password
@@ -147,6 +149,59 @@ export class ConnectionService {
           connected: false,
           message: error
         });
+      });
+
+      that.socket.connect();
+    })
+  }
+
+  /**
+   * Let's an admin register on the server
+   * @param username admin username
+   * @param password admin password
+   */
+  public register(username: string, password: string) {
+    //Keep a reference to this
+    var that = this
+    return new Promise(async function (resolve, reject) {
+      //Create a new socket to the admin endpoint
+      if (that.socket) that.disconnect();
+      const adminSocketConfig: SocketIoConfig = {
+        url:  that.config.getAdminConfig()['SOCKET_ADDRESS']  +
+              ":"                                             +
+              that.config.getAdminConfig()['SOCKET_PORT'],
+        options: {
+          path: that.config.getAdminConfig()["SOCKET_PATH"],
+          secure: true,
+          autoConnect: false
+        }
+      };
+
+      that.socket = new Socket(adminSocketConfig);
+
+      //Socket connected
+      that.socket.on('connect', function () {
+        //Prevent events for firing again
+        that.socket.removeAllListeners();
+        that.setupListeners();
+
+        //Send the register message
+        that.socket.emit("newAdmin", {
+          username: username,
+          password: password
+        }, (res, err) => {
+          resolve({
+            res: res,
+            err: err
+          })
+        });
+      });
+
+      //Socket failed to connect
+      that.socket.on('error', function (error) {
+        //Prevent events for firing again
+        that.socket.removeAllListeners();
+        console.log(error);
       });
 
       that.socket.connect();
