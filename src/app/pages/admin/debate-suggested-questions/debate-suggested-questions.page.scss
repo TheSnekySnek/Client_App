@@ -24,7 +24,7 @@ ion-label{
   margin-top: 30px;
   margin-left: 10%;
   margin-right: 15%;
-  font-family:cursive;
+  font-family:"Gill Sans", sans-serif;
   
   h1{
     font-variant: small-caps;
@@ -36,7 +36,7 @@ ion-label{
 #container p {
     font-size: 16px;
     line-height: 22px;
-    color: #006494; 
+    color: #006494;
     margin: 0;
 }
   
@@ -90,6 +90,19 @@ ion-title{
   .logo{
     width:70%;
   }
+<<<<<<< HEAD
+=======
+}
+
+.ban-btn{
+  color: red;
+  width: 30px;
+  height: 25px;
+}
+
+.ban-btn:hover{
+  cursor: pointer;
+>>>>>>> upstream/dev
 }
 
 @media(min-width:1800px){

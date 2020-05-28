@@ -17,8 +17,8 @@
 <ion-content [fullscreen]="true">
   <div class="description">
     <h1>Discutez, questionez, et rendez vos débats plus interactifs avec NiceSurvey</h1>
-    <p> Les personnes qui assiste aux débats ont elles aussi des questions à poser. 
-      Vous pouvez visionner leurs suggestions ici. </p>
+    <p> Créez vos débats rapidement avec l'application et intéragissez avec votre audience. 
+      Vous pouvez créer plusieurs débats et visionner leurs statistiques. </p>
   </div>
   
   <div id="container">
@@ -30,6 +30,9 @@
           <ion-label>{{suggestion.votes}}</ion-label>
           <ion-icon name="arrow-up-circle" color="Warning-tint"></ion-icon>
         </ion-button>
+        <ion-buttons slot="end">
+          <ion-icon name="alert-circle-outline" class="ban-btn" (click)="presentBanAlert(suggestion.uuid)"></ion-icon>
+        </ion-buttons>
       </ion-item>
     </ion-list>
     <strong *ngIf="availableSuggestions.length == 0" class="wait-text">

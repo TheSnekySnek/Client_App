@@ -55,6 +55,7 @@ p{
     margin-left: 80px;
     margin-right:80px;
   }
+<<<<<<< HEAD
 }
 
 @media only screen and (min-width: 1400px) {
@@ -69,3 +70,13 @@ p{
 
 
   
+=======
+  
+  @media only screen and (min-width: 1400px) {
+  
+    ion-card{
+        margin-left: 120px;
+        margin-right:120px;
+    }
+  }
+>>>>>>> upstream/dev

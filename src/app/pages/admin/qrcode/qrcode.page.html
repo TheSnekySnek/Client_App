@@ -1,0 +1,3 @@
+<ion-content>
+  <qrcode elementType="svg" cssClass="qr-element" *ngIf="debateId" [qrdata]="debateId.toString()" [errorCorrectionLevel]="'M'"></qrcode>
+</ion-content>

@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import {RouterTestingModule} from "@angular/router/testing";
 import {UniqueDeviceID} from "@ionic-native/unique-device-id/ngx";
+import {Router} from "@angular/router";
 
 describe('QuestionPage', () => {
   let component: QuestionPage;

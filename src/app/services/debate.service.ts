@@ -85,11 +85,33 @@ export class DebateService {
     }
 
     /**
+     * Close a debate and terminate it
+     */
+    public closeDebate(debateId : string) {
+        return this.emitToSocket('closeDebate', debateId);
+    }
+
+    /**
+     * Lock a debate
+     */
+    public lockDebate(debateId : string) {
+        return this.emitToSocket('lockDebate', debateId);
+    }
+
+    /**
+     * Unlock a debate
+     */
+    public unlockDebate(debateId : string) {
+        return this.emitToSocket('unlockDebate', debateId);
+    }
+
+    /**
      * Ban a user
+     * @param debateId id of the debate
      * @param uuid UUID (identifier) of a user
      */
-    public banUser(uuid: string) {
-        return this.emitToSocket('banUser', { uuid: uuid });
+    public banUser(debateId: string, uuid: string) {
+        return this.emitToSocket('banUser', {debateId: debateId, uuid: uuid });
     }
 
     /**
@@ -151,16 +173,15 @@ export class DebateService {
     }
 
     /**
-   * Calls a function when a new question is available
-   * @param callback Function to call
+   * Save a debate to have it in the other pages
+   * @param debate Function to call
    */
     public saveDebate(debate: any) {
         this.savedDebate = debate;
     }
 
     /**
-     * Calls a function when a new question is available
-     * @param callback Function to call
+     * Get the debate that we saved
      */
     public getSavedDebate() {
         return this.savedDebate;

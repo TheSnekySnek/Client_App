@@ -7,13 +7,12 @@ ion-item{
     --padding-start: 25px;
     font-size: 18px;
     font-weight: 100;
-    font-style: cursive;
+    font-family: "Gill Sans", sans-serif;
 }
 ion-item:hover {
     --background: slategray !important;
   }
 ion-toolbar{
-  //  --background: rgb(9, 12, 54);
   --background:  #0F1122;
     --color : white;
     text-align: center;

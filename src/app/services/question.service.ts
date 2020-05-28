@@ -33,6 +33,27 @@ export class QuestionService {
   }
 
   /**
+   * Retrieves the questions of the debate
+   */
+  public getResponses(): Promise<any[]>  {
+    var that = this;
+    return new Promise(async function (resolve, reject) {
+      that.connection.socket.emit("getQuestions",
+          (questions: any[]) => {
+            for (let i = 0; i < questions.length; i++) {
+              if(that.answeredQuestions.includes(questions[i]['id']))
+                questions[i]['answered'] = true
+              else
+                questions[i]['answered'] = false
+
+            }
+            resolve(questions);
+          }
+      );
+    });
+  }
+
+  /**
    * Send's the user's answer of a closed question
    * @param questionId  Id of the question
    * @param answerId    Id of the answer
@@ -96,6 +117,21 @@ export class QuestionService {
         callback(question)
       }
     );
+  }
+
+  /**
+   * Suggest a question to be added to the debate
+   * @param question Suggested question
+   */
+  public suggestQuestion(question: any): Promise<boolean> {
+    var that = this;
+    return new Promise<boolean>(async function (resolve, reject) {
+      that.connection.socket.emit("suggestQuestion",
+        question, (result: boolean) => {
+          resolve(result);
+        }
+      );
+    });
   }
 
   /**

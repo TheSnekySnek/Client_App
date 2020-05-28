@@ -9,6 +9,16 @@ const routes: Routes = [
     component: DebatePage,
     children: [
       {
+        path: 'details',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../debate-details/debate-details.module').then(m => m.DebateDetailsPageModule)
+          }
+        ]
+      },
+      {
         path: 'questions',
         children: [
           {
@@ -40,14 +50,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/debate/questions',
+        redirectTo: '/debate/details',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/debate/questions',
+    redirectTo: '/debate/details',
     pathMatch: 'full'
   }
 ];

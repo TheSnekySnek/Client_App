@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {DebateService} from "../../../services/debate.service";
+import { AlertController } from '@ionic/angular';
+import { NotificationService } from 'src/app/services/notification.service';
 import { MenuController } from '@ionic/angular';
 
 @Component({
@@ -13,12 +15,12 @@ export class DebateSuggestedQuestionsPage implements OnInit {
   debateId              : string;
 
   constructor(
-    private router        : Router,
-    private debateManager : DebateService,
-    public menuCtrl: MenuController
-
-    ) {}
-    
+    private router              : Router,
+    private debateManager       : DebateService,
+    private alertController     : AlertController,
+    private notificationManager : NotificationService,
+    public menuCtrl             : MenuController
+  ) {}
 
   /**
    * Sort and return the sorted suggestions
@@ -36,11 +38,41 @@ export class DebateSuggestedQuestionsPage implements OnInit {
   }
 
   /**
+   * Displays the alert that lets the admin ban an user
+   */
+  async presentBanAlert(user) {
+    const alert = await this.alertController.create({
+      cssClass: 'alert',
+      header: "Bannir l'utilisateur",
+      message: 'Cette utilisateur ne sera plus en mesure de participer au débat.',
+      buttons: [
+        {
+          text: 'Oui',
+          handler: async () => {
+            //Ban the user
+            await this.debateManager.banUser(this.debateId, user);
+            this.notificationManager.displayInfo("L'utilisateur à été banni");
+          }
+        },
+        {
+          text: 'Non',
+          handler: () => {
+            
+          }
+        },
+      ]
+    });
+
+    //Display the alert
+    await alert.present();
+  }
+
+  /**
    * Executes on page initialisation
    */
   ngOnInit() {
     this.debateManager.onNewVote(suggestionId => {
-      let suggestion = this.availableSuggestions.find(s => s.suggestionId == suggestionId);
+      const suggestion = this.availableSuggestions.find(s => s.suggestionId == suggestionId);
       suggestion["votes"]++;
     });
 

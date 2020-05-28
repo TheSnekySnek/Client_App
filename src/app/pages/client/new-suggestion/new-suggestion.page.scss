@@ -21,7 +21,7 @@ ion-title{
   width: 150px;
   margin-top: 10px;
   font-size: 18px;
-  position: absolute; 
+  position:absolute; /*it can be fixed too*/
   left: calc(50% - 75px);
   bottom: 50px;
   --background: rgb(153, 204, 228);
@@ -31,7 +31,7 @@ ion-title{
 h1{
   font-size: 18px;
   font-weight: 600;
-  font-family: cursive;
+  font-family: "Gill Sans", sans-serif;
   margin-top: 20px;
   margin: 15px;
   margin-bottom: 20px;

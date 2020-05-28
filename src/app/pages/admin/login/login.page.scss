@@ -12,7 +12,7 @@ ion-content {
     text-align: center;
     top: 3%;
     left: 10px;
-    font-family: cursive;
+    font-family: "Gill Sans", sans-serif;
     font-weight: lighter;
     font-size: 50px;
 }
@@ -30,7 +30,7 @@ ion-content {
 .welcome-text{
     font-weight: 400;
     font-size: 20px;
-    font-family: cursive !important;
+    font-family: "Gill Sans", sans-serif !important;
 }
 .head .text{
     
@@ -40,7 +40,7 @@ ion-content {
     margin-top: 10px;
     margin-left: 22%;
     margin-right: 22%;
-    font-family: cursive;
+    font-family: "Gill Sans", sans-serif;
     font-weight: lighter;
     font-size: 15px;
 }
@@ -63,13 +63,7 @@ ion-content {
     font-weight: 600;
     --color: yellow;
     --border-color:yellow;
-   // cursor: pointer;
 }
-
-  
- 
-
-  
 
   .animation-area {
     width: 100%;

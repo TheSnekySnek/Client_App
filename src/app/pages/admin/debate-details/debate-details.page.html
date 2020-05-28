@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Détails</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="details">
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+    <ion-item>
+      <ion-label position="stacked">ID du débat</ion-label>
+      <ion-input disabled="" type="text" [(ngModel)]="details.debateId"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Titre</ion-label>
+      <ion-input disabled="" type="text" [(ngModel)]="details.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Description</ion-label>
+      <ion-input disabled="" type="text" [(ngModel)]="details.description"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding">
+    <ion-button expand="block" class="actions-btn" [disabled]="details.closed !== false" (click)="debateActions()">Actions</ion-button>
+  </div>
+</ion-content>
