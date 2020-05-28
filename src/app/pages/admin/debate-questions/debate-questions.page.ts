@@ -65,7 +65,6 @@ export class DebateQuestionsPage implements OnInit {
     this.debateId = this.debateManager.getSavedDebate()['debateId'];
     this.updateQuestions();
     this.menuCtrl.enable(false);
-
   }
 
   /**

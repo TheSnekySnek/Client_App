@@ -11,11 +11,11 @@ export class AdminDetailPage implements OnInit {
 
   constructor(
     public menuCtrl: MenuController
-
     ) {}
-    ionViewWillEnter() {
-      this.menuCtrl.enable(false);
-    }
+
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
+  }
 
   /**
    * Executes on page initialisation

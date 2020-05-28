@@ -15,19 +15,15 @@ export class DebateNewQuestionPage implements OnInit {
   isOpenQuestion  : boolean   = false;
   numAnswers      : number    = 2;
   title           : string;
-  description     : string;
   answers         : string[]  = new Array(8);
 
   constructor(
     private notification  : NotificationService,
     private debateManager : DebateService,
     private router        : Router,  
-    public menuCtrl: MenuController
+    public menuCtrl       : MenuController
 
     ) {}
-    ionViewWillEnter() {
-      this.menuCtrl.enable(false);
-    }
 
   /**
    * Adds a question to the debate via the question service
@@ -35,10 +31,6 @@ export class DebateNewQuestionPage implements OnInit {
   async addQuestion() {
     if (!this.title || this.title.length == 0) {
       this.notification.displayError("Veuillez spécifier un titre");
-      return;
-    }
-    if (!this.description || this.description.length == 0) {
-      this.notification.displayError("Veuillez spécifier une description");
       return;
     }
 
@@ -52,7 +44,6 @@ export class DebateNewQuestionPage implements OnInit {
     var status = await this.debateManager.addQuestion({
       debateId      : this.debate['debateId'],
       title         : this.title,
-      description   : this.description,
       answers       : ans,
       isOpenQuestion: this.isOpenQuestion
     });
@@ -84,6 +75,13 @@ export class DebateNewQuestionPage implements OnInit {
   //This lets us display the right number of inputs
   arrayTwo(n: number): number[] {
     return [...Array(n).keys()];
+  }
+
+  /**
+   * Closes the menu automatically
+   */
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
 }
