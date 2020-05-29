@@ -20,7 +20,7 @@
       <div class="center-container">
 
         <div class="head">
-          <img src="assets/icon/Dessin 3.png" class="logo">  
+          <img src="assets/icon/Dessin 3.png" class="logo">
         </div>
 
         <ion-header collapse="condense">
@@ -44,10 +44,10 @@
           <div *ngIf="!isOpenQuestion">
             <ion-item >
               <ion-label position="stacked">Nombre de réponses</ion-label>
-              <ion-input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="numAnswers" min="2" max="8"></ion-input>
+              <ion-input type="number" inputmode="numeric" [(ngModel)]="numAnswers" min="2" max="8" maxlength="1"></ion-input>
             </ion-item>
       
-            <ion-item *ngFor="let i of arrayTwo(numAnswers);">
+            <ion-item *ngFor="let i of arrayTwo(!numAnswers ? 2 : numAnswers > 8 ? 8: numAnswers);">
               <ion-label position="stacked">Réponse {{i+1}}</ion-label>
               <ion-input required type="text" [(ngModel)]="answers[i]"></ion-input>
             </ion-item>
