@@ -23,7 +23,7 @@
   <div id="container" class="second">
     <strong *ngIf="availableQuestions.length == 0" class="wait-text">
       <p>En attente de questions</p>
-      <img src="assets/icon/debat.png" alt = "Dessin 1" class = "logo2">
+      <img src="assets/icon/question.jpg" alt = "Dessin 1" class = "logo2">
     </strong>
     <ion-list *ngIf="availableQuestions.length > 0" class="wait-text">
       <ion-item *ngFor="let question of availableQuestions"  class="question-item" (click)="viewQuestion(question)">
