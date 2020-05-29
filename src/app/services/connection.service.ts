@@ -17,6 +17,7 @@ export class ConnectionService {
 
   //Prevents from showing the error multiple times
   hasShownConnectError: boolean;
+  showDisconnect      : boolean;
   public socket       : Socket;
 
   constructor(
@@ -50,6 +51,8 @@ export class ConnectionService {
     return new Promise(async function (resolve, reject) {
       //Get the id of the device
       const uuid = await that.identification.getUUID();
+      //Prevent disconnect from firing while we reconnect
+      that.showDisconnect = false;
       //Create a new socket to the client endpoint
       if (that.socket) that.disconnect();
       const clientSocketConfig: SocketIoConfig = {
@@ -108,6 +111,8 @@ export class ConnectionService {
     //Keep a reference to this
     var that = this
     return new Promise(async function (resolve, reject) {
+      //Prevent disconnect from firing while we reconnect
+      that.showDisconnect = false;
       //Create a new socket to the admin endpoint
       if (that.socket) that.disconnect();
       const adminSocketConfig: SocketIoConfig = {
@@ -164,6 +169,8 @@ export class ConnectionService {
     //Keep a reference to this
     var that = this
     return new Promise(async function (resolve, reject) {
+      //Prevent disconnect from firing while we reconnect
+      that.showDisconnect = false;
       //Create a new socket to the admin endpoint
       if (that.socket) that.disconnect();
       const adminSocketConfig: SocketIoConfig = {
@@ -184,6 +191,7 @@ export class ConnectionService {
         //Prevent events for firing again
         that.socket.removeAllListeners();
         that.setupListeners();
+
 
         //Send the register message
         that.socket.emit("newAdmin", {
@@ -214,8 +222,7 @@ export class ConnectionService {
   private setupListeners() {
     //Display an error if we are unable to connect to the server
     this.socket.on('connect_error', (error) => {
-      //Only show the error once
-      console.log('errror pre');
+      this.showDisconnect = true;
 
       if (!this.hasShownConnectError) {
         console.log('errror');
@@ -231,8 +238,8 @@ export class ConnectionService {
     */
     //Display a message if we were disconnected from the server
     this.onDisconnect(() => {
-      if (!this.hasShownConnectError)
-        this.notification.displayInfo("Disconnected from server")
+      if (!this.hasShownConnectError && this.showDisconnect)
+        this.notification.displayInfo("Déconnecté du serveur");
     })
   }
 

@@ -43,6 +43,13 @@ export class AdminStatsPage implements OnInit {
   }
 
   /**
+   * Returns the user to the home page
+   */
+  disconnect(){
+    this.router.navigate(['admin-begin']);
+  }
+
+  /**
    * Get the stats for a debate
    */
   async ionViewWillEnter() {
