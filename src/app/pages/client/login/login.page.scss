@@ -22,8 +22,6 @@ fieldset{
 }
 
 ion-item.item-highlight{
-    margin-right: 12%;
-    margin-left: 12%;
     margin-top: 10px;
     min-width: 9em;
 }
@@ -63,8 +61,9 @@ ion-item.item-highlight{
     text-align: center;
     top: 120%;
     margin-top: 10px;
-    margin-left: 22%;
-    margin-right: 22%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
     font-family: "Gill Sans", sans-serif;
     font-weight: lighter;
     font-size: 15px;
@@ -78,9 +77,7 @@ ion-item.item-highlight{
 
 .join-btn{
     text-decoration: none;
-    margin-right: 30%;
-    margin-left: 30%;
-    margin-top: 10px;
+    margin-top: 14px;
     min-width: 9em;
     font-size: 16px;
     --background: #0E0E52;
@@ -104,8 +101,6 @@ ion-item.item-highlight{
 
 ion-item{
     text-decoration: none;
-    margin-right: 30%;
-    margin-left: 30%;
     margin-top: 10px;
     min-width: 12em;
     font-size: 16px;
@@ -123,6 +118,7 @@ ion-item{
     left: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
     overflow: hidden;
 }
 

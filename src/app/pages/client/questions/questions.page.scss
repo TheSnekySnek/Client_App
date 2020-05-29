@@ -54,7 +54,6 @@ ion-card{
 .logo2{
   margin-top: 0px;
   margin: 15px;
-  width:60%;
 }
 
 .second{
@@ -67,13 +66,7 @@ ion-card{
   color: rgb(24, 29, 68);
 }
  
-@media only screen and (min-width: 500px) {
-  .logo2{
-    margin-top: 0px;
-    margin: 15px;
-    width:400px;
-  }
-}
+
 
 @media only screen and (min-width: 1000px) {
   ion-content {  
