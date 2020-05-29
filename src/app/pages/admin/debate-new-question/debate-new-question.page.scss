@@ -43,8 +43,10 @@ h1{
 
 @media(max-width:1500px){
   .dessin{
-    height:90%;
+    height:auto;
     width:100%;
+    max-width: 740px;
+    max-height: 688px;
   }
 }
 

@@ -19,16 +19,16 @@
     <ion-refresher slot="fixed" (ionRefresh)="updateQuestions()">
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+    <strong *ngIf="availableQuestions.length == 0" class="wait-text">
+      <p> Ajoutez une nouvelle question en appuyant sur (+)<br>
+        <img src="assets/icon/sujets2.png"></p>
+    </strong>
     <ion-list *ngIf="availableQuestions.length > 0">
       <ion-item *ngFor="let question of availableQuestions"  class="question-item" (click)="viewQuestion(question)">
         <ion-icon name="chatbubbles" class="rond"></ion-icon>
         <ion-label>{{question.title}}</ion-label>
       </ion-item>
     </ion-list>
-    <strong *ngIf="availableQuestions.length == 0" class="wait-text">
-      <p><img src="assets/icon/sujets2.png"> <br>
-      Ajoutez une nouvelle question en appuyant sur (+)</p> 
-    </strong>
   </div>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="addQuestion()">
