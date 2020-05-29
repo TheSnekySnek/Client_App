@@ -70,7 +70,7 @@ export class ClosedQuestionStatsPage implements OnInit {
       }
     });
     this.barChart.data.datasets.push({
-      label: "# number of votes",
+      label: "# nombre de votes",
       data: []
     });
     for (const response of this.statResponses[2]) {

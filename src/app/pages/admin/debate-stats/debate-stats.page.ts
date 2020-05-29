@@ -62,7 +62,7 @@ export class DebateStatsPage implements OnInit {
       data: {
         datasets: [
           {
-            label: "# number of votes",
+            label: "# nombre de réponses",
             data: [],
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
