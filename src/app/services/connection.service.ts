@@ -239,7 +239,7 @@ export class ConnectionService {
     //Display a message if we were disconnected from the server
     this.onDisconnect(() => {
       if (!this.hasShownConnectError && this.showDisconnect)
-        this.notification.displayInfo("Déconnecté du serveur")
+        this.notification.displayInfo("Déconnecté du serveur");
     })
   }
 
