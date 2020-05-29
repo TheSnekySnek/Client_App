@@ -29,6 +29,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'help',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+                import('../help/help.module').then(m => m.HelpPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/home/questions',
         pathMatch: 'full'

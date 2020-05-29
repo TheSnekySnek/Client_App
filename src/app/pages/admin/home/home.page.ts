@@ -57,6 +57,13 @@ export class HomePage implements OnInit {
   }
 
   /**
+   * Returns the user to the home page
+   */
+  disconnect(){
+    this.router.navigate(['admin-begin']);
+  }
+
+  /**
    * Executes on page initialisation
    */
   ngOnInit() {

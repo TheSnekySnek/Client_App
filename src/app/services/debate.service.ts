@@ -173,6 +173,41 @@ export class DebateService {
     }
 
     /**
+     * Add a callback function when a suggestion is deleted
+     * @param callback Function to call
+     */
+    public onDeletedSuggestion(callback: Function) {
+        this.connection.socket.on("deletedSuggestion",
+          (suggestionId: number) => {
+              // Call the callback
+              callback(suggestionId)
+          }
+        );
+    }
+
+    /**
+     * Add a callback function when there is a new question
+     * @param callback Function to call
+     */
+    // tslint:disable-next-line:ban-types (disable warning for Function type)
+    public onNewQuestion(callback: Function) {
+        this.connection.socket.on('newQuestion',
+            (question: any) => {
+                console.log("Received new question");
+                // Call the callback
+                callback(question);
+            }
+        );
+        this.connection.socket.on('newSuggestedQuestion',
+            (question: any) => {
+                console.log("Received new question");
+                // Call the callback
+                callback(question);
+            }
+        );
+    }
+
+    /**
    * Save a debate to have it in the other pages
    * @param debate Function to call
    */

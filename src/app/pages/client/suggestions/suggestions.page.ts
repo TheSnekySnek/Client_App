@@ -39,6 +39,13 @@ export class SuggestionsPage implements OnInit {
   }
 
   /**
+   * Returns the user to the home page
+   */
+  disconnect(){
+    this.router.navigate(['admin-begin']);
+  }
+
+  /**
    * Loads the new suggestion client page
    */
   newSuggestion(){
@@ -82,6 +89,13 @@ export class SuggestionsPage implements OnInit {
     this.suggestions.onNewVote((suggestionId) => {
       let suggestion = this.availableSuggestions.find(s => s.suggestionId == suggestionId);
       suggestion["votes"]++;
+    });
+
+    // Remove the deleted suggestion
+    this.suggestions.onDeletedSuggestion(suggestionId => {
+      this.availableSuggestions = this.availableSuggestions.filter(s =>
+        s.suggestionId !== suggestionId
+      );
     });
   }
 

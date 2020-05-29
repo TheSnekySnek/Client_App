@@ -1,31 +1,50 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Connexion   
+      Connexion
     </ion-title>
-    <ion-buttons slot="start" >
-      <ion-button autoHide="false" color="Lignt" href="admin-begin">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-begin"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <section class="center-content">
-      <div class="first">
-        <img src="assets/icon/Dessin 3.png"  class = "logo1">
-      </div>
-      <br><br>
-    <p class="pin-label">Entrez votre code de session</p>
-    <ion-item class="pin-item">
-      <ion-input [(ngModel)]="inputPin" placeholder="code de session"></ion-input>
-    </ion-item>
-    <section>
-      <ion-button expand="block" class="join-btn" (click)="loginWithPin()">Rejoindre</ion-button>
-    </section>
-    <section *ngIf="isQRCompatible">
-      <ion-button color="secondary" expand="block" class="qr-btn" (click)="startQR()">Scan QR Code</ion-button>
-    </section>
-  </section>
+<ion-content text-center class="no-scroll">
+  <div class="animation-area">
+    <ul class = "box-area">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <div class="head">
+    <div class="head2">
+      <img src="assets/icon/Dessin 3.png" alt = "Logo" class = "logo"> <br>
+      <img src="assets/icon/LogoBlanc.png" alt = "Logo" class = "logo">
+    </div>
+
+    <fieldset class="text">
+
+      <p class="pin-label">Entrez votre code de session</p>
+      <ion-item>
+        <ion-input [(ngModel)]="inputPin" placeholder="code de session"></ion-input>
+      </ion-item>
+      <section>
+        <ion-button expand="block" class="join-btn" (click)="loginWithPin()">Rejoindre</ion-button>
+      </section>
+      <section *ngIf="isQRCompatible">
+        <ion-button color="secondary" expand="block" class="qr-btn" (click)="startQR()">Scan QR Code</ion-button>
+      </section>
+
+    </fieldset>
+
+  </div>
+
+
+
 </ion-content>

@@ -49,6 +49,7 @@ export class DebateSuggestedQuestionsPage implements OnInit {
         {
           text: 'Oui',
           handler: async () => {
+            console.log(user);
             //Ban the user
             await this.debateManager.banUser(this.debateId, user);
             this.notificationManager.displayInfo("L'utilisateur à été banni");
@@ -68,6 +69,20 @@ export class DebateSuggestedQuestionsPage implements OnInit {
   }
 
   /**
+   * Unban a user from the debate
+   * @param user
+   */
+  async unbanUser(user: string) {
+    let res = await this.debateManager.unbanUser(user);
+    if (res) {
+      this.notificationManager.displayInfo("Le ban a été annulé");
+      this.availableSuggestions = this.availableSuggestions.filter(s => s.uuid !== user);
+    } else {
+      this.notificationManager.displayInfo("Erreur lors de l'annulation du ban");
+    }
+  }
+
+  /**
    * Executes on page initialisation
    */
   ngOnInit() {
@@ -79,6 +94,14 @@ export class DebateSuggestedQuestionsPage implements OnInit {
     this.debateManager.onSuggestedQuestion(suggestion => {
       this.availableSuggestions.push(suggestion);
     });
+
+    this.debateManager.onDeletedSuggestion(suggestionId => {
+      for (let s of this.availableSuggestions) {
+        if (s.suggestionId === suggestionId) {
+          s.removed = true;
+        }
+      }
+    });
   }
 
   /**
@@ -88,6 +111,5 @@ export class DebateSuggestedQuestionsPage implements OnInit {
     this.debateId = this.debateManager.getSavedDebate()['debateId'];
     this.updateSuggestions();
     this.menuCtrl.enable(false);
-
   }
 }

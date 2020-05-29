@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="admin-home"></ion-back-button>
+      <ion-back-button defaultHref="admin-details"></ion-back-button>
     </ion-buttons>
     <ion-title>
       Suggestions
@@ -25,8 +25,11 @@
           <ion-label>{{suggestion.votes}}</ion-label>
           <ion-icon name="arrow-up-circle" color="Warning-tint"></ion-icon>
         </ion-button>
-        <ion-buttons slot="end">
+        <ion-buttons slot="end" *ngIf="suggestion.removed == false">
           <ion-icon name="alert-circle-outline" class="ban-btn" (click)="presentBanAlert(suggestion.uuid)"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end" *ngIf="suggestion.removed === true">
+          <ion-icon name="alert-circle-outline" class="unban-btn" (click)="unbanUser(suggestion.uuid)"></ion-icon>
         </ion-buttons>
       </ion-item>
     </ion-list>

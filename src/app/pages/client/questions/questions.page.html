@@ -6,6 +6,11 @@
     <ion-title>
       Questions
     </ion-title>
+    <ion-buttons slot="end" >
+      <ion-button autoHide="false" color="Lignt" (click)="disconnect()">
+        <ion-icon name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +23,7 @@
   <div id="container" class="second">
     <strong *ngIf="availableQuestions.length == 0" class="wait-text">
       <p>En attente de questions</p>
-      <img src="assets/icon/Groupe 27.png" alt = "Dessin 1" class = "logo2">
+      <img src="assets/icon/debat.png" alt = "Dessin 1" class = "logo2">
     </strong>
     <ion-list *ngIf="availableQuestions.length > 0" class="wait-text">
       <ion-item *ngFor="let question of availableQuestions"  class="question-item" (click)="viewQuestion(question)">

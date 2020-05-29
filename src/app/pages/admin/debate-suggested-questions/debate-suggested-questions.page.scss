@@ -22,7 +22,7 @@ ion-label{
 
 
 .rond{
-  color:#006494; 
+  color:#006494;
   margin-left: 9%!important;
   margin-right: 10px!important;
 }
@@ -33,7 +33,7 @@ ion-label{
   margin-right: 10%;
   font-family:"Gill Sans", sans-serif;
   margin-bottom:0;
-  
+
   h1{
     font-variant: small-caps;
     font-size: 30px;
@@ -79,7 +79,7 @@ ion-title{
 }
 
 
-  
+
 
 .ban-btn{
   color: red;
@@ -87,6 +87,27 @@ ion-title{
   height: 25px;
 }
 
+.unban-btn{
+  color: green;
+  width: 30px;
+  height: 25px;
+}
+
 .ban-btn:hover{
   cursor: pointer;
+}
+
+.unban-btn:hover{
+  cursor: pointer;
+}
+
+@media(min-width:1800px){
+  .logo{
+    width:75%;
+  }
+}
+@media(min-width:1600px){
+  .logo{
+    width:60%;
+  }
 }
