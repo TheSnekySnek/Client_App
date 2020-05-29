@@ -44,7 +44,7 @@
           <div *ngIf="!isOpenQuestion">
             <ion-item >
               <ion-label position="stacked">Nombre de réponses</ion-label>
-              <ion-input type="number" [ngModelOptions]="{standalone: true}" [(ngModel)]="numAnswers" min="2" max="8"></ion-input>
+              <ion-input type="number" (ionInput)="numAnswersEvent($event)" [ngModelOptions]="{standalone: true}" [(ngModel)]="numAnswers" min="2" max="8"></ion-input>
             </ion-item>
       
             <ion-item *ngFor="let i of arrayTwo(numAnswers);">

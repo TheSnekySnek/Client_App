@@ -74,6 +74,11 @@ export class DebateNewQuestionPage implements OnInit {
 
   //This lets us display the right number of inputs
   arrayTwo(n: number): number[] {
+    if (!n || n < 2) {
+      n = 2;
+    } else if (n > 8) {
+      n = 8;
+    }
     return [...Array(n).keys()];
   }
 
