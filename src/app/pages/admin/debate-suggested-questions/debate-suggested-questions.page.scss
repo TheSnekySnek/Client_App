@@ -19,7 +19,12 @@ ion-label{
   font-weight: 300;
 }
 
-
+img{
+  max-width: 1000px;
+  max-height: 700px;
+  width: 100%;
+  height: auto;
+}
 
 .rond{
   color:#006494;
@@ -44,7 +49,7 @@ ion-label{
 #container p {
     font-size: 16px;
     line-height: 22px;
-    color: #006494;
+    color: black;
     margin: 0;
 }
   
