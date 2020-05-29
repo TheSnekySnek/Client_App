@@ -36,6 +36,11 @@ export class DebateNewQuestionPage implements OnInit {
 
     if (!this.isOpenQuestion) {
       var ans = [];
+      if (!this.numAnswers || this.numAnswers < 2)
+        this.numAnswers = 2;
+      else if (this.numAnswers > 8)
+        this.numAnswers = 8;
+      
       for (let i = 0; i < this.numAnswers; i++) {
         ans.push(this.answers[i]);
       }
@@ -74,11 +79,6 @@ export class DebateNewQuestionPage implements OnInit {
 
   //This lets us display the right number of inputs
   arrayTwo(n: number): number[] {
-    if (!n || n < 2) {
-      n = 2;
-    } else if (n > 8) {
-      n = 8;
-    }
     return [...Array(n).keys()];
   }
 
