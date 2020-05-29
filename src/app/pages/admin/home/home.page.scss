@@ -72,27 +72,14 @@ ion-title{
   margin: 0 10px;
 }
 
+.logo{
+  max-width: 600px;
+  width: 100%;
+}
+
 @media(max-width: 500px)  {
   .logo{
     display:none;
-  }
-}
-
-@media(min-width:1000px){
-  .logo{
-    width:80%;
-  }
-}
- 
-@media(min-width:1200px){
-  .logo{
-    width:75%;
-  }
-}
-
-@media(min-width:1600px){
-  .logo{
-    width:60%;
   }
 }
 
