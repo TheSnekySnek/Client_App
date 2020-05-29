@@ -68,7 +68,6 @@ ion-label{
 .logo2{
   margin-top: 0px;
   margin: 15px;
-  width:60%;
 }
 
 .second{
@@ -79,22 +78,11 @@ ion-label{
 
 .wait-text{
   color: rgb(24, 29, 68);
-  animation: Test 2.5s infinite;
 }
 
-@keyframes Test{
-  0%{opacity: 1;}
-  50%{opacity: 0;}
-  100%{opacity: 1;}
-}
+
  
-@media only screen and (min-width: 500px) {
-  .logo2{
-    margin-top: 0px;
-    margin: 15px;
-    width:300px;
-  }
-}
+
 
 @media only screen and (min-width: 1000px) {
   ion-content {  
